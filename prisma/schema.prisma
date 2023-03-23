@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @default(autoincrement()) @id
+  id        String   @id @default(cuid())
   email     String   @unique
   name      String
   createdAt DateTime @default(now())
@@ -21,7 +21,7 @@ model User {
 }
 
 model FoodItem {
-  id        Int      @default(autoincrement()) @id
+  id        String   @id @default(cuid())
   name      String
   price     Int
   image     String
@@ -33,14 +33,14 @@ model FoodItem {
 }
 
 model Order {
-  id        Int      @default(autoincrement()) @id
+  id        String   @id @default(cuid())
   quantity  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  userId    Int
+  userId    String
   user      User     @relation(fields: [userId], references: [id])
 
-  foodId    Int
+  foodId    String
   food      FoodItem @relation(fields: [foodId], references: [id])
 }
