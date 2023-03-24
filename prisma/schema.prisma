@@ -29,7 +29,7 @@ model FoodItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  orders    Order[]
+  orderItems     OrderItem[]
 }
 
 model Order {
@@ -40,6 +40,19 @@ model Order {
 
   userId    String
   user      User     @relation(fields: [userId], references: [id])
+
+  orderItems     OrderItem[]
+
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id])
 
   foodId    String
   food      FoodItem @relation(fields: [foodId], references: [id])
