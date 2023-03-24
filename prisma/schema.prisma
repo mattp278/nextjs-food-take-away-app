@@ -23,7 +23,7 @@ model User {
 model FoodItem {
   id        String   @id @default(cuid())
   name      String
-  price     Int
+  price     Float
   image     String
   category  String
   createdAt DateTime @default(now())
