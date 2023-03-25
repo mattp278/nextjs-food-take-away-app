@@ -1,20 +1,23 @@
 import Image from 'next/image'
+import { ReactNode } from 'react'
 
-export const HomePage = () => {
+interface HomePageProps {
+  children: ReactNode
+}
+
+export const HomePage = ({ children }: HomePageProps) => {
   return (
-    <section className="w-screen h-screen bg-lime-100">
-      <div className="absolute w-1/2 flex flex-col items-center justify-center h-full bg-[#B4260B]">
-        iFood
+    <section className="relative w-screen h-screen ">
+      <div className="absolute w-full h-full z-0 ">
+        <Image
+          src="/indian-platter.jpg"
+          fill
+          style={{ objectFit: 'cover' }}
+          alt="Indian Platter"
+        />
       </div>
-      <div className="absolute w-3/5 right-0 flex flex-col items-center justify-center h-full bg-[#B4260B]">
-        <div className="w-full h-full bg-red-300 clip-path-homepage">
-          <Image
-            src="/indian-platter.jpg"
-            fill
-            style={{ objectFit: 'cover' }}
-            alt="Lady in canoe on a lake"
-          />
-        </div>
+      <div className="absolute flex w-full h-full flex-col items-center justify-center">
+        {children}
       </div>
     </section>
   )
