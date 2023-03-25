@@ -15,17 +15,18 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --primary-red: #b4260b;
-  --secondary-orange: #de8c21;
-  -tertiary-gold: #c9b064;
-  --white-floral: #f9f6ee;
-  --brown: #c79467;
+  --primaryRed: #b4260b;
+  --secondaryOrange: #de8c21;
+  --tertiaryGold: #c9b064;
+  --whiteFloral: #f9f6ee;
+  --quaternaryBrown: #c79467;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  /* border: 1px solid blue; */
 }
 
 html,

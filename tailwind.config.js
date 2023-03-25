@@ -17,6 +17,12 @@ module.exports = {
         quaternaryBrown: '#c79467',
         whiteFloral: '#f9f6ee',
       },
+      screens: {
+        sm: '451px',
+        md: '600px',
+        lg: '1100px',
+        // => @media (min-width: 992px) { ... }
+      },
     },
   },
   plugins: [],

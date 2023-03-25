@@ -7,7 +7,7 @@ interface HomePageProps {
 
 export const HomePage = ({ children }: HomePageProps) => {
   return (
-    <section className="relative w-screen h-screen ">
+    <section className="relative w-screen h-screen min-w-[280px]">
       <div className="absolute w-full h-full z-0 ">
         <Image
           src="/indian-platter.jpg"
