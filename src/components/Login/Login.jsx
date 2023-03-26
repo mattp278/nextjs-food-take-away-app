@@ -2,11 +2,24 @@ import { MdFoodBank } from 'react-icons/md'
 import { Input, Button } from '@/components'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
+import { selectUsertSlice } from '@/redux/slices/userSlice'
 import { getAuthUser } from '@/redux/slices/userSlice'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
+  const { errors } = useAppSelector(selectUsertSlice)
+
+  const errorMessages = errors?.map((error, i) => {
+    return (
+      <p
+        key={i}
+        className="bg-primaryRed text-whiteFloral text-center p-2 mt-4"
+      >
+        {error}
+      </p>
+    )
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -28,8 +41,9 @@ export const Login = () => {
 
   return (
     <section className=" relative sm:w-11/12 md:w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-tertiaryGold">
-      <MdFoodBank size="8em" className="m-2" />
+      <MdFoodBank size="8em" />
       <h1 className="text-3xl">LOGIN</h1>
+      {errorMessages ? errorMessages : null}
       <form onSubmit={formik.handleSubmit} className="w-full relative m-2">
         <Input
           id="email"

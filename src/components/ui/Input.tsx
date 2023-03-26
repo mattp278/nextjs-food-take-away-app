@@ -28,7 +28,7 @@ export const Input = ({
       </label>
 
       <input
-        className="w-full rounded-md block p-2"
+        className="w-full rounded-md block p-2 "
         id={id}
         name={name}
         placeholder={placeholder}
@@ -38,7 +38,7 @@ export const Input = ({
         onBlur={onBlur}
       />
       {error ? (
-        <p className="text-primaryRed text-sm text-center">{error}</p>
+        <p className="text-primaryRed  text-sm text-center">{error}</p>
       ) : null}
     </div>
   )

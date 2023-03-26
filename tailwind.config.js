@@ -12,9 +12,10 @@ module.exports = {
     extend: {
       colors: {
         primaryRed: '#b4260b',
-        secondaryOrange: '#de8c21',
+        secondaryYellow: '#FFFCC8',
         tertiaryGold: '#c9b064',
         quaternaryBrown: '#c79467',
+        quinaryOrange: '#de8c21',
         whiteFloral: '#f9f6ee',
       },
       screens: {
