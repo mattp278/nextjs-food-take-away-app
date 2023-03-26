@@ -32,7 +32,15 @@ export default async function handler(
 }
 
 const addNewUser = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name, email, password } = req.body
+  const { name, email, password, password2 } = req.body
+
+  if (password !== password2) {
+    return res.status(400).json({
+      success: false,
+      status: 400,
+      errors: [{ msg: 'Passwords do not match' }],
+    })
+  }
 
   const userExists = await prisma.user.findUnique({
     where: { email: email },
