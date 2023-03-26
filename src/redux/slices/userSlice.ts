@@ -25,7 +25,7 @@ export const getAuthUser = createAsyncThunk(
   'userState/user',
   async ({ email, password }: UserEmailPassword): Promise<any> => {
     try {
-      const url = 'http://localhost:3000/api/v1/user/user'
+      const url = 'http://localhost:3000/api/v1/auth/auth'
       const body = { email, password }
       const res = await axios.post(url, body)
       const { data } = res.data
