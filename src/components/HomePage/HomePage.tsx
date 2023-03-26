@@ -10,7 +10,7 @@ export const HomePage = ({ children }: HomePageProps) => {
     <section className="relative w-screen h-screen min-w-[280px]">
       <div className="absolute w-full h-full z-0 ">
         <Image
-          src="/indian-platter.jpg"
+          src="/curry_platter_bg.jpg"
           fill
           style={{ objectFit: 'cover' }}
           alt="Indian Platter"
