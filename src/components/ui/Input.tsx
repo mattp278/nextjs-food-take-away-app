@@ -3,9 +3,10 @@ interface inputProps {
   name: string
   placeholder: string
   label: string
+  type?: string
 }
 
-export const Input = ({ id, name, placeholder, label }: inputProps) => {
+export const Input = ({ id, name, placeholder, label, type }: inputProps) => {
   return (
     <div className="w-full m-2">
       <label className="text-sm pl-1" htmlFor={name}>
@@ -16,6 +17,7 @@ export const Input = ({ id, name, placeholder, label }: inputProps) => {
         id={id}
         name={name}
         placeholder={placeholder}
+        type={type}
       />
     </div>
   )

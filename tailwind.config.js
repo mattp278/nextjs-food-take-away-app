@@ -18,7 +18,7 @@ module.exports = {
         whiteFloral: '#f9f6ee',
       },
       screens: {
-        sm: '451px',
+        sm: '0px',
         md: '600px',
         lg: '1100px',
         // => @media (min-width: 992px) { ... }

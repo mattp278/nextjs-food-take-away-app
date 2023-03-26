@@ -6,6 +6,10 @@ interface HomePageProps {
 }
 
 export const HomePage = ({ children }: HomePageProps) => {
+  setInterval(() => {
+    console.log('window.innerWidth', window.innerWidth)
+  }, 3)
+
   return (
     <section className="relative w-screen h-screen min-w-[280px]">
       <div className="absolute w-full h-full z-0 ">
