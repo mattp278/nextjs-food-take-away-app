@@ -1,6 +1,5 @@
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { resolve } from 'path'
 
 export default async function handler(
   req: NextApiRequest,
@@ -65,7 +64,6 @@ const getFoodItems = async (req: NextApiRequest, res: NextApiResponse) => {
     msg: `There are ${numberOfFoodItems} food items in the database`,
     data: foodItems,
   })
-  return Promise.resolve
 }
 
 //----------------------------------------------------------------------------------
