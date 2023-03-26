@@ -1,10 +1,15 @@
 interface buttonProps {
   text: string
+  type: 'button' | 'submit' | 'reset'
   optionalClassNames?: string
 }
 
-export const Button = ({ text, optionalClassNames }: buttonProps) => {
-  const buttonClassNames = `w-full bg-primaryRed p-3 m-4 text-whiteFloral ${optionalClassNames}`
+export const Button = ({ text, type, optionalClassNames }: buttonProps) => {
+  const buttonClassNames = `w-full bg-primaryRed p-3 my-4 text-whiteFloral ${optionalClassNames}`
 
-  return <button className={buttonClassNames}>{text}</button>
+  return (
+    <button type={type} className={buttonClassNames}>
+      {text}
+    </button>
+  )
 }
