@@ -23,7 +23,6 @@ export const Login = () => {
     }),
     onSubmit: (values) => {
       dispatch(getAuthUser(values))
-      console.log('values', values)
     },
   })
 

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { AppState } from '../store/store'
+import { apiCall } from '@/utils/apiUtil'
 
 export interface UserState {
   id: string | null
@@ -25,15 +26,16 @@ export const getAuthUser = createAsyncThunk(
   'userState/user',
   async ({ email, password }: UserEmailPassword): Promise<any> => {
     try {
-      const url = 'http://localhost:3000/api/v1/auth/auth'
-      const body = { email, password }
-      const res = await axios.post(url, body)
-      const { data } = res.data
-
+      const res = await apiCall({
+        apiCallType: 'POST',
+        route: 'http://localhost:3000/api/v1/auth/auth',
+        body: { email, password },
+      })
+      console.log('res', res)
+      const { data } = res
       return data
     } catch (err: any) {
-      const errorMessage = err.response.data.errors[0].msg
-      throw Error(errorMessage)
+      throw Error(err)
     }
   }
 )

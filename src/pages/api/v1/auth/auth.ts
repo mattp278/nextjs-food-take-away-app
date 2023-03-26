@@ -51,7 +51,9 @@ const authUser = async (req: NextApiRequest, res: NextApiResponse) => {
       success: false,
       status: 400,
       errors: [
-        { msg: 'User is not authorised. Incorrect email password combination' },
+        {
+          msg: 'User is not authorised. Incorrect email password combination.',
+        },
       ],
     })
   }
