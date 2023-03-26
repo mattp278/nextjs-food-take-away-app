@@ -31,7 +31,6 @@ export const getAuthUser = createAsyncThunk(
         route: 'http://localhost:3000/api/v1/auth/auth',
         body: { email, password },
       })
-      console.log('res', res)
       const { data } = res
       return data
     } catch (err: any) {
@@ -58,7 +57,6 @@ export const userSlice = createSlice({
         state.errors = null
       })
       .addCase(getAuthUser.fulfilled, (state, { payload }) => {
-        console.log('payload', payload)
         const { id, name, email } = payload
         state.id = id
         state.name = name
