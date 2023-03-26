@@ -11,7 +11,7 @@ export default async function handler(
   try {
     switch (method) {
       case 'POST':
-        await addNewUser(req, res)
+        await authUser(req, res)
         break
       case 'GET':
         console.log('get route not live')
@@ -31,33 +31,35 @@ export default async function handler(
   }
 }
 
-const addNewUser = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name, email, password } = req.body
+const authUser = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { email, password } = req.body
 
-  const userExists = await prisma.user.findUnique({
-    where: { email: email },
-  })
-
-  if (userExists) {
-    return res.status(400).json({
-      success: false,
-      status: 400,
-      errors: [{ msg: 'User email already exists' }],
-    })
-  }
-
-  const newUser = await prisma.user.create({
-    data: {
-      name,
-      email,
-      password,
+  const userIsAuthorised = await prisma.user.findFirst({
+    where: {
+      email: email,
+      password: password,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
     },
   })
 
-  res.status(201).json({
+  if (!userIsAuthorised) {
+    return res.status(400).json({
+      success: false,
+      status: 400,
+      errors: [
+        { msg: 'User is not authorised. Incorrect email password combination' },
+      ],
+    })
+  }
+
+  res.status(200).json({
     success: true,
-    status: 201,
-    msg: 'New user added to database',
-    data: newUser,
+    status: 200,
+    msg: 'User is authorised',
+    data: userIsAuthorised,
   })
 }

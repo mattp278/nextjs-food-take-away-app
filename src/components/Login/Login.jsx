@@ -2,8 +2,12 @@ import { MdFoodBank } from 'react-icons/md'
 import { Input, Button } from '@/components'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { getAuthUser } from '@/redux/slices/userSlice'
 
 export const Login = () => {
+  const dispatch = useAppDispatch()
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -18,6 +22,7 @@ export const Login = () => {
         .required('required'),
     }),
     onSubmit: (values) => {
+      dispatch(getAuthUser(values))
       console.log('values', values)
     },
   })

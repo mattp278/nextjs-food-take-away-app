@@ -1,42 +1,42 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
+import axios from 'axios'
 import { AppState } from '../store/store'
 
 export interface UserState {
-  user_id: string | null
-  user: {} | null
+  id: string | null
+  name: string | null
+  email: string | null
+  errors: { name: string; message: string; stack: string }[] | null
+}
+
+interface UserEmailPassword {
+  email: string
+  password: string
 }
 
 const initialState: UserState = {
-  user_id: null,
-  user: null,
+  id: null,
+  name: null,
+  email: null,
+  errors: null,
 }
 
-export const getUser = createAsyncThunk(
+export const getAuthUser = createAsyncThunk(
   'userState/user',
-  async (): Promise<any> => {
+  async ({ email, password }: UserEmailPassword): Promise<any> => {
     try {
-      const url = 'http://localhost:3000/api/users/user'
-      const res = await fetch(url)
-      const { data } = await res.json()
-      const { user } = data
-      return user
-    } catch (err) {
-      console.log('err', err)
+      const url = 'http://localhost:3000/api/v1/user/user'
+      const body = { email, password }
+      const res = await axios.post(url, body)
+      const { data } = res.data
+
+      return data
+    } catch (err: any) {
+      const errorMessage = err.response.data.errors[0].msg
+      throw Error(errorMessage)
     }
   }
 )
-
-export const getUserId = createAsyncThunk('userState/user_id', async () => {
-  try {
-    const url = 'http://localhost:3000/api/users/user_id'
-    const res = await fetch(url)
-    const { data } = await res.json()
-    const user_id = data.user_id.id
-    return user_id
-  } catch (err) {
-    console.log('err', err)
-  }
-})
 
 export const userSlice = createSlice({
   name: 'user',
@@ -49,14 +49,25 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       //---------------------------------------------------------------------
-      .addCase(getUser.pending, (state) => {
-        state.user = null
+      .addCase(getAuthUser.pending, (state) => {
+        state.id = null
+        state.name = null
+        state.email = null
+        state.errors = null
       })
-      .addCase(getUser.fulfilled, (state, { payload }) => {
-        state.user = payload
+      .addCase(getAuthUser.fulfilled, (state, { payload }) => {
+        console.log('payload', payload)
+        const { id, name, email } = payload
+        state.id = id
+        state.name = name
+        state.email = email
+        state.errors = null
       })
-      .addCase(getUser.rejected, (state, { error }: any) => {
-        state.user = null
+      .addCase(getAuthUser.rejected, (state, { error }: AnyAction) => {
+        state.id = null
+        state.name = null
+        state.email = null
+        state.errors = [error.message]
       })
     //---------------------------------------------------------------------
   },
