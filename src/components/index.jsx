@@ -1,6 +1,7 @@
-export { HomePage } from './HomePage/HomePage'
+export { Main } from './Main/Main'
 export { Login } from './Login/Login'
 export { Button } from './ui/Button'
 export { Input } from './ui/Input'
 export { SignUp } from './Login/SignUp'
 export { Navbar } from './Navbar/Navbar'
+export { Hero } from './Hero/Hero'
