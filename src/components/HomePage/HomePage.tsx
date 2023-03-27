@@ -8,7 +8,7 @@ interface HomePageProps {
 export const HomePage = ({ children }: HomePageProps) => {
   return (
     <section className="relative w-screen min-h-screen min-w-[280px]">
-      <div className="absolute w-full h-full z-0 ">
+      <div className="absolute w-full h-full z-1 ">
         <Image
           src="/curry_platter_bg.jpg"
           fill
