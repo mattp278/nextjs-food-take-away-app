@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Button } from '@/components'
+import { LinkButton } from '@/components'
 
 export const Hero = () => {
   return (
@@ -22,19 +22,19 @@ export const Hero = () => {
           />
         </article>
         <div className="w-[160px] md:w-full flex flex-row items-center justify-center gap-4 flex-wrap">
-          <Button
+          <LinkButton
             href="pages/login/login-page"
             text="Login"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
           />
-          <Button
+          <LinkButton
             href="pages/signup/signup-page"
             text="Sign Up"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
           />
-          <Button
+          <LinkButton
             href="pages/food-menu/food-menu"
             text="Food Menu"
             type="button"

@@ -1,5 +1,6 @@
 export { Main } from './Main/Main'
 export { Login } from './Login/Login'
+export { LinkButton } from './ui/LinkButton'
 export { Button } from './ui/Button'
 export { Input } from './ui/Input'
 export { SignUp } from './Login/SignUp'

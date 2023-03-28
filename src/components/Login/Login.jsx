@@ -71,7 +71,6 @@ export const Login = () => {
           error={formik.touched.password && formik.errors.password}
         />
         <Button
-          href="/"
           type="submit"
           text="LOGIN"
           optionalClassNames="min-w-[200px] md:min-w-[300px] my-5"
