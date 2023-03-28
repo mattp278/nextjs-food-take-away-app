@@ -23,16 +23,19 @@ export const Hero = () => {
         </article>
         <div className="w-[160px] md:w-full flex flex-row items-center justify-center gap-4 flex-wrap">
           <Button
+            href="pages/login/login-page"
             text="Login"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
           />
           <Button
+            href="pages/signup/signup-page"
             text="Sign Up"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
           />
           <Button
+            href="pages/menu/food-menu"
             text="Food Menu"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"

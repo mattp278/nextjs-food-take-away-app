@@ -44,7 +44,10 @@ export const Login = () => {
       <MdFoodBank size="8em" />
       <h1 className="text-3xl">LOGIN</h1>
       {errorMessages ? errorMessages : null}
-      <form onSubmit={formik.handleSubmit} className="w-full relative m-2">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="w-full flex flex-col items-center justify-center m-2"
+      >
         <Input
           id="email"
           name="email"
@@ -67,7 +70,12 @@ export const Login = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.password && formik.errors.password}
         />
-        <Button type="submit" text="LOGIN" />
+        <Button
+          href="/"
+          type="submit"
+          text="LOGIN"
+          optionalClassNames="min-w-[200px] md:min-w-[300px] my-5"
+        />
       </form>
     </section>
   )
