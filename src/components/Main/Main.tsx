@@ -7,7 +7,7 @@ interface HomePageProps {
 
 export const Main = ({ children }: HomePageProps) => {
   return (
-    <main className="relative w-screen  min-w-[280px] top-[5rem] ">
+    <main className="relative w-screen min-w-[280px] top-[5rem] ">
       <div className="absolute w-full h-full z-0 ">
         <Image
           src="/curry_platter_bg.jpg"
