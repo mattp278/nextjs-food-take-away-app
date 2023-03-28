@@ -5,10 +5,12 @@ import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { selectUsertSlice } from '@/redux/slices/userSlice'
 import { getAuthUser } from '@/redux/slices/userSlice'
+import { useRouter } from 'next/router'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
-  const { errors } = useAppSelector(selectUsertSlice)
+  const { errors, id } = useAppSelector(selectUsertSlice)
+  const router = useRouter()
 
   const errorMessages = errors?.map((error, i) => {
     return (
@@ -36,6 +38,7 @@ export const Login = () => {
     }),
     onSubmit: (values) => {
       dispatch(getAuthUser(values))
+      if (id) router.push('/pages/food-menu/food-menu')
     },
   })
 
