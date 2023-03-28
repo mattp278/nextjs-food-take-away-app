@@ -35,7 +35,7 @@ export const Hero = () => {
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
           />
           <Button
-            href="pages/menu/food-menu"
+            href="pages/food-menu/food-menu"
             text="Food Menu"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
