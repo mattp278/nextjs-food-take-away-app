@@ -22,7 +22,7 @@ export const Input = ({
   error,
 }: inputProps) => {
   return (
-    <div className="w-full my-4">
+    <div className="w-full my-2">
       <label className="text-sm pl-1" htmlFor={name}>
         {label}
       </label>
