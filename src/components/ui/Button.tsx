@@ -5,7 +5,7 @@ interface buttonProps {
 }
 
 export const Button = ({ text, type, optionalClassNames }: buttonProps) => {
-  const buttonClassNames = `w-full bg-primaryRed p-3 my-4 text-whiteFloral ${optionalClassNames}`
+  const buttonClassNames = `bg-primaryRed p-3 text-whiteFloral ${optionalClassNames}`
 
   return (
     <button type={type} className={buttonClassNames}>
