@@ -10,16 +10,16 @@ export const Navbar = () => {
         className: 'fill-tertiaryGold',
       }}
     >
-      <nav className="fixed top-0 w-screen h-[3rem] text-lg flex flex-row items-center justify-between p-4 bg-primaryRed text-whiteFloral z-10">
-        <TfiMenu size="2em" />
-        <div className="relative w-[12rem] h-[3rem] flex items-center justify-center">
+      <nav className="fixed top-0 w-screen h-[5rem] text-lg flex flex-col items-center justify-center px-4 bg-primaryRed text-whiteFloral z-10">
+        <div className="relative w-[10rem] min-h-[2.2rem] flex items-center justify-center  ">
           <Image
-            src="/curry_club_gold.png"
+            src="/curry_club_gold_sm.png"
             fill
             style={{ objectFit: 'contain' }}
             alt="Indian Platter"
           />
         </div>
+        <TfiMenu size="1.2em" />
       </nav>
     </IconContext.Provider>
   )

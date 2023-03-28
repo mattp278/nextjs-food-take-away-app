@@ -7,7 +7,7 @@ interface HomePageProps {
 
 export const Main = ({ children }: HomePageProps) => {
   return (
-    <main className="relative w-screen min-h-screen min-w-[280px] top-[3rem]">
+    <main className="relative w-screen  min-w-[280px] top-[5rem] ">
       <div className="absolute w-full h-full z-0 ">
         <Image
           src="/curry_platter_bg.jpg"
@@ -16,7 +16,7 @@ export const Main = ({ children }: HomePageProps) => {
           alt="Indian Platter"
         />
       </div>
-      <section className="relative flex w-full min-h-screen flex-col items-center justify-center py-6">
+      <section className="relative flex w-full min-h-screen flex-col items-center justify-start py-6 md:py-8">
         {children}
       </section>
     </main>
