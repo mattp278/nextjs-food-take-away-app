@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
-  const { errors, id } = useAppSelector(selectUsertSlice)
+  const { errors } = useAppSelector(selectUsertSlice)
   const router = useRouter()
 
   const errorMessages = errors?.map((error, i) => {
