@@ -38,7 +38,7 @@ export const Login = () => {
     }),
     onSubmit: async (values) => {
       const authUser = await dispatch(getAuthUser(values))
-      const id = authUser.payload.id
+      const id = authUser?.payload?.id
       if (id) router.push('/pages/food-menu/food-menu')
     },
   })

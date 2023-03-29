@@ -13,9 +13,9 @@ export const Navbar = () => {
         className: 'fill-tertiaryGold',
       }}
     >
-      <nav className="fixed top-0 w-screen min-w-[280px] h-[5rem] text-lg flex flex-col items-center justify-center bg-primaryRed text-whiteFloral z-10">
+      <nav className="fixed top-0 w-screen min-w-[280px] h-[5rem] text-lg flex flex-col md:flex-row items-center justify-center bg-primaryRed text-whiteFloral z-10">
         <Link href="/">
-          <div className="relative w-[14rem] min-h-[2.2rem] flex items-center justify-center">
+          <div className="relative w-[14rem] md:w-[16rem] min-h-[2.2rem] md:min-h-[6rem] md:left-6">
             <Image
               src="/curry_club_gold_sm.png"
               fill
@@ -24,7 +24,7 @@ export const Navbar = () => {
             />
           </div>
         </Link>
-        <div className="w-5/6 flex flex-row justify-between gap-4">
+        <div className="w-5/6 flex flex-row justify-between md:justify-end md:pr-6 gap-4">
           <BiRestaurant />
           <AiFillHome />
           <MdOutlineReceiptLong />
