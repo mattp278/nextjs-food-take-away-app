@@ -40,7 +40,7 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  res.status(201).json({
+  return res.status(201).json({
     success: true,
     status: 201,
     msg: 'New order item added to database',
@@ -67,7 +67,7 @@ const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
       errors: [{ msg: 'No orders found for this user' }],
     })
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     status: 200,
     msg: `There are ${numberOfUserOrders} user orders in the database`,
@@ -166,7 +166,7 @@ const addOrderItem = async (req: NextApiRequest, res: NextApiResponse) => {
     })
   }
 
-  res.status(201).json({
+  return res.status(201).json({
     success: true,
     status: 201,
     msg: 'New order item added to database',
