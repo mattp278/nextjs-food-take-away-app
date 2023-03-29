@@ -14,6 +14,7 @@ export const Main = ({ children }: HomePageProps) => {
           fill
           style={{ objectFit: 'cover' }}
           alt="Indian Platter"
+          quality={30}
         />
       </div>
       <section className="relative flex w-full min-h-screen flex-col items-center justify-start py-6 md:py-8">

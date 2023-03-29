@@ -10,6 +10,7 @@ export const Hero = () => {
           fill
           style={{ objectFit: 'cover' }}
           alt="Indian Platter"
+          quality={30}
         />
       </div>
       <section className="relative flex min-h-screen flex-col items-center justify-center">
