@@ -15,7 +15,7 @@ export default async function handler(
         await getUserOrders(req, res)
         break
       case 'PUT':
-        //await updateOrder(req, res)
+        await addOrderItem(req, res)
         break
       case 'DELETE':
         await deleteOrder(req, res)
@@ -77,6 +77,106 @@ const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
 
 //----------------------------------------------------------------------------------
 
+const checkIfFoodItemExists = async (orderId: string, foodId: string) => {
+  const orderItem = await prisma.orderItem.findUnique({
+    where: {
+      food_item_unique: {
+        orderId,
+        foodId,
+      },
+    },
+  })
+
+  if (orderItem) return true
+}
+
+const updateOrderItemQuantity = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  const { orderId, foodId } = req.body
+  const quantityToAdd = parseInt(req.body.quantity)
+
+  const orderItem = await prisma.orderItem.findUnique({
+    where: {
+      food_item_unique: {
+        orderId,
+        foodId,
+      },
+    },
+  })
+
+  if (orderItem) {
+    const updatedOrderItem = await prisma.orderItem.update({
+      where: {
+        id: orderItem.id,
+      },
+      data: {
+        quantity: orderItem.quantity + quantityToAdd,
+      },
+    })
+
+    return res.status(200).json({
+      success: true,
+      status: 200,
+      msg: 'Order item quantity updated',
+      data: updatedOrderItem,
+    })
+  }
+}
+
+const addOrderItem = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { orderId, foodId } = req.body
+  const quantity = parseInt(req.body.quantity)
+
+  const foodItemExists = await checkIfFoodItemExists(orderId, foodId)
+
+  if (foodItemExists) {
+    return await updateOrderItemQuantity(req, res)
+  }
+
+  const orderItemToAdd = await prisma.orderItem.create({
+    data: {
+      orderId,
+      foodId,
+      quantity,
+    },
+  })
+
+  if (!orderItemToAdd) {
+    return res.status(404).json({
+      success: false,
+      status: 404,
+      errors: [{ msg: 'Server Error. Unable to add order item' }],
+    })
+  }
+
+  const foodItemAdded = await prisma.foodItem.findUnique({
+    where: {
+      id: orderItemToAdd.foodId,
+    },
+  })
+
+  if (!foodItemAdded) {
+    return res.status(404).json({
+      success: false,
+      status: 404,
+      errors: [{ msg: 'Server Error. Unable find added food item.' }],
+    })
+  }
+
+  res.status(201).json({
+    success: true,
+    status: 201,
+    msg: 'New order item added to database',
+    data: {
+      orderItemToAdd,
+      foodItemAdded,
+    },
+  })
+}
+
+//----------------------------------------------------------------------------------
 const deleteOrder = async (req: NextApiRequest, res: NextApiResponse) => {
   const { orderId } = req.body
 
@@ -100,7 +200,7 @@ const deleteOrder = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     status: 200,
     msg: 'Order deleted from database',
