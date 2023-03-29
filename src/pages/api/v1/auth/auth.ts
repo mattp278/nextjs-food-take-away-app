@@ -58,7 +58,7 @@ const authUser = async (req: NextApiRequest, res: NextApiResponse) => {
     })
   }
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     status: 200,
     msg: 'User is authorised',
