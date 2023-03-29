@@ -12,7 +12,7 @@ export default async function handler(
         await createOrder(req, res)
         break
       case 'GET':
-        //await getOrders(req, res)
+        await getUserOrders(req, res)
         break
       case 'PUT':
         //await updateOrder(req, res)
@@ -33,7 +33,6 @@ export default async function handler(
 
 const createOrder = async (req: NextApiRequest, res: NextApiResponse) => {
   const { userId } = req.body
-  console.log('userId', userId)
 
   const newOrder = await prisma.order.create({
     data: {
@@ -50,3 +49,28 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 //----------------------------------------------------------------------------------
+
+const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { userId } = req.body
+
+  const userOrders = await prisma.order.findMany({
+    where: {
+      userId,
+    },
+  })
+  const numberOfUserOrders = userOrders.length
+
+  if (userOrders.length === 0)
+    return res.status(404).json({
+      success: false,
+      status: 404,
+      errors: [{ msg: 'No orders found for this user' }],
+    })
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    msg: `There are ${numberOfUserOrders} user orders in the database`,
+    data: userOrders,
+  })
+}
