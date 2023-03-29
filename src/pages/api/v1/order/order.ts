@@ -88,6 +88,7 @@ const checkIfFoodItemExists = async (orderId: string, foodId: string) => {
   })
 
   if (orderItem) return true
+  if (!orderItem) return false
 }
 
 const updateOrderItemQuantity = async (
