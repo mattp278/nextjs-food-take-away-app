@@ -53,4 +53,6 @@ model OrderItem {
 
   foodId    String
   food      FoodItem @relation(fields: [foodId], references: [id])
+
+  @@unique([orderId, foodId], name: "food_item_unique")
 }
