@@ -18,7 +18,7 @@ export default async function handler(
         //await updateOrder(req, res)
         break
       case 'DELETE':
-        //await deleteOrder(req, res)
+        await deleteOrder(req, res)
         break
     }
   } catch (err: any) {
@@ -72,5 +72,38 @@ const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
     status: 200,
     msg: `There are ${numberOfUserOrders} user orders in the database`,
     data: userOrders,
+  })
+}
+
+//----------------------------------------------------------------------------------
+
+const deleteOrder = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { orderId } = req.body
+
+  const orderToDelete = await prisma.order.findUnique({
+    where: {
+      id: orderId,
+    },
+  })
+
+  if (!orderToDelete) {
+    return res.status(404).json({
+      success: false,
+      status: 404,
+      errors: [{ msg: 'Order not found' }],
+    })
+  }
+
+  await prisma.order.delete({
+    where: {
+      id: orderId,
+    },
+  })
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    msg: 'Order deleted from database',
+    data: orderToDelete,
   })
 }
