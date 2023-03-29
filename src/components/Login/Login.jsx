@@ -36,8 +36,9 @@ export const Login = () => {
         .min(8, 'Password must be 8 characters of more')
         .required('required'),
     }),
-    onSubmit: (values) => {
-      dispatch(getAuthUser(values))
+    onSubmit: async (values) => {
+      const authUser = await dispatch(getAuthUser(values))
+      const id = authUser.payload.id
       if (id) router.push('/pages/food-menu/food-menu')
     },
   })
