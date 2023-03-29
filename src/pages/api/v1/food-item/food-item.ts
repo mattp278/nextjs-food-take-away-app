@@ -44,7 +44,7 @@ const addFoodItem = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  res.status(201).json({
+  return res.status(201).json({
     success: true,
     status: 201,
     msg: 'New food item added to database',
@@ -58,7 +58,7 @@ const getFoodItems = async (req: NextApiRequest, res: NextApiResponse) => {
   const foodItems = await prisma.foodItem.findMany()
   const numberOfFoodItems = foodItems.length
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     status: 200,
     msg: `There are ${numberOfFoodItems} food items in the database`,
@@ -80,7 +80,7 @@ const updateFoodItemWithId = async (
   })
 
   if (!foodItemToUpdate) {
-    res.status(500).send({
+    return res.status(500).send({
       success: false,
       status: 500,
       errors: [
@@ -102,7 +102,7 @@ const updateFoodItemWithId = async (
     },
   })
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     status: 200,
     msg: 'Food item updated in database',
@@ -125,7 +125,7 @@ const deleteFoodItemWithId = async (
   })
 
   if (!foodItemToDelete) {
-    res.status(500).send({
+    return res.status(500).send({
       success: false,
       status: 500,
       errors: [
@@ -142,7 +142,7 @@ const deleteFoodItemWithId = async (
     },
   })
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     status: 200,
     msg: 'Food item deleted from database',
