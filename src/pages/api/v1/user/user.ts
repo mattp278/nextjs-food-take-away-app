@@ -62,7 +62,7 @@ const addNewUser = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  res.status(201).json({
+  return res.status(201).json({
     success: true,
     status: 201,
     msg: 'New user added to database',
