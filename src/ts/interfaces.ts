@@ -11,3 +11,16 @@ export interface ApiErrorMsg {
 export interface ApiErrorResponse {
   errors: Error[]
 }
+
+export interface MenuItem {
+  id: string
+  catergory: string
+  createdAt: string
+  image: string
+  name: string
+  price: number
+}
+
+export interface MeneuItems {
+  menuItems: MenuItem[]
+}
