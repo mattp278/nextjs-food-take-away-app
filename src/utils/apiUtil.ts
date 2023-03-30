@@ -2,12 +2,12 @@ import axios from 'axios'
 import { ApiOptions } from '../ts/interfaces'
 
 export const apiCall = async (apiOptions: ApiOptions) => {
-  const { apiCallType, route, body } = apiOptions
+  const { httpMethod, route, body } = apiOptions
 
   try {
     let response: any
 
-    switch (apiCallType) {
+    switch (httpMethod) {
       case 'POST':
         response = await axios.post(route, body)
         break

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
 import { apiCall } from '@/utils/apiUtil'
-import { ApiErrorMsg, ApiErrorResponse } from '@/ts/interfaces'
+import { ApiErrorMsg } from '@/ts/interfaces'
 
 export interface UserState {
   id: string | null
@@ -39,7 +39,7 @@ export const signUp = createAsyncThunk(
   }: signUpEmailPassword): Promise<any> => {
     try {
       const res = await apiCall({
-        apiCallType: 'POST',
+        httpMethod: 'POST',
         route: 'http://localhost:3000/api/v1/user/user',
         body: { name, email, password, password2 },
       })
@@ -56,7 +56,7 @@ export const getAuthUser = createAsyncThunk(
   async ({ email, password }: UserEmailPassword): Promise<any> => {
     try {
       const res = await apiCall({
-        apiCallType: 'POST',
+        httpMethod: 'POST',
         route: 'http://localhost:3000/api/v1/auth/auth',
         body: { email, password },
       })

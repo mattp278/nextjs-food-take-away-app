@@ -1,5 +1,5 @@
 export interface ApiOptions {
-  apiCallType: string
+  httpMethod: string
   route: string
   body?: any
 }
