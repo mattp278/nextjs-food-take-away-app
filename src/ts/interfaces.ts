@@ -14,13 +14,13 @@ export interface ApiErrorResponse {
 
 export interface MenuItem {
   id: string
-  catergory: string
+  category: string
   createdAt: string
   image: string
   name: string
   price: number
 }
 
-export interface MeneuItems {
+export interface MenuItems {
   menuItems: MenuItem[]
 }

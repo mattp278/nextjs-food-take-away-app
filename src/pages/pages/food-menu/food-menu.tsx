@@ -1,8 +1,8 @@
 import { Main, Navbar, Menu } from '@/components'
 import { apiCall } from '@/utils/apiUtil'
-import { MeneuItems } from '@/ts/interfaces'
+import { MenuItems } from '@/ts/interfaces'
 
-export default function FoodMenuPage({ menuItems }: MeneuItems) {
+export default function FoodMenuPage({ menuItems }: MenuItems) {
   return (
     <>
       <Navbar />
