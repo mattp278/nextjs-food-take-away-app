@@ -1,13 +1,12 @@
-import { FoodMenuItem } from './MenuItem'
-import { MenuItem, MenuItems } from '@/ts/interfaces'
+import { FoodMenuItem } from '@/components'
+import { FoodMenuItems } from '@/ts/interfaces'
 
-export const Menu = ({ menuItems }: MenuItems) => {
+export const FoodMenu = ({ menuItems }: FoodMenuItems) => {
   const mainsMenu = menuItems?.filter((item) => {
     return item.category === 'Mains'
   })
 
   const mainsMenuItems = mainsMenu.map((menuItem) => {
-    console.log('menuItem', menuItem)
     const { id, image, name, category, price } = menuItem
     return (
       <FoodMenuItem

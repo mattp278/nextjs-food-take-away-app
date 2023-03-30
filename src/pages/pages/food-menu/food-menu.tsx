@@ -1,13 +1,13 @@
-import { Main, Navbar, Menu } from '@/components'
+import { Main, Navbar, FoodMenu } from '@/components'
 import { apiCall } from '@/utils/apiUtil'
-import { MenuItems } from '@/ts/interfaces'
+import { FoodMenuItems } from '@/ts/interfaces'
 
-export default function FoodMenuPage({ menuItems }: MenuItems) {
+export default function FoodMenuPage({ menuItems }: FoodMenuItems) {
   return (
     <>
       <Navbar />
       <Main>
-        <Menu menuItems={menuItems} />
+        <FoodMenu menuItems={menuItems} />
       </Main>
     </>
   )
