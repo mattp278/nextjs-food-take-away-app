@@ -15,7 +15,6 @@ export interface ApiErrorResponse {
 export interface MenuItem {
   id: string
   category: string
-  createdAt: string
   image: string
   name: string
   price: number

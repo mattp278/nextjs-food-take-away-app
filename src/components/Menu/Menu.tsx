@@ -7,13 +7,13 @@ export const Menu = ({ menuItems }: MenuItems) => {
   })
 
   const mainsMenuItems = mainsMenu.map((menuItem) => {
-    const { id, image, name, category, createdAt, price } = menuItem
+    console.log('menuItem', menuItem)
+    const { id, image, name, category, price } = menuItem
     return (
       <FoodMenuItem
         key={id}
         id={id}
         category={category}
-        createdAt={createdAt}
         image={image}
         name={name}
         price={price}

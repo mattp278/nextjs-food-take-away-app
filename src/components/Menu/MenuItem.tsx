@@ -6,7 +6,6 @@ export const FoodMenuItem = ({
   image,
   name,
   category,
-  createdAt,
   price,
 }: MenuItem) => {
   return (
