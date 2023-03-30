@@ -18,7 +18,6 @@ FoodMenuPage.getInitialProps = async () => {
     httpMethod: 'GET',
     route: 'http://localhost:3000/api/v1/food-item/food-item',
   })
-  console.log('foodItems', foodItems)
   const { data } = foodItems
   return { menuItems: data }
 }
