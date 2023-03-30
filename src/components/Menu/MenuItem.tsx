@@ -11,6 +11,7 @@ export const FoodMenuItem = ({
 }: MenuItem) => {
   return (
     <div className="relative w-5/6 h-[10rem]">
+      <p className="relative z-10 text-white">{name}</p>
       <Image
         src={`/foodImages/${image}`}
         fill
