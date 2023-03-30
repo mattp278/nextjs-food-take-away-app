@@ -2,7 +2,7 @@ import { FoodMenuItem } from './MenuItem'
 import { MenuItem, MenuItems } from '@/ts/interfaces'
 
 export const Menu = ({ menuItems }: MenuItems) => {
-  const mainsMenu = menuItems.filter((item) => {
+  const mainsMenu = menuItems?.filter((item) => {
     return item.category === 'Mains'
   })
 
