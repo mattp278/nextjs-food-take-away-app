@@ -1,4 +1,4 @@
-import { MenuItem } from '@/ts/interfaces'
+import { FoodMenuItemInterface } from '@/ts/interfaces'
 import Image from 'next/image'
 
 export const FoodMenuItem = ({
@@ -7,7 +7,7 @@ export const FoodMenuItem = ({
   name,
   category,
   price,
-}: MenuItem) => {
+}: FoodMenuItemInterface) => {
   return (
     <div className="relative w-5/6 h-[10rem]">
       <p className="relative z-10 text-white">{name}</p>

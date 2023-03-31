@@ -12,7 +12,7 @@ export interface ApiErrorResponse {
   errors: Error[]
 }
 
-export interface FoodMenuItem {
+export interface FoodMenuItemInterface {
   id: string
   category: string
   image: string
@@ -20,6 +20,6 @@ export interface FoodMenuItem {
   price: number
 }
 
-export interface FoodMenuItems {
-  menuItems: FoodMenuItem[]
+export interface FoodMenuItemsInterface {
+  menuItems: FoodMenuItemInterface[]
 }
