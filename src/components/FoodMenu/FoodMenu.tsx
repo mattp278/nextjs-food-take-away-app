@@ -1,6 +1,5 @@
 import { FoodMenuItem } from '@/components'
 import { FoodMenuItemsInterface } from '@/ts/interfaces'
-import { start } from 'repl'
 
 export const FoodMenu = ({ menuItems }: FoodMenuItemsInterface) => {
   const mainsMenu = menuItems?.filter((item) => {
