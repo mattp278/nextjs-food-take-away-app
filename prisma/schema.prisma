@@ -23,11 +23,18 @@ model FoodItem {
   name      String
   price     Float
   image     String
-  category  String
+  category  FoodCategory
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   orderItems     OrderItem[]
+}
+
+enum FoodCategory {
+  starters
+  mains
+  deserts
+  drinks
 }
 
 model Order {
