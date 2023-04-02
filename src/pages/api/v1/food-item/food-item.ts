@@ -55,24 +55,7 @@ const addFoodItem = async (req: NextApiRequest, res: NextApiResponse) => {
 //----------------------------------------------------------------------------------
 
 const getFoodItems = async (req: NextApiRequest, res: NextApiResponse) => {
-  const category = req.query.category?.toString()
-
-  if (!category)
-    return res.status(400).json({
-      success: false,
-      status: 400,
-      errors: [
-        {
-          msg: 'Bad Request. Please provide a category.',
-        },
-      ],
-    })
-
   const foodItems = await prisma.foodItem.findMany({
-    where: {
-      category: category,
-    },
-
     select: { id: true, name: true, price: true, image: true, category: true },
   })
   const numberOfFoodItems = foodItems.length
