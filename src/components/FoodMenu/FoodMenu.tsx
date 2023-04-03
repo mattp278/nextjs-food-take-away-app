@@ -1,4 +1,4 @@
-import { FoodMenuItem, FoodSection } from '@/components'
+import { FoodSection } from '@/components'
 import {
   FoodMenuItemsInterface,
   FoodMenuItemsByCategoryInterface,
