@@ -24,7 +24,7 @@ export interface FoodMenuItemsInterface {
   menuItems: FoodMenuItemInterface[]
 }
 
-export interface FoodMenuItemsByCategoryInterface {
+export interface FoodByCategoryInterface {
   category: string
   foodItems: FoodMenuItemInterface[]
 }

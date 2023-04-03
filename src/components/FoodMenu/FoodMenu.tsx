@@ -1,7 +1,7 @@
 import { FoodSection } from '@/components'
 import {
   FoodMenuItemsInterface,
-  FoodMenuItemsByCategoryInterface,
+  FoodByCategoryInterface,
 } from '@/ts/interfaces'
 import { splitFoodByCategory } from './splitFoodByCategory'
 
@@ -10,7 +10,7 @@ export const FoodMenu = ({ menuItems }: FoodMenuItemsInterface) => {
 
   //----------------------------------------------------------------------------------
   const foodCatergory = foodSplitByCatergory.map(
-    (foodCategory: FoodMenuItemsByCategoryInterface) => {
+    (foodCategory: FoodByCategoryInterface) => {
       const { category, foodItems } = foodCategory
       return (
         <FoodSection key={category} category={category} foodItems={foodItems} />

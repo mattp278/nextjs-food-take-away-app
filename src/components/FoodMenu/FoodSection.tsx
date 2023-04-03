@@ -1,10 +1,10 @@
-import { FoodMenuItemsByCategoryInterface } from '@/ts/interfaces'
+import { FoodByCategoryInterface } from '@/ts/interfaces'
 import { FoodMenuItem } from '@/components'
 
 export const FoodSection = ({
   category,
   foodItems,
-}: FoodMenuItemsByCategoryInterface) => {
+}: FoodByCategoryInterface) => {
   //----------------------------------------------------------------------------------
   const foodItemsByCategory = foodItems.map((foodItem) => {
     const { id, name, price, image } = foodItem
