@@ -1,5 +1,6 @@
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { Prisma } from '@prisma/client'
 
 export default async function handler(
   req: NextApiRequest,
@@ -37,9 +38,8 @@ const getFoodItemsByCategory = async (
 
   const foodItems = await prisma.foodItem.findMany({
     where: {
-      category: category,
+      category: category as Prisma.EnumFoodCategoryFilter,
     },
-
     select: { id: true, name: true, price: true, image: true, category: true },
   })
   const numberOfFoodItems = foodItems.length
@@ -48,6 +48,6 @@ const getFoodItemsByCategory = async (
     success: true,
     status: 200,
     msg: `There are ${numberOfFoodItems} food items returned from the database.`,
-    data: foodItems,
+    data: { category, foodItems },
   })
 }

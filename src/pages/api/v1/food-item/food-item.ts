@@ -1,5 +1,6 @@
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { FoodCategory } from '@prisma/client'
 
 export default async function handler(
   req: NextApiRequest,
@@ -34,6 +35,24 @@ export default async function handler(
 const addFoodItem = async (req: NextApiRequest, res: NextApiResponse) => {
   const { name, image, category } = req.body
   const price = Math.round(req.body.price * 100) / 100
+
+  const foodCategorys = Object.values(FoodCategory)
+  const validCatergory = foodCategorys.filter((foodCategory) => {
+    if (foodCategory === category) return true
+  })
+  const isValidCatergory = validCatergory.length > 0
+
+  if (!isValidCatergory) {
+    return res.status(500).send({
+      success: false,
+      status: 500,
+      errors: [
+        {
+          msg: 'Server Error. Invalid food category provided.',
+        },
+      ],
+    })
+  }
 
   const newFoodItem = await prisma.foodItem.create({
     data: {

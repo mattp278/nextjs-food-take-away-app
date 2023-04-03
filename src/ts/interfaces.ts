@@ -23,3 +23,8 @@ export interface FoodMenuItemInterface {
 export interface FoodMenuItemsInterface {
   menuItems: FoodMenuItemInterface[]
 }
+
+export interface FoodMenuItemsByCategoryInterface {
+  category: string
+  foodItems: FoodMenuItemInterface[]
+}
