@@ -16,17 +16,6 @@ export default function FoodMenuPage({ menuItems }: FoodMenuItemsInterface) {
 }
 
 export async function getStaticProps() {
-  const foodSections = []
-
-  for (const [key, foodCategory] of Object.entries(FoodCategory)) {
-    const foodItems = await apiCall({
-      httpMethod: 'GET',
-      route: `http://localhost:3000/api/v1/food-item/${foodCategory}`,
-    })
-    const { data } = foodItems
-    foodSections.push(data)
-  }
-
   const foodItems = await apiCall({
     httpMethod: 'GET',
     route: 'http://localhost:3000/api/v1/food-item/food-item',
