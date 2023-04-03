@@ -12,7 +12,7 @@ export const FoodMenuItem = ({
   const priceWithDecimal = price.toFixed(2)
 
   return (
-    <article className="w-5/6 min-w-[10rem] max-w-[20rem] m-2">
+    <article className="w-5/6 min-w-[250px] max-w-[20rem] m-2">
       <div className="relative h-[10rem]">
         <Image
           src={`/foodImages/${image}`}
