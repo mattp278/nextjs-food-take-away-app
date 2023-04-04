@@ -20,6 +20,15 @@ export interface FoodMenuItemInterface {
   price: number
 }
 
+export interface CartMenuItemInterface {
+  id: string
+  category: string
+  image: string
+  name: string
+  price: number
+  quantity: number
+}
+
 export interface FoodMenuItemsInterface {
   menuItems: FoodMenuItemInterface[]
 }
