@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { FoodMenuItemInterface } from '@/ts/interfaces'
 import Image from 'next/image'
 import { Button } from '@/components'
 import { addCartItem } from '@/redux/slices/cartSlice'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi'
 
 export const FoodMenuItem = ({
   id,
@@ -12,16 +14,38 @@ export const FoodMenuItem = ({
   price,
 }: FoodMenuItemInterface) => {
   const dispatch = useAppDispatch()
-
+  const [quantity, setQuantity] = useState<number>(1)
   const priceWithDecimal = price.toFixed(2)
 
   const handleAddtoCart = () => {
-    dispatch(addCartItem({ id, name, category, price, image }))
+    dispatch(addCartItem({ id, name, category, price, image, quantity }))
+  }
+
+  const handleQuantityIncrease = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1)
+  }
+
+  const handleQuantityDecrease = () => {
+    if (quantity === 1) return
+    setQuantity((prevQuantity) => prevQuantity - 1)
   }
 
   return (
     <article className="w-5/6 min-w-[250px] max-w-[20rem] m-4">
-      <div className="relative h-[10rem]">
+      <div className="relative h-[10rem] ">
+        <div className="absolute min-w-[6rem] flex flex-row justify-between items-center gap-2 right-0 bottom-0 z-20 bg-primaryRed p-1 m-3 ">
+          <FiMinusCircle
+            className="text-white"
+            size="1.5rem"
+            onClick={handleQuantityDecrease}
+          />
+          <p className="text-white">{quantity}</p>
+          <FiPlusCircle
+            className="text-white"
+            size="1.5rem"
+            onClick={handleQuantityIncrease}
+          />
+        </div>
         <Image
           src={`/foodImages/${image}`}
           fill
