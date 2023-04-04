@@ -15,17 +15,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addCartItem(state, { payload }) {
-      const quanityToAdd = 1
+      const { quantity } = payload
       const existingItemIndex = state.order.findIndex(
         (cartItem) => cartItem.id === payload.id
       )
 
       if (existingItemIndex !== -1) {
-        state.order[existingItemIndex].quantity += quanityToAdd
+        state.order[existingItemIndex].quantity += quantity
         return
       }
 
-      const item = { ...payload, quantity: quanityToAdd }
+      const item = { ...payload, quantity: quantity }
       state.order.push(item)
     },
   },
