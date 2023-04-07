@@ -3,10 +3,12 @@ import { AppState } from '../store/store'
 import { CartMenuItemInterface } from '@/ts/interfaces'
 
 export interface CartState {
+  numOfOrderItems: number
   order: CartMenuItemInterface[]
 }
 
 const initialState: CartState = {
+  numOfOrderItems: 0,
   order: [],
 }
 
@@ -16,6 +18,7 @@ export const cartSlice = createSlice({
   reducers: {
     addCartItem(state, { payload }) {
       const { quantity } = payload
+
       const existingItemIndex = state.order.findIndex(
         (cartItem) => cartItem.id === payload.id
       )
@@ -27,6 +30,8 @@ export const cartSlice = createSlice({
 
       const item = { ...payload, quantity: quantity }
       state.order.push(item)
+
+      state.numOfOrderItems += quantity
     },
   },
   extraReducers: (builder) => {},
