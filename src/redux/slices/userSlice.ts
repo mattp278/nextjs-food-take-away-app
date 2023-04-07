@@ -7,7 +7,7 @@ export interface UserState {
   id: string | null
   name: string | null
   email: string | null
-  errors: ApiErrorMsg[] | null
+  errors: ApiErrorMsg[] | string[] | null
 }
 
 interface signUpEmailPassword {
@@ -72,9 +72,9 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // setDummyReducer(state, action) {
-    //   state.dummyState = action.payload
-    // },
+    setLoginToOrderError(state) {
+      state.errors = ['Please login or signup to place order']
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -114,6 +114,7 @@ export const userSlice = createSlice({
         state.errors = null
       })
       .addCase(getAuthUser.rejected, (state, { error }: AnyAction) => {
+        console.log('error.message', error.message)
         state.id = null
         state.name = null
         state.email = null
@@ -124,5 +125,6 @@ export const userSlice = createSlice({
 })
 
 export const selectUsertSlice = (state: AppState) => state.user
+export const { setLoginToOrderError } = userSlice.actions
 
 export default userSlice.reducer

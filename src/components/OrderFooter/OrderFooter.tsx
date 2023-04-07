@@ -1,6 +1,7 @@
 import { processOrder } from '@/redux/slices/cartSlice'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { useRouter } from 'next/router'
+import { setLoginToOrderError } from '@/redux/slices/userSlice'
 
 export const OrderFooter = () => {
   const router = useRouter()
@@ -11,7 +12,11 @@ export const OrderFooter = () => {
   const totalPriceWithDecimal = totalPrice.toFixed(2)
 
   const onOrderClick = () => {
-    if (!userId) router.push('/pages/login/login-page')
+    if (!userId) {
+      router.push('/pages/login/login-page')
+      dispatch(setLoginToOrderError())
+      return
+    }
     dispatch(processOrder({ userId, foodItems: order }))
   }
 
