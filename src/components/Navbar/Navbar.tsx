@@ -15,7 +15,7 @@ export const Navbar = () => {
         className: 'fill-tertiaryGold',
       }}
     >
-      <nav className="fixed top-0 w-screen min-w-[280px] h-[5rem] text-lg flex flex-col md:flex-row items-center justify-center bg-primaryRed text-whiteFloral z-10">
+      <nav className="fixed top-0 w-screen min-w-[280px] h-[5rem] text-lg flex flex-col md:flex-row items-center justify-center bg-primaryRed text-whiteFloral z-50">
         <Link href="/">
           <div className="relative w-[14rem] md:w-[16rem] min-h-[2.2rem] md:min-h-[5rem] md:left-6">
             <Image

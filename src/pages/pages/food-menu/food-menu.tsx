@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 import { Main, Navbar, FoodMenu } from '@/components'
 import { apiCall } from '@/utils/apiUtil'
 import { FoodMenuItemsInterface } from '@/ts/interfaces'
-import { FoodCategory } from '@prisma/client'
+import { OrderFooter } from '@/components/OrderFooter/OrderFooter'
 
 export default function FoodMenuPage({ menuItems }: FoodMenuItemsInterface) {
   return (
@@ -10,6 +10,7 @@ export default function FoodMenuPage({ menuItems }: FoodMenuItemsInterface) {
       <Navbar />
       <Main>
         <FoodMenu menuItems={menuItems} />
+        <OrderFooter />
       </Main>
     </>
   )
