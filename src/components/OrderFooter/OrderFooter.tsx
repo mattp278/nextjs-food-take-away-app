@@ -11,7 +11,6 @@ export const OrderFooter = () => {
   const totalPriceWithDecimal = totalPrice.toFixed(2)
 
   const onOrderClick = () => {
-    console.log('a')
     if (!userId) router.push('/pages/login/login-page')
     dispatch(processOrder({ userId, foodItems: order }))
   }
