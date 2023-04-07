@@ -2,11 +2,13 @@ import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
 import { CartMenuItemInterface } from '@/ts/interfaces'
 import { apiCall } from '@/utils/apiUtil'
+import { ApiErrorMsg } from '@/ts/interfaces'
 
 export interface CartState {
   numOfOrderItems: number
   totalPrice: number
   order: CartMenuItemInterface[]
+  errors: ApiErrorMsg[] | null
 }
 
 interface foodItem {
@@ -15,7 +17,7 @@ interface foodItem {
 }
 
 interface orderDetails {
-  userId: string
+  userId: string | null
   foodItems: foodItem[]
 }
 
@@ -23,12 +25,15 @@ const initialState: CartState = {
   numOfOrderItems: 0,
   totalPrice: 0,
   order: [],
+  errors: null,
 }
 
 export const processOrder = createAsyncThunk(
   'cartState/processOrder',
   async ({ userId, foodItems }: orderDetails): Promise<any> => {
     try {
+      console.log('userId', userId)
+      console.log('foodItems', foodItems)
       const res = await apiCall({
         httpMethod: 'POST',
         route: 'http://localhost:3000/api/v1/order/processOrder',
@@ -67,7 +72,21 @@ export const cartSlice = createSlice({
       state.totalPrice += payload.price * quantity
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      //---------------------------------------------------------------------
+
+      .addCase(processOrder.fulfilled, (state, { payload }) => {
+        state.numOfOrderItems = 0
+        state.totalPrice = 0
+        state.order = []
+      })
+      .addCase(processOrder.rejected, (state, { error }: AnyAction) => {
+        state.errors = [error.message]
+      })
+
+    //---------------------------------------------------------------------
+  },
 })
 
 export const selectCarttSlice = (state: AppState) => state.cart
