@@ -3,7 +3,9 @@ import Link from 'next/link'
 import { BiRestaurant } from 'react-icons/bi'
 import { AiFillHome } from 'react-icons/ai'
 import { MdOutlineReceiptLong } from 'react-icons/md'
+import { BsFillCartFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons'
+import { NavItems } from './NavItems'
 
 export const Navbar = () => {
   return (
@@ -24,11 +26,7 @@ export const Navbar = () => {
             />
           </div>
         </Link>
-        <div className="w-5/6 flex flex-row justify-between md:justify-end md:pr-6 gap-4">
-          <BiRestaurant />
-          <AiFillHome />
-          <MdOutlineReceiptLong />
-        </div>
+        <NavItems />
       </nav>
     </IconContext.Provider>
   )
