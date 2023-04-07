@@ -12,7 +12,7 @@ export const OrderFooter = () => {
 
   const onOrderClick = () => {
     console.log('a')
-    if (!userId) router.push('http://localhost:3000/pages/login/login-page')
+    if (!userId) router.push('/pages/login/login-page')
     dispatch(processOrder({ userId, foodItems: order }))
   }
 
