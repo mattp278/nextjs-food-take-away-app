@@ -33,7 +33,7 @@ export const FoodMenuItem = ({
   return (
     <article className="w-11/12 min-w-[250px] max-w-[20rem] m-4">
       <div className="relative h-[10rem] ">
-        <div className="absolute min-w-[6rem] flex flex-row justify-between items-center gap-2 right-0 bottom-0 z-20 bg-primaryRed p-1 m-3 ">
+        <div className="absolute min-w-[6rem] flex flex-row justify-between items-center gap-2 right-0 bottom-0 z-10 bg-primaryRed p-1 m-3 ">
           <FiMinusCircle
             className="text-white"
             size="1.5rem"
