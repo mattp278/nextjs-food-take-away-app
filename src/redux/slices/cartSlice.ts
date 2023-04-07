@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
 import { CartMenuItemInterface } from '@/ts/interfaces'
-import { stat } from 'fs'
+import { apiCall } from '@/utils/apiUtil'
 
 export interface CartState {
   numOfOrderItems: number
@@ -9,11 +9,38 @@ export interface CartState {
   order: CartMenuItemInterface[]
 }
 
+interface foodItem {
+  id: string
+  quantity: number
+}
+
+interface orderDetails {
+  userId: string
+  foodItems: foodItem[]
+}
+
 const initialState: CartState = {
   numOfOrderItems: 0,
   totalPrice: 0,
   order: [],
 }
+
+export const processOrder = createAsyncThunk(
+  'cartState/processOrder',
+  async ({ userId, foodItems }: orderDetails): Promise<any> => {
+    try {
+      const res = await apiCall({
+        httpMethod: 'POST',
+        route: 'http://localhost:3000/api/v1/order/processOrder',
+        body: { userId, foodItems },
+      })
+      const { data } = res
+      return data
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
 
 export const cartSlice = createSlice({
   name: 'cart',
