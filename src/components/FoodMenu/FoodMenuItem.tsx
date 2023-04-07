@@ -31,7 +31,7 @@ export const FoodMenuItem = ({
   }
 
   return (
-    <article className="w-5/6 min-w-[250px] max-w-[20rem] m-4">
+    <article className="w-11/12 min-w-[250px] max-w-[20rem] m-4">
       <div className="relative h-[10rem] ">
         <div className="absolute min-w-[6rem] flex flex-row justify-between items-center gap-2 right-0 bottom-0 z-20 bg-primaryRed p-1 m-3 ">
           <FiMinusCircle
@@ -55,8 +55,8 @@ export const FoodMenuItem = ({
         />
       </div>
       <div className="flex items-center justify-between bg-tertiaryGold">
-        <p className=" text-white p-3">{name}</p>
-        <p className="bg-tertiaryGold text-white p-3">{priceWithDecimal}</p>
+        <p className=" text-white m-1">{name}</p>
+        <p className="bg-tertiaryGold text-white m-1">{priceWithDecimal}</p>
         <Button
           text="Add To Cart"
           type="button"
