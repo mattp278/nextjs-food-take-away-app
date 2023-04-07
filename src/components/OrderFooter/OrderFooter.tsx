@@ -13,8 +13,8 @@ export const OrderFooter = () => {
 
   const onOrderClick = () => {
     if (!userId) {
-      router.push('/pages/login/login-page')
       dispatch(setLoginToOrderError())
+      router.push('/pages/login/login-page')
       return
     }
     dispatch(processOrder({ userId, foodItems: order }))
