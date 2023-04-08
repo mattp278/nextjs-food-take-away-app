@@ -3,8 +3,8 @@ import { NavItem } from './NavItem'
 
 export const NavItems = () => {
   const NavItems = navItemsList.map((item) => {
-    const { id, icon, onClick } = item
-    return <NavItem key={id} icon={icon} onClick={onClick} />
+    const { id, icon, link } = item
+    return <NavItem key={id} icon={icon} link={link} />
   })
 
   return (

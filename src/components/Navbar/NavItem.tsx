@@ -1,13 +1,14 @@
 import { createElement } from 'react'
 import { IconContext } from 'react-icons'
 import { IconType } from 'react-icons'
+import Link from 'next/link'
 
 interface NavItemProps {
   icon: IconType
-  onClick?: () => void
+  link: string
 }
 
-export const NavItem = ({ icon, onClick }: NavItemProps) => {
+export const NavItem = ({ icon, link }: NavItemProps) => {
   return (
     <IconContext.Provider
       value={{
@@ -15,7 +16,9 @@ export const NavItem = ({ icon, onClick }: NavItemProps) => {
         className: 'fill-tertiaryGold',
       }}
     >
-      <div className="">{createElement(icon)}</div>
+      <Link href={link}>
+        <div className="">{createElement(icon)}</div>
+      </Link>
     </IconContext.Provider>
   )
 }

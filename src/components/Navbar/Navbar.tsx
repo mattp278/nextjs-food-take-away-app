@@ -1,9 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { BiRestaurant } from 'react-icons/bi'
-import { AiFillHome } from 'react-icons/ai'
-import { MdOutlineReceiptLong } from 'react-icons/md'
-import { BsFillCartFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons'
 import { NavItems } from './NavItems'
 

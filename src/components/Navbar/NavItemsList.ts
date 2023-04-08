@@ -9,7 +9,7 @@ interface NavItem {
   id: number
   name: string
   icon: IconType
-  onClick: () => void
+  link: string
 }
 
 export const navItemsList: NavItem[] = [
@@ -17,24 +17,24 @@ export const navItemsList: NavItem[] = [
     id: 1,
     name: 'Menu',
     icon: BiRestaurant,
-    onClick: () => console.log('Home'),
+    link: '/pages/food-menu/food-menu',
   },
   {
     id: 2,
     name: 'Home',
     icon: AiFillHome,
-    onClick: () => console.log('Home'),
+    link: '/',
   },
   {
     id: 3,
     name: 'Orders',
     icon: MdOutlineReceiptLong,
-    onClick: () => console.log('Home'),
+    link: '/pages/orders/orders',
   },
   {
     id: 4,
     name: 'Card',
     icon: BsFillCartFill,
-    onClick: () => console.log('Home'),
+    link: '/pages/cart/cart',
   },
 ]
