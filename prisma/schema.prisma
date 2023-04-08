@@ -20,7 +20,7 @@ model User {
 
 model FoodItem {
   id        String   @id @default(cuid())
-  name      String
+  name      String   @unique
   price     Float
   image     String
   category  FoodCategory
@@ -33,7 +33,7 @@ model FoodItem {
 enum FoodCategory {
   starters
   mains
-  deserts
+  sides
   drinks
 }
 
