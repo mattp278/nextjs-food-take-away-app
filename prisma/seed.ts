@@ -1,5 +1,4 @@
 import { prisma } from './db/client'
-import { FoodMenuItemInterface } from '@/ts/interfaces'
 import { FoodCategory } from '@prisma/client'
 
 interface FoodItemInterface {
