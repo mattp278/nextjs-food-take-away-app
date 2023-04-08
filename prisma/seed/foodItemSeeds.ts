@@ -1,5 +1,3 @@
-import { prisma } from './db/client'
-import { FoodMenuItemInterface } from '@/ts/interfaces'
 import { FoodCategory } from '@prisma/client'
 
 interface FoodItemInterface {
@@ -9,7 +7,7 @@ interface FoodItemInterface {
   category: FoodCategory
 }
 
-const foodItem: FoodItemInterface[] = [
+export const foodItemSeeds: FoodItemInterface[] = [
   {
     name: 'Samosa',
     price: 5.5,
@@ -71,45 +69,3 @@ const foodItem: FoodItemInterface[] = [
     category: 'drinks',
   },
 ]
-
-async function main() {
-  await prisma.order.deleteMany()
-  await prisma.user.deleteMany()
-  await prisma.foodItem.deleteMany()
-
-  const foodItems = await prisma.foodItem.createMany({
-    data: foodItem.map((foodItem) => ({
-      name: foodItem.name,
-      price: Number(foodItem.price),
-      image: foodItem.image,
-      category: foodItem.category,
-    })),
-  })
-
-  const testUser1 = await prisma.user.upsert({
-    where: { email: 'test@email.com' },
-
-    update: {},
-
-    create: {
-      email: 'test@email.com',
-      name: 'Matt Powell',
-      password: 'password',
-    },
-  })
-
-  console.log({ testUser1, foodItems })
-}
-
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-
-  .catch(async (e) => {
-    console.error(e)
-
-    await prisma.$disconnect()
-
-    process.exit(1)
-  })
