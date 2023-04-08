@@ -9,7 +9,7 @@ async function main(): Promise<void> {
   const foodItems = await prisma.foodItem.createMany({
     data: foodItemSeeds.map((foodItem) => ({
       name: foodItem.name,
-      price: Number(foodItem.price),
+      price: foodItem.price,
       image: foodItem.image,
       category: foodItem.category,
     })),

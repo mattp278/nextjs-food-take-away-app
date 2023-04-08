@@ -8,14 +8,13 @@ export const FoodSection = ({
   //----------------------------------------------------------------------------------
   const foodItemsByCategory = foodItems.map((foodItem) => {
     const { id, name, price, image } = foodItem
-    const priceWithDecimal = parseInt(price.toFixed(2))
     return (
       <FoodMenuItem
         key={id}
         id={id}
         name={name}
         category={category}
-        price={priceWithDecimal}
+        price={price}
         image={image}
       />
     )

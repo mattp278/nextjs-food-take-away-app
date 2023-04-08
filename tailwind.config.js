@@ -17,6 +17,7 @@ module.exports = {
         quaternaryBrown: '#c79467',
         quinaryOrange: '#de8c21',
         whiteFloral: '#f9f6ee',
+        bgBlack: '#1F160F',
       },
       screens: {
         sm: '0px',

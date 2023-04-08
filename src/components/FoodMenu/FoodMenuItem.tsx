@@ -15,7 +15,6 @@ export const FoodMenuItem = ({
 }: FoodMenuItemInterface) => {
   const dispatch = useAppDispatch()
   const [quantity, setQuantity] = useState<number>(1)
-  const priceWithDecimal = parseInt(price.toFixed(2))
 
   const handleAddtoCart = () => {
     dispatch(addCartItem({ id, name, category, price, image, quantity }))
@@ -54,13 +53,13 @@ export const FoodMenuItem = ({
           quality={30}
         />
       </div>
-      <div className="flex items-center justify-between min-h-[3rem] bg-tertiaryGold">
-        <p className="text-white m-2">{name}</p>
+      <div className="flex items-center justify-between min-h-[3rem] bg-primaryRed">
+        <p className="text-white  m-2">{name}</p>
         <p
-          className="text-white h-[3rem] w-[6rem] flex items-center text-center text-sm bg-primaryRed p-2"
+          className="text-white h-[3rem] w-[6rem] flex items-center text-center text-sm bg-quinaryOrange p-2"
           onClick={handleAddtoCart}
         >
-          Add for £{(quantity * priceWithDecimal).toFixed(2)}
+          Add for £{(quantity * price).toFixed(2)}
         </p>
       </div>
     </article>
