@@ -17,14 +17,14 @@ export const OrderFooter = () => {
       router.push('/pages/login/login-page')
       return
     }
-    dispatch(processOrder({ userId, foodItems: order }))
+    router.push('/pages/confirm-order/confirm-order')
   }
 
   const orderItems = (
     <div className="fixed w-11/12 bottom-0 flex flex-row justify-between items-center gap-2 rounded-md bg-primaryRed text-whiteFloral px-3 py-2 m-2 z-50">
       <p className="bg-tertiaryGold w-[2rem] text-center ">{numOfOrderItems}</p>
       <p onClick={onOrderClick} className="bg-tertiaryGold p-2">
-        Place Order
+        Checkout
       </p>
       <p>£{totalPriceWithDecimal}</p>
     </div>

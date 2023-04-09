@@ -35,13 +35,13 @@ export const FoodMenuItem = ({
         <div className="absolute min-w-[6rem] flex flex-row justify-between items-center gap-2 right-0 bottom-0 z-10 bg-primaryRed p-1 m-3 ">
           <FiMinusCircle
             className="text-white"
-            size="1.5rem"
+            size="24px"
             onClick={handleQuantityDecrease}
           />
           <p className="text-white">{quantity}</p>
           <FiPlusCircle
             className="text-white"
-            size="1.5rem"
+            size="24px"
             onClick={handleQuantityIncrease}
           />
         </div>

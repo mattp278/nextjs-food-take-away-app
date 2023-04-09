@@ -18,6 +18,7 @@ export interface FoodMenuItemInterface {
   image: string
   name: string
   price: number
+  quantity?: number
 }
 
 export interface CartMenuItemInterface {

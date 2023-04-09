@@ -12,7 +12,7 @@ export const NavItem = ({ icon, link }: NavItemProps) => {
   return (
     <IconContext.Provider
       value={{
-        size: '2rem',
+        size: '1.8em',
         className: 'fill-tertiaryGold',
       }}
     >

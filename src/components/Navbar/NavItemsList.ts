@@ -33,7 +33,7 @@ export const navItemsList: NavItem[] = [
   },
   {
     id: 4,
-    name: 'Card',
+    name: 'Cart',
     icon: BsFillCartFill,
     link: '/pages/cart/cart',
   },

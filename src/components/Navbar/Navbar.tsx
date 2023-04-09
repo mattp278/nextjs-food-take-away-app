@@ -7,7 +7,6 @@ export const Navbar = () => {
   return (
     <IconContext.Provider
       value={{
-        size: '2rem',
         className: 'fill-tertiaryGold',
       }}
     >

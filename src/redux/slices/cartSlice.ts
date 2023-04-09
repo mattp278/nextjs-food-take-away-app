@@ -1,6 +1,7 @@
+import { FoodCategory } from '@prisma/client'
 import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
-import { CartMenuItemInterface } from '@/ts/interfaces'
+import { CartMenuItemInterface, FoodMenuItemInterface } from '@/ts/interfaces'
 import { apiCall } from '@/utils/apiUtil'
 import { ApiErrorMsg } from '@/ts/interfaces'
 
@@ -11,14 +12,9 @@ export interface CartState {
   errors: ApiErrorMsg[] | null
 }
 
-interface foodItem {
-  id: string
-  quantity: number
-}
-
 interface orderDetails {
   userId: string | null
-  foodItems: foodItem[]
+  foodItems: FoodMenuItemInterface[]
 }
 
 const initialState: CartState = {
@@ -73,7 +69,9 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       //---------------------------------------------------------------------
-
+      .addCase(processOrder.pending, (state) => {
+        state.errors = null
+      })
       .addCase(processOrder.fulfilled, (state, { payload }) => {
         state.numOfOrderItems = 0
         state.totalPrice = 0
