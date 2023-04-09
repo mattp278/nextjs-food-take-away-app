@@ -9,6 +9,7 @@ export interface CartState {
   numOfOrderItems: number
   totalPrice: number
   order: CartMenuItemInterface[]
+  confimedOrderId: string | null
   errors: ApiErrorMsg[] | null
 }
 
@@ -21,6 +22,7 @@ const initialState: CartState = {
   numOfOrderItems: 0,
   totalPrice: 0,
   order: [],
+  confimedOrderId: null,
   errors: null,
 }
 
@@ -28,9 +30,10 @@ export const processOrder = createAsyncThunk(
   'cartState/processOrder',
   async ({ userId, foodItems }: orderDetails): Promise<any> => {
     try {
+      console.log('foodItems', foodItems)
       const res = await apiCall({
         httpMethod: 'POST',
-        route: 'http://localhost:3000/api/v1/order/processOrder',
+        route: 'http://localhost:3000/api/v1/order/process-order',
         body: { userId, foodItems },
       })
       const { data } = res
@@ -71,14 +74,21 @@ export const cartSlice = createSlice({
       //---------------------------------------------------------------------
       .addCase(processOrder.pending, (state) => {
         state.errors = null
+        state.confimedOrderId = null
       })
       .addCase(processOrder.fulfilled, (state, { payload }) => {
+        console.log('payload', payload)
+        console.log('payload.orderId', payload.orderId)
+        const orderId = payload.orderId
+
         state.numOfOrderItems = 0
         state.totalPrice = 0
         state.order = []
+        state.confimedOrderId = orderId
       })
       .addCase(processOrder.rejected, (state, { error }: AnyAction) => {
         state.errors = [error.message]
+        state.confimedOrderId = null
       })
 
     //---------------------------------------------------------------------

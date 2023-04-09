@@ -4,11 +4,13 @@ import Image from 'next/image'
 import { BsFillCartFill } from 'react-icons/bs'
 import { Button } from '@/components'
 import { processOrder, setLoginToOrderError } from '@/redux/slices/cartSlice'
+import { useRouter } from 'next/router'
 
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
   const cartItems = useAppSelector((state) => state.cart.order)
   const userId = useAppSelector((state) => state.user.id)
+  const router = useRouter()
 
   const items = cartItems?.map((item) => {
     const { id, image, name, category, price, quantity } = item
@@ -32,6 +34,7 @@ export const ConfirmOrder = () => {
       return
     }
     dispatch(processOrder({ userId, foodItems: cartItems }))
+    router.push('/pages/confirm-order/order-complete')
   }
 
   return (

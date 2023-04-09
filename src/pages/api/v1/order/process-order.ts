@@ -63,7 +63,11 @@ const processOrder = async (req: NextApiRequest, res: NextApiResponse) => {
   const newOrderId = newOrder.id
 
   if (!newOrder) {
-    throw Error
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      errors: [{ msg: 'Error creating new order' }],
+    })
   }
 
   let foodItemIds: string[] = []
@@ -108,6 +112,7 @@ const processOrder = async (req: NextApiRequest, res: NextApiResponse) => {
     msg: 'New order item added to database',
     data: {
       completedOrder,
+      orderId: newOrderId,
     },
   })
 }
