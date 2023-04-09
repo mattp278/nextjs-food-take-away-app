@@ -1,9 +1,9 @@
-import { FoodItem, FoodByCategoryInterface } from '../../types'
+import { FoodItem, TSFoodByCategory } from '../../types'
 import { FoodCategory } from '@prisma/client'
 
 export const splitFoodByCategory = (foodItems: FoodItem[]) => {
   const foodCategorys = Object.values(FoodCategory)
-  const foodItemByCategory: FoodByCategoryInterface = []
+  const foodItemByCategory: TSFoodByCategory = []
 
   foodCategorys.forEach((category) => {
     const foodItemsInCategory = foodItems.filter(

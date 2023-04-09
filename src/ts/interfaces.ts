@@ -12,7 +12,7 @@ export interface ApiErrorResponse {
   errors: Error[]
 }
 
-export interface FoodMenuItemInterface {
+export interface TSFoodMenuItem {
   id: string
   category: string
   image: string
@@ -21,7 +21,7 @@ export interface FoodMenuItemInterface {
   quantity?: number
 }
 
-export interface CartMenuItemInterface {
+export interface TSCartMenuItem {
   id: string
   category: string
   image: string
@@ -30,11 +30,11 @@ export interface CartMenuItemInterface {
   quantity: number
 }
 
-export interface FoodMenuItemsInterface {
-  menuItems: FoodMenuItemInterface[]
+export interface TSFoodMenuItems {
+  menuItems: TSFoodMenuItem[]
 }
 
-export interface FoodByCategoryInterface {
+export interface TSFoodByCategory {
   category: string
-  foodItems: FoodMenuItemInterface[]
+  foodItems: TSFoodMenuItem[]
 }

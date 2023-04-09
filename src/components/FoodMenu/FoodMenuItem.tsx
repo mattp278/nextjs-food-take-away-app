@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FoodMenuItemInterface } from '@/ts/interfaces'
+import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
 import { Button } from '@/components'
 import { addCartItem } from '@/redux/slices/cartSlice'
@@ -12,7 +12,7 @@ export const FoodMenuItem = ({
   name,
   category,
   price,
-}: FoodMenuItemInterface) => {
+}: TSFoodMenuItem) => {
   const dispatch = useAppDispatch()
   const [quantity, setQuantity] = useState<number>(1)
 

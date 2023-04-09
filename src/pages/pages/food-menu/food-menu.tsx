@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next'
 import { Main, Navbar, FoodMenu } from '@/components'
 import { apiCall } from '@/utils/apiUtil'
-import { FoodMenuItemsInterface } from '@/ts/interfaces'
+import { TSFoodMenuItems } from '@/ts/interfaces'
 import { OrderFooter } from '@/components/OrderFooter/OrderFooter'
 
-export default function FoodMenuPage({ menuItems }: FoodMenuItemsInterface) {
+export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
   return (
     <>
       <Navbar />

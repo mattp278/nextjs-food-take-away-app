@@ -1,16 +1,13 @@
 import { FoodSection } from '@/components'
-import {
-  FoodMenuItemsInterface,
-  FoodByCategoryInterface,
-} from '@/ts/interfaces'
+import { TSFoodMenuItems, TSFoodByCategory } from '@/ts/interfaces'
 import { splitFoodByCategory } from './splitFoodByCategory'
 
-export const FoodMenu = ({ menuItems }: FoodMenuItemsInterface) => {
+export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   const foodSplitByCatergory = splitFoodByCategory(menuItems)
 
   //----------------------------------------------------------------------------------
   const foodCatergory = foodSplitByCatergory.map(
-    (foodCategory: FoodByCategoryInterface) => {
+    (foodCategory: TSFoodByCategory) => {
       const { category, foodItems } = foodCategory
       return (
         <FoodSection key={category} category={category} foodItems={foodItems} />

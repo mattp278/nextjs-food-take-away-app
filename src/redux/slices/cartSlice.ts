@@ -1,21 +1,21 @@
 import { FoodCategory } from '@prisma/client'
 import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
-import { CartMenuItemInterface, FoodMenuItemInterface } from '@/ts/interfaces'
+import { TSCartMenuItem, TSFoodMenuItem } from '@/ts/interfaces'
 import { apiCall } from '@/utils/apiUtil'
 import { ApiErrorMsg } from '@/ts/interfaces'
 
 export interface CartState {
   numOfOrderItems: number
   totalPrice: number
-  order: CartMenuItemInterface[]
+  order: TSCartMenuItem[]
   confimedOrderId: string | null
   errors: ApiErrorMsg[] | null
 }
 
 interface orderDetails {
   userId: string | null
-  foodItems: FoodMenuItemInterface[]
+  foodItems: TSFoodMenuItem[]
 }
 
 const initialState: CartState = {

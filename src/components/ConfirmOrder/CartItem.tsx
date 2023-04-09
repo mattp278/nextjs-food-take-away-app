@@ -1,4 +1,4 @@
-import { FoodMenuItemInterface } from '@/ts/interfaces'
+import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
 
 export const CartItem = ({
@@ -8,7 +8,7 @@ export const CartItem = ({
   category,
   price,
   quantity,
-}: FoodMenuItemInterface) => {
+}: TSFoodMenuItem) => {
   const priceToFixed = price.toFixed(2)
 
   return (
