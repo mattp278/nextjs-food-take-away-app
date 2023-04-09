@@ -77,8 +77,6 @@ export const cartSlice = createSlice({
         state.confimedOrderId = null
       })
       .addCase(processOrder.fulfilled, (state, { payload }) => {
-        console.log('payload', payload)
-        console.log('payload.orderId', payload.orderId)
         const orderId = payload.orderId
 
         state.numOfOrderItems = 0
