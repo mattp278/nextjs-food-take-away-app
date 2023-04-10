@@ -7,6 +7,7 @@ import { OrderFooter } from '@/components/OrderFooter/OrderFooter'
 export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
   return (
     <>
+      <title>Curry Club</title>
       <Navbar />
       <Main>
         <FoodMenu menuItems={menuItems} />
