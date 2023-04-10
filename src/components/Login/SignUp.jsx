@@ -5,9 +5,11 @@ import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { selectUsertSlice } from '@/redux/slices/userSlice'
 import { signUp } from '@/redux/slices/userSlice'
+import { useRouter } from 'next/router'
 
 export const SignUp = () => {
   const dispatch = useAppDispatch()
+  const router = useRouter()
   const { errors } = useAppSelector(selectUsertSlice)
 
   const errorMessages = errors?.map((error, i) => {
@@ -39,8 +41,12 @@ export const SignUp = () => {
         .min(8, 'Password must be 8 characters of more')
         .required('required'),
     }),
-    onSubmit: (values) => {
-      dispatch(signUp(values))
+    onSubmit: async (values) => {
+      const newUser = await dispatch(signUp(values))
+      console.log('newUser', newUser)
+      const id = newUser?.payload?.id
+      console.log('id', id)
+      if (id) router.push('/pages/food-menu/food-menu')
     },
   })
 
