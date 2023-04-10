@@ -3,9 +3,14 @@ import type { AppProps } from 'next/app'
 import { IconContext } from 'react-icons'
 import { wrapper } from '../redux/store/store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'reduxjs-toolkit-persist/integration/react'
+import { makeStore, persistConfig } from '../redux/store/store'
+import { persistStore } from 'reduxjs-toolkit-persist'
+
+const store = makeStore()
+const persistor = persistStore(store)
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { store, props } = wrapper.useWrappedStore(pageProps)
   return (
     <Provider store={store}>
       <IconContext.Provider
@@ -14,7 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
           className: 'fill-primaryRed',
         }}
       >
-        <Component {...pageProps} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
       </IconContext.Provider>
     </Provider>
   )
