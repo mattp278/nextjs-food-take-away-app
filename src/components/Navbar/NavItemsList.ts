@@ -35,6 +35,6 @@ export const navItemsList: NavItem[] = [
     id: 4,
     name: 'Cart',
     icon: BsFillCartFill,
-    link: '/pages/cart/cart',
+    link: '/pages/confirm-order/confirm-order',
   },
 ]
