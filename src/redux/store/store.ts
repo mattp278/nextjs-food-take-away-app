@@ -40,7 +40,6 @@ export const makeStore = () =>
     reducer: _persistedReducer,
     middleware: getDefaultMiddleware({
       serializableCheck: {
-        /* ignore persistance actions */
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
