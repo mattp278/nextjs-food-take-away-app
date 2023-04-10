@@ -33,8 +33,7 @@ export default async function handler(
 //----------------------------------------------------------------------------------
 
 const addFoodItem = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name, image, category } = req.body
-  const price = Math.round(req.body.price * 100) / 100
+  const { name, image, category, price } = req.body
 
   const foodCategorys = Object.values(FoodCategory)
   const validCatergory = foodCategorys.filter((foodCategory) => {
