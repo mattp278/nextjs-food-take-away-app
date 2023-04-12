@@ -1,17 +1,15 @@
-import { makeStore } from './store'
-import { userSlice } from '../slices/userSlice'
-import { cartSlice } from '../slices/cartSlice'
+import { userSlice, UserState } from '../slices/userSlice'
+import { cartSlice, CartState } from '../slices/cartSlice'
+import { ordersSlice, OrdersState } from '../slices/ordersSlice'
 import { createWrapper } from 'next-redux-wrapper'
 import {
   combineReducers,
   configureStore,
-  getDefaultMiddleware,
   ThunkAction,
   Action,
 } from '@reduxjs/toolkit'
 import {
   persistReducer,
-  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -31,18 +29,29 @@ export const persistConfig = {
 const reducers = combineReducers({
   user: userSlice.reducer,
   cart: cartSlice.reducer,
+  orders: ordersSlice.reducer,
 })
 
-const _persistedReducer = persistReducer(persistConfig, reducers)
+export type RootState = {
+  user: UserState
+  cart: CartState
+  orders: OrdersState
+}
+
+const persistedReducer = persistReducer<RootState, Action>(
+  persistConfig,
+  reducers
+)
 
 export const makeStore = () =>
   configureStore({
-    reducer: _persistedReducer,
-    middleware: getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
   })
 
 export type AppStore = ReturnType<typeof makeStore>
