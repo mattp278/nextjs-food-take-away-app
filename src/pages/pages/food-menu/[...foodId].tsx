@@ -7,9 +7,7 @@ export default function FoodItemPage({ foodItem }) {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main>
-        <FoodPageItem foodItem={foodItem} />
-      </Main>
+      <Main>{foodItem && <FoodPageItem foodItem={foodItem} />}</Main>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { LinkButton } from '@/components'
 
 export const FoodPageItem = ({ foodItem }) => {
   const { name, image, price } = foodItem
@@ -21,7 +22,7 @@ export const FoodPageItem = ({ foodItem }) => {
           {price}
         </p>
       </div>
-      <p className="text-white  m-2">
+      <p className="text-white text-center m-2">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s, when an unknown printer took a galley of type and
@@ -32,6 +33,13 @@ export const FoodPageItem = ({ foodItem }) => {
         with desktop publishing software like Aldus PageMaker including versions
         of Lorem Ipsum
       </p>
+      <div className="flex justify-center p-3">
+        <LinkButton
+          href="/pages/food-menu/food-menu"
+          text="Back to Menu"
+          type="button"
+        />
+      </div>
     </article>
   )
 }

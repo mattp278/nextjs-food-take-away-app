@@ -1,3 +1,4 @@
+import { foodItemSeeds } from './../../../../../prisma/seed/foodItemSeeds'
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Prisma } from '@prisma/client'
@@ -38,6 +39,17 @@ const getFoodItemById = async (req: NextApiRequest, res: NextApiResponse) => {
       id: foodId as Prisma.FoodItemWhereUniqueInput,
     },
   })
+
+  if (!foodItem)
+    return res.status(400).json({
+      success: false,
+      sdtatus: 500,
+      errors: [
+        {
+          msg: 'Database Error. Food item not found.',
+        },
+      ],
+    })
 
   return res.status(200).json({
     success: true,
