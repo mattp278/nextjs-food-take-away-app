@@ -1,8 +1,17 @@
 import { apiCall } from '@/utils/apiUtil'
+import Image from 'next/image'
+import { Main, FoodPageItem, Navbar } from '@/components'
 
 export default function FoodItemPage({ foodItem }) {
-  const { name } = foodItem
-  return <div>{name}</div>
+  return (
+    <>
+      <title>Curry Club</title>
+      <Navbar />
+      <Main>
+        <FoodPageItem foodItem={foodItem} />
+      </Main>
+    </>
+  )
 }
 
 export async function getStaticPaths() {
@@ -15,7 +24,7 @@ export async function getStaticPaths() {
     return { params: { foodId: [foodItem.id.toString()] } }
   })
 
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }
 
 export async function getStaticProps(context) {
