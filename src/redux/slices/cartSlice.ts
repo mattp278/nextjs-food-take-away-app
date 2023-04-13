@@ -68,8 +68,8 @@ export const cartSlice = createSlice({
       state.numOfOrderItems += quantity
       state.totalPrice += payload.price * quantity
     },
-    empyCart(state, { payload }) {
-      state = initialState
+    resetCartState(state) {
+      Object.assign(state, initialState)
     },
   },
   extraReducers: (builder) => {
@@ -98,6 +98,6 @@ export const cartSlice = createSlice({
 
 export const selectCarttSlice = (state: AppState) => state.cart
 
-export const { addCartItem } = cartSlice.actions
+export const { addCartItem, resetCartState } = cartSlice.actions
 
 export default cartSlice.reducer

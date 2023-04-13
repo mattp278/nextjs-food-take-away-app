@@ -37,7 +37,11 @@ export const getUserOrders = createAsyncThunk(
 export const ordersSlice = createSlice({
   name: 'orders',
   initialState,
-  reducers: {},
+  reducers: {
+    resetOrdersState(state) {
+      Object.assign(state, initialState)
+    },
+  },
   extraReducers: (builder) => {
     builder
       //---------------------------------------------------------------------
@@ -60,6 +64,6 @@ export const ordersSlice = createSlice({
 })
 
 export const selectOrdersSlice = (state: AppState) => state.orders
-export const {} = ordersSlice.actions
+export const { resetOrdersState } = ordersSlice.actions
 
 export default ordersSlice.reducer

@@ -75,6 +75,9 @@ export const userSlice = createSlice({
     setLoginToOrderError(state) {
       state.errors = ['Please login or signup to place order']
     },
+    resetUserState(state) {
+      Object.assign(state, initialState)
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -125,6 +128,6 @@ export const userSlice = createSlice({
 })
 
 export const selectUsertSlice = (state: AppState) => state.user
-export const { setLoginToOrderError } = userSlice.actions
+export const { resetUserState, setLoginToOrderError } = userSlice.actions
 
 export default userSlice.reducer

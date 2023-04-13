@@ -1,6 +1,10 @@
-import { userSlice, UserState } from '../slices/userSlice'
-import { cartSlice, CartState } from '../slices/cartSlice'
-import { ordersSlice, OrdersState } from '../slices/ordersSlice'
+import { resetUserState, userSlice, UserState } from '../slices/userSlice'
+import { cartSlice, CartState, resetCartState } from '../slices/cartSlice'
+import {
+  ordersSlice,
+  OrdersState,
+  resetOrdersState,
+} from '../slices/ordersSlice'
 import { createWrapper } from 'next-redux-wrapper'
 import {
   combineReducers,
@@ -53,6 +57,12 @@ export const makeStore = () =>
         },
       }),
   })
+
+export const resetAllState = (): AppThunk => async (dispatch) => {
+  dispatch(resetUserState())
+  dispatch(resetCartState())
+  dispatch(resetOrdersState())
+}
 
 export type AppStore = ReturnType<typeof makeStore>
 export type AppState = ReturnType<AppStore['getState']>
