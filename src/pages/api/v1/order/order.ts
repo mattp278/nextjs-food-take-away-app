@@ -57,6 +57,13 @@ const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
     where: {
       userId,
     },
+    include: {
+      orderItems: {
+        include: {
+          food: true,
+        },
+      },
+    },
   })
   const numberOfUserOrders = userOrders.length
 
