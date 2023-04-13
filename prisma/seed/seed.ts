@@ -2,6 +2,7 @@ import { prisma } from '../db/client'
 import { foodItemSeeds } from './foodItemSeeds'
 
 async function main(): Promise<void> {
+  await prisma.orderItem.deleteMany()
   await prisma.order.deleteMany()
   await prisma.user.deleteMany()
   await prisma.foodItem.deleteMany()
