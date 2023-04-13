@@ -27,7 +27,6 @@ export const getUserOrders = createAsyncThunk(
         body: { userId },
       })
       const { data } = res
-      console.log('data', data)
       return data
     } catch (err: any) {
       throw Error(err)
