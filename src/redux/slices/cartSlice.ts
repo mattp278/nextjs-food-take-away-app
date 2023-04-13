@@ -68,6 +68,9 @@ export const cartSlice = createSlice({
       state.numOfOrderItems += quantity
       state.totalPrice += payload.price * quantity
     },
+    empyCart(state, { payload }) {
+      state = initialState
+    },
   },
   extraReducers: (builder) => {
     builder
