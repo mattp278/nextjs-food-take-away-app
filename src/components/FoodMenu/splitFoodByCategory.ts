@@ -1,9 +1,10 @@
-import { FoodItem, TSFoodByCategory } from '../../types'
+import { TSFoodMenuItem, TSFoodByCategory } from '@/ts/interfaces'
 import { FoodCategory } from '@prisma/client'
 
-export const splitFoodByCategory = (foodItems: FoodItem[]) => {
+export const splitFoodByCategory = (foodItems: TSFoodMenuItem[]) => {
   const foodCategorys = Object.values(FoodCategory)
-  const foodItemByCategory: TSFoodByCategory = []
+  const foodItemByCategory: TSFoodByCategory[] = []
+  console.log('foodItemByCategory', foodItemByCategory)
 
   foodCategorys.forEach((category) => {
     const foodItemsInCategory = foodItems.filter(
