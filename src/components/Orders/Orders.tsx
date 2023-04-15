@@ -4,6 +4,7 @@ import { getUserOrders } from '@/redux/slices/ordersSlice'
 import { TSOrderItem, TSOrder } from '@/ts/interfaces'
 import { FaClipboardList } from 'react-icons/fa'
 import { CartItem } from '../ConfirmOrder/CartItem'
+import { convertToReableDate } from '@/utils/convertToReableDate'
 
 export const Orders = () => {
   const dispatch = useAppDispatch()
@@ -16,6 +17,7 @@ export const Orders = () => {
 
   const orderItems = orders?.map((order: TSOrder) => {
     const { orderItems } = order
+    const date = convertToReableDate(order.createdAt)
     const orderId = order.id
 
     const orderItem = orderItems?.map((item: TSOrderItem) => {
@@ -37,11 +39,12 @@ export const Orders = () => {
     return (
       <article
         key={orderId}
-        className="w-full border-rose-600 flex justify-center items-center flex-col p-4"
+        className="w-full flex justify-center items-center flex-col rounded-3xl bg-tertiaryGold p-4  m-3"
       >
         <FaClipboardList size="75px" />
         <h1 className="text-3xl pt-2">ORDER ID</h1>
         <h1 className="text-lg pb-2">{orderId}</h1>
+        <h2 className="text-lg pb-2">{date}</h2>
 
         <div className="w-full">
           <div className="flex flex-row justify-between items-center bg-primaryRed my-1">
@@ -58,7 +61,7 @@ export const Orders = () => {
   })
 
   return (
-    <div className="relative sm:w-11/12 md:w-[600px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:p-8 bg-tertiaryGold">
+    <div className="relative sm:w-11/12 md:w-[600px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center  ">
       {orderItems}
     </div>
   )
