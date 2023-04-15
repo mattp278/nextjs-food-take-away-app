@@ -38,3 +38,21 @@ export interface TSFoodByCategory {
   category: string
   foodItems: TSFoodMenuItem[]
 }
+
+export interface TSOrderItem {
+  id: string
+  quantity: number
+  createdAt: string
+  updatedAt: string
+  orderId: string
+  foodId: string
+  food: TSFoodMenuItem
+}
+
+export interface TSOrder {
+  id: string
+  createdAt: string
+  updatedAt: string
+  userId: string
+  orderItems: TSOrderItem[]
+}
