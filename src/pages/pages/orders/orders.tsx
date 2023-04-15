@@ -1,9 +1,12 @@
-import { Orders } from '@/components'
+import { Orders, Main, Navbar } from '@/components'
 
 export default function OrdersPage() {
   return (
     <>
-      <Orders />
+      <Navbar />
+      <Main>
+        <Orders />
+      </Main>
     </>
   )
 }
