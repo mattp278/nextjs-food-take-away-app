@@ -1,10 +1,11 @@
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { CartItem } from './CartItem'
-import Image from 'next/image'
 import { BsFillCartFill } from 'react-icons/bs'
 import { Button } from '@/components'
-import { processOrder, setLoginToOrderError } from '@/redux/slices/cartSlice'
+import { processOrder } from '@/redux/slices/cartSlice'
+import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
+import { TSCartMenuItem } from '@/ts/interfaces'
 
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
@@ -12,7 +13,7 @@ export const ConfirmOrder = () => {
   const userId = useAppSelector((state) => state.user.id)
   const router = useRouter()
 
-  const items = cartItems?.map((item) => {
+  const items = cartItems?.map((item: TSCartMenuItem) => {
     const { id, image, name, category, price, quantity } = item
     return (
       <CartItem
@@ -43,7 +44,7 @@ export const ConfirmOrder = () => {
         <BsFillCartFill size="125px" />
         <h1 className="text-3xl p-2">CHECKOUT</h1>
       </div>
-      <div className=" w-full">
+      <div className="w-full">
         <div className="flex flex-row justify-between items-center bg-primaryRed my-1">
           <div className="relative w-3/12 object-cover"></div>
           <p className="text-white w-5/12 m-1 pl-2 ">Item</p>
