@@ -2,9 +2,10 @@ import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
 import { apiCall } from '@/utils/apiUtil'
 import { ApiErrorMsg } from '@/ts/interfaces'
+import { TSOrder, TSOrderItem } from '@/ts/interfaces'
 
 export interface OrdersState {
-  orders: []
+  orders: TSOrderItem[]
   errors: ApiErrorMsg[] | string[] | null
 }
 
