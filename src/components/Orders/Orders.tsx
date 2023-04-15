@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getUserOrders } from '@/redux/slices/ordersSlice'
 import { TSOrderItem, TSOrder } from '@/ts/interfaces'
@@ -38,11 +37,11 @@ export const Orders = () => {
     return (
       <article
         key={orderId}
-        className="sm:max-w-[280px] md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 mb-6 bg-tertiaryGold"
+        className="w-full border-rose-600 flex justify-center items-center flex-col p-4"
       >
         <FaClipboardList size="75px" />
-        <h1 className="text-3xl pt-2"> ORDER ID</h1>
-        <h1 className="text-lg pb-2"> {orderId}</h1>
+        <h1 className="text-3xl pt-2">ORDER ID</h1>
+        <h1 className="text-lg pb-2">{orderId}</h1>
 
         <div className="w-full">
           <div className="flex flex-row justify-between items-center bg-primaryRed my-1">
@@ -58,5 +57,9 @@ export const Orders = () => {
     )
   })
 
-  return <div>{orderItems}</div>
+  return (
+    <div className="relative sm:w-11/12 md:w-[600px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:p-8 bg-tertiaryGold">
+      {orderItems}
+    </div>
+  )
 }
