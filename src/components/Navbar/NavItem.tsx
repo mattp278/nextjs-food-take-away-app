@@ -1,24 +1,25 @@
 import { createElement } from 'react'
-import { IconContext } from 'react-icons'
-import { IconType } from 'react-icons'
 import Link from 'next/link'
+import { IconoirProvider } from 'iconoir-react'
 
 interface NavItemProps {
-  icon: IconType
+  icon: any
   link: string
 }
 
 export const NavItem = ({ icon, link }: NavItemProps) => {
   return (
-    <IconContext.Provider
-      value={{
-        size: '1.8em',
-        className: 'fill-tertiaryGold',
+    <IconoirProvider
+      iconProps={{
+        color: '#c9b064',
+        strokeWidth: 2,
+        width: '1.8em',
+        height: '1.8em',
       }}
     >
       <Link href={link}>
         <div className="">{createElement(icon)}</div>
       </Link>
-    </IconContext.Provider>
+    </IconoirProvider>
   )
 }

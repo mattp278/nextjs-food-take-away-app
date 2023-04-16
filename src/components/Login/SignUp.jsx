@@ -1,4 +1,3 @@
-import { MdFoodBank } from 'react-icons/md'
 import { Input, Button } from '@/components'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -6,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { selectUsertSlice } from '@/redux/slices/userSlice'
 import { signUp } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
+import { SmallShopAlt } from 'iconoir-react'
 
 export const SignUp = () => {
   const dispatch = useAppDispatch()
@@ -52,7 +52,7 @@ export const SignUp = () => {
 
   return (
     <section className=" relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-tertiaryGold">
-      <MdFoodBank size="8em" />
+      <SmallShopAlt className="text-primaryRed" height={125} width={125} />
       <h1 className="text-3xl">SIGN UP</h1>
       {errorMessages ? errorMessages : null}
       <form

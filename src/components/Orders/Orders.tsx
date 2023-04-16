@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getUserOrders } from '@/redux/slices/ordersSlice'
 import { TSOrderItem, TSOrder } from '@/ts/interfaces'
-import { FaClipboardList } from 'react-icons/fa'
+import { ClipboardCheck } from 'iconoir-react'
 import { CartItem } from '../ConfirmOrder/CartItem'
 import { convertToReableDate } from '@/utils/convertToReableDate'
 
@@ -41,7 +41,7 @@ export const Orders = () => {
         key={orderId}
         className="w-full flex justify-center items-center flex-col rounded-3xl bg-tertiaryGold p-4  m-3"
       >
-        <FaClipboardList size="75px" />
+        <ClipboardCheck className="text-primaryRed" height={125} width={125} />
         <h1 className="text-3xl pt-2">ORDER ID</h1>
         <h1 className="text-lg pb-2">{orderId}</h1>
         <h2 className="text-lg pb-2">{date}</h2>

@@ -1,14 +1,9 @@
-import { BiRestaurant } from 'react-icons/bi'
-import { AiFillHome } from 'react-icons/ai'
-import { MdOutlineReceiptLong } from 'react-icons/md'
-import { BsFillCartFill } from 'react-icons/bs'
-import { IconType } from 'react-icons'
-import { ReactNode } from 'react'
+import { Clutery, LogOut, List, Cart } from 'iconoir-react'
 
 interface NavItem {
   id: number
   name: string
-  icon: IconType
+  icon: any
   link: string
 }
 
@@ -16,25 +11,25 @@ export const navItemsList: NavItem[] = [
   {
     id: 1,
     name: 'Menu',
-    icon: BiRestaurant,
+    icon: Clutery,
     link: '/pages/food-menu/food-menu',
   },
   {
     id: 2,
-    name: 'Home',
-    icon: AiFillHome,
-    link: '/',
-  },
-  {
-    id: 3,
     name: 'Orders',
-    icon: MdOutlineReceiptLong,
+    icon: List,
     link: '/pages/orders/orders',
   },
   {
-    id: 4,
+    id: 3,
     name: 'Cart',
-    icon: BsFillCartFill,
+    icon: Cart,
     link: '/pages/confirm-order/confirm-order',
+  },
+  {
+    id: 4,
+    name: 'LogOut',
+    icon: LogOut,
+    link: '/',
   },
 ]

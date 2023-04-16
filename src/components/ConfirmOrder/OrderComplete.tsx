@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/redux/store/reduxHooks'
-import { MdDeliveryDining } from 'react-icons/md'
+import { DeliveryTruck } from 'iconoir-react'
 import Image from 'next/image'
 
 export const OrderComplete = () => {
@@ -7,7 +7,7 @@ export const OrderComplete = () => {
 
   return (
     <section className="bg-tertiaryGold flex flex-col justify-center items-center w-11/12 lg:w-1/2 rounded-3xl md:p-5 ">
-      <MdDeliveryDining size="125px" />
+      <DeliveryTruck className="text-primaryRed" height={125} width={125} />
       <h1 className="text-3xl text-center p-2">ORDER CONFIRMED</h1>
       <p className="text-xl mt-5">Your order number is:</p>
       {orderId ? (
