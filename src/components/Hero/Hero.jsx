@@ -20,6 +20,7 @@ export const Hero = () => {
             fill
             style={{ objectFit: 'contain' }}
             alt="Curry Club Logo"
+            priority
           />
         </article>
         <div className="w-[160px] md:w-full flex flex-row items-center justify-center gap-4 flex-wrap">
