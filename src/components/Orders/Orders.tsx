@@ -60,9 +60,19 @@ export const Orders = () => {
     )
   })
 
+  const noOrders = (
+    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl bg-tertiaryGold p-8 ">
+      <ClipboardCheck className="text-primaryRed" height={125} width={125} />
+      <h1 className="bg-primaryRed text-lg rounded-3xl text-tertiaryGold p-3 m-5">
+        No orders to display
+      </h1>
+    </div>
+  )
+
   return (
     <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center  ">
-      {orderItems}
+      {orders.length === 0 ? noOrders : null}
+      {orders.length > 0 ? orderItems : null}
     </div>
   )
 }
