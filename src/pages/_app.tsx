@@ -9,7 +9,9 @@ import { SessionProvider } from 'next-auth/react'
 const store = makeStore()
 const persistor = persistStore(store)
 
-export default function App({ session, Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
+  const { session } = pageProps
+
   return (
     <SessionProvider session={session}>
       <Provider store={store}>
