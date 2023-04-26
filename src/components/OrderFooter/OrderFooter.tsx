@@ -1,4 +1,4 @@
-import { processOrder } from '@/redux/slices/cartSlice'
+import { useSession } from 'next-auth/react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { useRouter } from 'next/router'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
@@ -6,16 +6,15 @@ import { setLoginToOrderError } from '@/redux/slices/userSlice'
 export const OrderFooter = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const { order } = useAppSelector((state) => state.cart)
-  const userId = useAppSelector((state) => state.user.id)
   const { numOfOrderItems, totalPrice } = useAppSelector((state) => state.cart)
   const totalPriceWithDecimal = totalPrice.toFixed(2)
+  const { data: session } = useSession()
 
   const onOrderClick = () => {
-    if (!userId) {
+    if (!session) {
       dispatch(setLoginToOrderError())
-      router.push('/pages/login/login-page')
-      return
+      router.push('/api/auth/signin')
+      return null
     }
     router.push('/pages/confirm-order/confirm-order')
   }
