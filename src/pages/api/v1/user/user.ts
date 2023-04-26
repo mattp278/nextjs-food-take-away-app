@@ -1,7 +1,7 @@
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
-
-//THIS IS NOT A SECURE AUTHENTICATION METHOD. THIS IS FOR DEMONSTRATION PURPOSES ONLY
+import { authOptions } from '../../auth/[...nextauth]'
+import { getServerSession } from 'next-auth/next'
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,10 +11,10 @@ export default async function handler(
   try {
     switch (method) {
       case 'POST':
-        await addNewUser(req, res)
+        console.log('post route not live')
         break
       case 'GET':
-        console.log('get route not live')
+        await getAuthUser(req, res)
         break
       case 'PUT':
         console.log('put route not live')
@@ -31,41 +31,29 @@ export default async function handler(
   }
 }
 
-const addNewUser = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name, email, password, password2 } = req.body
+const getAuthUser = async (req: NextApiRequest, res: NextApiResponse) => {
+  const session = await getServerSession(req, res, authOptions)
+  const email = session?.user?.email
 
-  if (password !== password2) {
-    return res.status(400).json({
-      success: false,
-      status: 400,
-      errors: [{ msg: 'Passwords do not match' }],
-    })
+  if (!email) {
+    return res
+      .status(401)
+      .send({ success: false, status: 401, errors: [{ msg: 'Unauthorized' }] })
   }
 
-  const userExists = await prisma.user.findUnique({
-    where: { email: email },
-  })
-
-  if (userExists) {
-    return res.status(400).json({
-      success: false,
-      status: 400,
-      errors: [{ msg: 'User email already exists' }],
-    })
-  }
-
-  const newUser = await prisma.user.create({
-    data: {
-      name,
+  const user = await prisma.user.findUnique({
+    where: {
       email,
-      password,
     },
   })
 
-  return res.status(201).json({
-    success: true,
-    status: 201,
-    msg: 'New user added to database',
-    data: newUser,
-  })
+  if (!user) {
+    return res.status(404).send({
+      success: false,
+      status: 404,
+      errors: [{ msg: 'User not found' }],
+    })
+  }
+
+  res.status(200).send({ success: true, status: 200, data: user })
 }

@@ -7,6 +7,7 @@ export interface UserState {
   id: string | null
   name: string | null
   email: string | null
+  image: string | null
   errors: ApiErrorMsg[] | string[] | null
 }
 
@@ -17,15 +18,18 @@ interface signUpEmailPassword {
   password2: string
 }
 
-interface UserEmailPassword {
+interface User {
+  id: string
+  name: string
   email: string
-  password: string
+  image: string | null
 }
 
 const initialState: UserState = {
   id: null,
   name: null,
   email: null,
+  image: null,
   errors: null,
 }
 
@@ -43,6 +47,7 @@ export const signUp = createAsyncThunk(
         route: 'http://localhost:3000/api/v1/user/user',
         body: { name, email, password, password2 },
       })
+
       const { data } = res
       return data
     } catch (err: any) {
@@ -51,22 +56,18 @@ export const signUp = createAsyncThunk(
   }
 )
 
-export const getAuthUser = createAsyncThunk(
-  'userState/auth',
-  async ({ email, password }: UserEmailPassword): Promise<any> => {
-    try {
-      const res = await apiCall({
-        httpMethod: 'POST',
-        route: 'http://localhost:3000/api/v1/auth/auth',
-        body: { email, password },
-      })
-      const { data } = res
-      return data
-    } catch (err: any) {
-      throw Error(err)
-    }
+export const getAuthUser = createAsyncThunk('userState/auth', async () => {
+  try {
+    const res = await apiCall({
+      httpMethod: 'GET',
+      route: 'http://localhost:3000/api/v1/user/user',
+    })
+    const user = res.data
+    return user
+  } catch (err: any) {
+    throw Error(err)
   }
-)
+})
 
 export const userSlice = createSlice({
   name: 'user',
@@ -86,6 +87,7 @@ export const userSlice = createSlice({
         state.id = null
         state.name = null
         state.email = null
+        state.image = null
         state.errors = null
       })
       .addCase(signUp.fulfilled, (state, { payload }) => {
@@ -99,6 +101,7 @@ export const userSlice = createSlice({
         state.id = null
         state.name = null
         state.email = null
+        state.image = null
         state.errors = [error.message]
       })
 
@@ -107,13 +110,15 @@ export const userSlice = createSlice({
         state.id = null
         state.name = null
         state.email = null
+        state.image = null
         state.errors = null
       })
       .addCase(getAuthUser.fulfilled, (state, { payload }) => {
-        const { id, name, email } = payload
+        const { id, name, email, image } = payload
         state.id = id
         state.name = name
         state.email = email
+        state.image = image
         state.errors = null
       })
       .addCase(getAuthUser.rejected, (state, { error }: AnyAction) => {
@@ -121,6 +126,7 @@ export const userSlice = createSlice({
         state.id = null
         state.name = null
         state.email = null
+        state.image = null
         state.errors = [error.message]
       })
     //---------------------------------------------------------------------
@@ -128,6 +134,7 @@ export const userSlice = createSlice({
 })
 
 export const selectUsertSlice = (state: AppState) => state.user
-export const { resetUserState, setLoginToOrderError } = userSlice.actions
+export const { setAuthUser, resetUserState, setLoginToOrderError } =
+  userSlice.actions
 
 export default userSlice.reducer
