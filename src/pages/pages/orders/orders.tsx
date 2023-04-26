@@ -1,6 +1,7 @@
 import { Orders, Main, Navbar } from '@/components'
+import withAuth from '@/pages/withAuth'
 
-export default function OrdersPage() {
+function OrdersPage() {
   return (
     <>
       <Navbar />
@@ -10,3 +11,5 @@ export default function OrdersPage() {
     </>
   )
 }
+
+export default withAuth(OrdersPage)
