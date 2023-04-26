@@ -2,8 +2,9 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { NavItems } from './NavItems'
-import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getAuthUser } from '@/redux/slices/userSlice'
+import { resetOrdersState } from '@/redux/slices/ordersSlice'
 
 export const Navbar = () => {
   const dispatch = useAppDispatch()
@@ -11,6 +12,7 @@ export const Navbar = () => {
   useEffect(() => {
     const getUser = async () => {
       await dispatch(getAuthUser())
+      dispatch(resetOrdersState())
     }
     getUser()
   }, [dispatch])

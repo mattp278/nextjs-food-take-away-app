@@ -20,12 +20,11 @@ const initialState: OrdersState = {
 
 export const getUserOrders = createAsyncThunk(
   'orderState/orders',
-  async ({ userId }: UserId): Promise<any> => {
+  async (userId: UserId): Promise<any> => {
     try {
       const res = await apiCall({
         httpMethod: 'GET',
-        route: 'http://localhost:3000/api/v1/order/order',
-        body: { userId },
+        route: `http://localhost:3000/api/v1/order/user/${userId}`,
       })
       const { data } = res
       return data

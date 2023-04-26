@@ -53,6 +53,14 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse) => {
 const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
   const { userId } = req.body
 
+  if (!userId) {
+    return res.status(400).json({
+      success: false,
+      status: 400,
+      errors: [{ msg: 'No user id provided' }],
+    })
+  }
+
   const userOrders = await prisma.order.findMany({
     where: {
       userId,
