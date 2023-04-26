@@ -134,7 +134,6 @@ export const userSlice = createSlice({
 })
 
 export const selectUsertSlice = (state: AppState) => state.user
-export const { setAuthUser, resetUserState, setLoginToOrderError } =
-  userSlice.actions
+export const { resetUserState, setLoginToOrderError } = userSlice.actions
 
 export default userSlice.reducer
