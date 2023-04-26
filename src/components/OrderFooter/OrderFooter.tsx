@@ -13,8 +13,9 @@ export const OrderFooter = () => {
   const onOrderClick = () => {
     if (!session) {
       dispatch(setLoginToOrderError())
-      router.push('/api/auth/signin')
-      return null
+      const callbackUrl = encodeURIComponent(router.asPath)
+      router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
+      return
     }
     router.push('/pages/confirm-order/confirm-order')
   }

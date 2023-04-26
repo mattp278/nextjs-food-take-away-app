@@ -1,6 +1,7 @@
 import { Main, Navbar, ConfirmOrder } from '@/components'
+import withAuth from '../../withAuth'
 
-export default function ConfrimOrderPage() {
+function ConfrimOrderPage() {
   return (
     <>
       <title>Curry Club</title>
@@ -11,3 +12,5 @@ export default function ConfrimOrderPage() {
     </>
   )
 }
+
+export default withAuth(ConfrimOrderPage)
