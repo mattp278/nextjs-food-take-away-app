@@ -2,11 +2,11 @@ import { foodItemSeeds } from './../../../../../prisma/seed/foodItemSeeds'
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Prisma } from '@prisma/client'
+import authMiddleware from '../../auth/auth-middleware'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default authMiddleware(handler)
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req
   try {
     if (method === 'GET') {
@@ -21,7 +21,7 @@ export default async function handler(
 }
 
 const getFoodItemById = async (req: NextApiRequest, res: NextApiResponse) => {
-  const foodId = req.query.foodId[0]
+  let foodId = req.query.foodId[0]
 
   if (!foodId)
     return res.status(400).json({

@@ -1,11 +1,11 @@
 import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { FoodCategory } from '@prisma/client'
+import authMiddleware from '../../auth/auth-middleware'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default authMiddleware(handler)
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req
   try {
     switch (method) {
