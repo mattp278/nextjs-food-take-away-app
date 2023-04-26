@@ -17,7 +17,7 @@ export default function SignIn({
         type="button"
         onClick={() => signIn(provider.id)}
         text={`Sign in with ${provider.name}`}
-        optionalClassNames="w-[200px] min-w-[150px] rounded-lg mx-2"
+        optionalClassNames="w-[200px] min-w-[150px] rounded-lg m-2"
       />
     </div>
   ))
