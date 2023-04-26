@@ -5,6 +5,7 @@ import { NavItems } from './NavItems'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getAuthUser } from '@/redux/slices/userSlice'
 import { resetOrdersState } from '@/redux/slices/ordersSlice'
+import { resetCartState } from '@/redux/slices/cartSlice'
 
 export const Navbar = () => {
   const dispatch = useAppDispatch()
@@ -13,6 +14,7 @@ export const Navbar = () => {
     const getUser = async () => {
       await dispatch(getAuthUser())
       dispatch(resetOrdersState())
+      dispatch(resetCartState())
     }
     getUser()
   }, [dispatch])
