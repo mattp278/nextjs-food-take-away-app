@@ -25,7 +25,7 @@ export const Hero = () => {
         </article>
         <div className="w-[160px] md:w-full flex flex-row items-center justify-center gap-4 flex-wrap">
           <LinkButton
-            href="/pages/login/login-page"
+            href="/api/auth/signin"
             text="Login"
             type="button"
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
