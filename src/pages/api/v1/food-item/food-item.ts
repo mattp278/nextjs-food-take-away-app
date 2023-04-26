@@ -92,8 +92,7 @@ const updateFoodItemWithId = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const { id, name, image, category } = req.body
-  const price = Math.round(req.body.price * 100) / 100
+  const { id, name, image, category, price } = req.body
 
   const foodItemToUpdate = await prisma.foodItem.findUnique({
     where: { id: id },
