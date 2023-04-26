@@ -30,6 +30,6 @@ export const navItemsList: NavItem[] = [
     id: 4,
     name: 'LogOut',
     icon: LogOut,
-    link: '/pages/login/logout-page',
+    link: '/api/auth/signout',
   },
 ]
