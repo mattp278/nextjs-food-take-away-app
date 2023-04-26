@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { CartItem } from './CartItem'
 import { Cart } from 'iconoir-react'
@@ -12,6 +13,7 @@ export const ConfirmOrder = () => {
   const cartItems = useAppSelector((state) => state.cart.order)
   const userId = useAppSelector((state) => state.user.id)
   const router = useRouter()
+  const { data: session } = useSession()
 
   const items = cartItems?.map((item: TSCartMenuItem) => {
     const { id, image, name, category, price, quantity } = item
@@ -28,13 +30,14 @@ export const ConfirmOrder = () => {
     )
   })
 
-  const onConfirmOrder = () => {
-    if (!userId) {
+  const onConfirmOrder = async () => {
+    if (!session) {
       dispatch(setLoginToOrderError())
-      router.push('/pages/login/login-page')
+      const callbackUrl = encodeURIComponent(router.asPath)
+      router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
       return
     }
-    dispatch(processOrder({ userId, foodItems: cartItems }))
+    await dispatch(processOrder({ userId, foodItems: cartItems }))
     router.push('/pages/confirm-order/order-complete')
   }
 
