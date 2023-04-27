@@ -30,7 +30,6 @@ export const processOrder = createAsyncThunk(
   'cartState/processOrder',
   async ({ userId, foodItems }: orderDetails): Promise<any> => {
     try {
-      console.log('foodItems', foodItems)
       const res = await apiCall({
         httpMethod: 'POST',
         route: 'http://localhost:3000/api/v1/order/process-order',
