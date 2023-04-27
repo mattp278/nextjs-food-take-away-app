@@ -2,7 +2,7 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from 'next'
-import { useState } from 'react'
+import { useRef } from 'react'
 import { getProviders, signIn } from 'next-auth/react'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../api/auth/[...nextauth]'
@@ -12,14 +12,16 @@ import { SmallShopAlt } from 'iconoir-react'
 export default function SignIn({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [email, setEmail] = useState('')
+  const emailRef = useRef<HTMLInputElement>(null)
 
   const handleEmailSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    await signIn('email', {
-      email,
-      callbackUrl: '/pages/food-menu/food-menu',
-    })
+    if (emailRef.current) {
+      await signIn('email', {
+        email: emailRef.current.value,
+        callbackUrl: '/pages/food-menu/food-menu',
+      })
+    }
   }
 
   const emailProvider = Object.values(providers).map((provider) => {
@@ -32,8 +34,7 @@ export default function SignIn({
           >
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              ref={emailRef}
               placeholder="Email address"
               className="w-full p-2 rounded border"
             />
