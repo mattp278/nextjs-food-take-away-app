@@ -8,8 +8,8 @@ import { prisma } from '../../../../prisma/db/client'
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
   pages: {
-    signIn: '/auth/signin',
-    signOut: '/auth/signout',
+    signIn: '/pages/auth/signin',
+    signOut: '/pages/auth/signout',
   },
   providers: [
     EmailProvider({

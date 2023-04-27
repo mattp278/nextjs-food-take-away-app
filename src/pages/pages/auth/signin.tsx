@@ -5,7 +5,7 @@ import type {
 import { useState } from 'react'
 import { getProviders, signIn } from 'next-auth/react'
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../api/auth/[...nextauth]'
+import { authOptions } from '../../api/auth/[...nextauth]'
 import { Main, Navbar, Button } from '@/components'
 import { SmallShopAlt } from 'iconoir-react'
 
