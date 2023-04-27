@@ -1,8 +1,9 @@
 import { apiCall } from '@/utils/apiUtil'
 import Image from 'next/image'
 import { Main, FoodPageItem, Navbar } from '@/components'
+import { GetStaticPropsContext } from 'next'
 
-export default function FoodItemPage({ foodItem }) {
+export default function FoodItemPage({ foodItem }: any) {
   return (
     <>
       <title>Curry Club</title>
@@ -18,15 +19,15 @@ export async function getStaticPaths() {
     route: 'http://localhost:3000/api/v1/food-item/food-item',
   })
 
-  const paths = foodItemRequest.data.map((foodItem) => {
+  const paths = foodItemRequest.data.map((foodItem: any) => {
     return { params: { foodId: [foodItem.id.toString()] } }
   })
 
   return { paths, fallback: 'blocking' }
 }
 
-export async function getStaticProps(context) {
-  const foodId = context.params.foodId
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const foodId = context?.params?.foodId
   const foodItemRequest = await apiCall({
     httpMethod: 'GET',
     route: `http://localhost:3000/api/v1/food-item/${foodId}`,
