@@ -37,5 +37,6 @@ next-env.d.ts
 
 _todo.txt
 
-/_trash/
-/analyze/
+/_trash
+/_trash/images
+/analyze
