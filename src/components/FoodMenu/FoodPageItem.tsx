@@ -1,8 +1,13 @@
 import Image from 'next/image'
 import { LinkButton } from '@/components'
+import { TSFoodMenuItem } from '@/ts/interfaces'
 
-export const FoodPageItem = ({ foodItem }: any) => {
-  const { name, image, price } = foodItem
+interface TSFoodItemResponse {
+  foodItem: TSFoodMenuItem
+}
+
+export const FoodPageItem = (foodItem: TSFoodItemResponse) => {
+  const { name, image, price } = foodItem.foodItem
 
   return (
     <article className="w-11/12 min-w-[250px] max-w-[40rem] m-4">
