@@ -31,12 +31,6 @@ export const Hero = () => {
             optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
           />
           <LinkButton
-            href="/pages/signup/signup-page"
-            text="Sign Up"
-            type="button"
-            optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
-          />
-          <LinkButton
             href="/pages/food-menu/food-menu"
             text="Food Menu"
             type="button"
