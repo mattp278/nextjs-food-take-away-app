@@ -10,6 +10,7 @@ export const authOptions = {
   pages: {
     signIn: '/pages/auth/signin',
     signOut: '/pages/auth/signout',
+    error: '/auth/error',
   },
   providers: [
     EmailProvider({
