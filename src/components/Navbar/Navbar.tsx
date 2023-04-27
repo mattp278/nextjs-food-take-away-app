@@ -14,7 +14,6 @@ export const Navbar = () => {
     const getUser = async () => {
       await dispatch(getAuthUser())
       dispatch(resetOrdersState())
-      dispatch(resetCartState())
     }
     getUser()
   }, [dispatch])

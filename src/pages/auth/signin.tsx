@@ -11,6 +11,7 @@ import { SmallShopAlt } from 'iconoir-react'
 export default function SignIn({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  //
   const providersElements = Object.values(providers).map((provider) => (
     <div key={provider.name}>
       <Button

@@ -1,4 +1,4 @@
-import { prisma } from '../../../../../../prisma/db/client'
+import { prisma } from '../../../../../prisma/db/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 import authMiddleware from '@/pages/api/auth/auth-middleware'
 
