@@ -1,8 +1,23 @@
 import { signOut } from 'next-auth/react'
 import { Main, Navbar, Button } from '@/components'
 import { LogOut } from 'iconoir-react'
+import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { resetAllState } from '@/redux/store/store'
+import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
-export default function SignIn({}) {
+export default function SignOut({}) {
+  const dispatch = useAppDispatch()
+  const router = useRouter()
+  const { data: session } = useSession()
+  console.log('session', session)
+
+  const onSignOutClick = async () => {
+    signOut()
+    dispatch(resetAllState())
+    router.replace('/')
+  }
+
   return (
     <>
       <Navbar />
@@ -13,7 +28,7 @@ export default function SignIn({}) {
           <div className="">
             <Button
               type="button"
-              onClick={() => signOut()}
+              onClick={onSignOutClick}
               text={'Sign Out'}
               optionalClassNames="w-[200px] min-w-[150px] rounded-lg m-2"
             />
