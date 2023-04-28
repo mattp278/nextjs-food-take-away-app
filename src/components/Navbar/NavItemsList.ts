@@ -1,4 +1,4 @@
-import { Clutery, LogOut, List, Cart } from 'iconoir-react'
+import { Clutery, LogOut, List, Cart, Phone } from 'iconoir-react'
 
 interface NavItem {
   id: number
@@ -28,8 +28,14 @@ export const navItemsList: NavItem[] = [
   },
   {
     id: 4,
-    name: 'LogOut',
+    name: 'Sign Out',
     icon: LogOut,
+    link: '/api/auth/signout',
+  },
+  {
+    id: 5,
+    name: '020 8888 8888',
+    icon: Phone,
     link: '/api/auth/signout',
   },
 ]

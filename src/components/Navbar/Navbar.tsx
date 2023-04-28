@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { NavItems } from './NavItems'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
 import { getAuthUser } from '@/redux/slices/userSlice'
+import { Phone, Menu } from 'iconoir-react'
 
 export const Navbar = () => {
   const dispatch = useAppDispatch()
@@ -16,18 +17,34 @@ export const Navbar = () => {
   }, [dispatch])
 
   return (
-    <nav className="fixed top-0 w-screen min-w-[280px] h-[5rem] text-lg flex flex-col md:flex-row items-center justify-center bg-primaryRed text-whiteFloral z-50">
-      <Link href="/">
-        <div className="relative w-[14rem] md:w-[16rem] min-h-[2.2rem] md:min-h-[5rem] md:left-6">
+    <nav className="fixed top-0 w-screen min-h-[3rem] md:min-h-[4rem] min-w-[280px] flex flex-row justify-between items-center bg-primaryRed text-whiteFloral z-50">
+      <Menu
+        className="fill-floralWhite ml-4 md:mx-8 lg:hidden"
+        height={25}
+        width={25}
+      />
+
+      <div className="relative min-w-[10rem] min-h-[2.5rem] md:min-w-[14rem] md:min-h-[3rem] lg:ml-6 ">
+        <Link href="/">
           <Image
-            src="/curry_club_gold_sm.png"
+            src="/curry_club_white_sm.png"
             fill
             style={{ objectFit: 'contain' }}
             alt="Indian Platter"
           />
+        </Link>
+      </div>
+
+      <div className="flex items-end mr-4 md:mx-8 gap-2">
+        <div className="relative hidden lg:block ">
+          <NavItems />
         </div>
-      </Link>
-      <NavItems />
+        <Phone
+          className="fill-floralWhite block lg:hidden"
+          height={25}
+          width={25}
+        />
+      </div>
     </nav>
   )
 }

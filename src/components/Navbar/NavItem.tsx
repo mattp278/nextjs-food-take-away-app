@@ -5,20 +5,22 @@ import { IconoirProvider } from 'iconoir-react'
 interface NavItemProps {
   icon: any
   link: string
+  name: string
 }
 
-export const NavItem = ({ icon, link }: NavItemProps) => {
+export const NavItem = ({ icon, link, name }: NavItemProps) => {
   return (
     <IconoirProvider
       iconProps={{
-        color: '#c9b064',
+        color: '#ffffff',
         strokeWidth: 2,
-        width: '1.8em',
-        height: '1.8em',
+        width: '1.2em',
+        height: '1.2em',
       }}
     >
-      <Link href={link}>
+      <Link href={link} className="flex items-center gap-2">
         <div className="">{createElement(icon)}</div>
+        <p className="w-full whitespace-nowrap">{name}</p>
       </Link>
     </IconoirProvider>
   )
