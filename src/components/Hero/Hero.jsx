@@ -3,38 +3,36 @@ import { LinkButton } from '@/components'
 
 export const Hero = () => {
   return (
-    <main className="relative w-screen h-[100px] min-h-screen min-w-[280px]">
-      <div className="absolute w-full h-full z-0 ">
+    <main className="relative w-screen h-screen max-h-[800px] min-w-[280px] top-[3rem] md:top-[4rem] ">
+      <div className="absolute w-screen h-full z-0 ">
         <Image
-          src="/curry_platter_bg.jpg"
+          src="/curry_rice_bg.jpg"
           fill
           style={{ objectFit: 'cover' }}
-          alt="Indian Platter"
-          quality={30}
+          alt="Curry and Rice on a table"
+          quality={80}
         />
       </div>
-      <section className="relative flex min-h-screen flex-col items-center justify-center">
-        <article className="relative flex justify-center h-1/6 w-5/6 md:w-4/6 lg:w-1/2 min-w-[280px] min-h-[100px] md:min-h-[150px] rounded-3xl bg-primaryRed p-12 m-4">
-          <Image
-            src="/curry_club_gold.png"
-            fill
-            style={{ objectFit: 'contain' }}
-            alt="Curry Club Logo"
-            priority
-          />
-        </article>
-        <div className="w-[160px] md:w-full flex flex-row items-center justify-center gap-4 flex-wrap">
-          <LinkButton
-            href="/api/auth/signin"
-            text="Login"
-            type="button"
-            optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
-          />
+      <section className="relative h-full lg:w-1/2 flex flex-col items-start justify-center md:ml-10">
+        <div className="w-5/6 m-10 text-center lg:text-left">
+          <h1 className="text-xl md:text-3xl font-bold text-whiteFloral mb-5 ">
+            London&apos;s Luxurious Curry Club
+          </h1>
+          <p className="font-semibold text-whiteFloral mb-5">
+            Indulge in authentic, exquisite flavours at our luxurious Curry Club
+            takeaway in London. Our expert chefs use only the freshest
+            ingredients and traditional cooking methods to create a menu of
+            classic and adventurous dishes that will transport you straight to
+            India. Place your order now and experience the ultimate luxury
+            takeaway.
+          </p>
+        </div>
+        <div className="w-5/6 m-10 text-center lg:text-left">
           <LinkButton
             href="/pages/food-menu/food-menu"
-            text="Food Menu"
+            text="View Food Menu"
             type="button"
-            optionalClassNames="w-[150px] min-w-[150px] rounded-lg mx-2"
+            optionalClassNames="font-bold rounded-lg p-4"
           />
         </div>
       </section>

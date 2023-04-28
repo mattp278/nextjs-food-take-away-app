@@ -22,7 +22,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/utils/svgTextReplace.js"
+    "src/utils/svgTextReplace.js",
+    "src/components/Hero/Hero.jsx"
   ],
   "exclude": ["node_modules"]
 }
