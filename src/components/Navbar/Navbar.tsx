@@ -17,7 +17,7 @@ export const Navbar = () => {
   }, [dispatch])
 
   return (
-    <nav className="fixed top-0 w-screen min-w-[280px] flex flex-row justify-between items-center bg-primaryPink text-secondaryWhite z-50">
+    <nav className="fixed top-0 w-screen min-w-[280px] h-[3rem] md:h-[4rem] flex flex-row justify-between items-center bg-primaryPink text-secondaryWhite z-50">
       <Menu
         className="fill-floralWhite ml-4 md:mx-8 lg:hidden"
         height={25}
