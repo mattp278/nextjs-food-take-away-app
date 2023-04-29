@@ -20,7 +20,7 @@ export const NavItem = ({ icon, link, name }: NavItemProps) => {
     >
       <Link href={link} className="flex items-center gap-2">
         <div className="">{createElement(icon)}</div>
-        <p className="w-full whitespace-nowrap">{name}</p>
+        <p className="w-full text-lg whitespace-nowrap">{name}</p>
       </Link>
     </IconoirProvider>
   )
