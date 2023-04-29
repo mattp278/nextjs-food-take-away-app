@@ -19,12 +19,12 @@ export const FoodSection = ({ category, foodItems }: TSFoodByCategory) => {
   //----------------------------------------------------------------------------------
 
   return (
-    <div className="w-screen flex items-center justify-center flex-col flex-wrap gap-5">
-      <h2 className="text-2xl w-[15rem] capitalize text-center bg-primaryPink text-secondaryWhite p-3 m-3">
+    <div className="relative w-full md:w-11/12 flex items-center justify-center flex-col flex-wrap mb-10 ">
+      <h2 className="text-2xl w-full capitalize font-bold text-tertiaryBlack pl-3">
         {category}
       </h2>
 
-      <div className="w-screen flex items-center justify-center flex-row flex-wrap gap-5">
+      <div className="w-full flex items-center justify-center flex-row flex-wrap ">
         {foodItemsByCategory}
       </div>
     </div>

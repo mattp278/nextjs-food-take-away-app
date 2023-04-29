@@ -20,7 +20,7 @@ export const Gallery = () => {
           href="/pages/food-menu/food-menu"
           text="Order Now"
           type="button"
-          optionalClassNames="text-xl rounded-lg"
+          optionalClassNames="text-xl rounded-lg p-3"
         />
       </div>
     </section>

@@ -13,7 +13,7 @@ export const LinkButton = ({
   type,
   optionalClassNames,
 }: buttonProps) => {
-  const buttonClassNames = `bg-primaryPink p-3 text-secondaryWhite ${optionalClassNames}`
+  const buttonClassNames = `bg-primaryPink text-secondaryWhite ${optionalClassNames}`
 
   return (
     <Link href={href}>

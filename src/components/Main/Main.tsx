@@ -3,13 +3,16 @@ import { ReactNode } from 'react'
 
 interface HomePageProps {
   children: ReactNode
+  bgColorProp?: string
 }
 
-export const Main = ({ children }: HomePageProps) => {
+export const Main = ({ children, bgColorProp }: HomePageProps) => {
+  const backgroundColour = bgColorProp ? bgColorProp : 'bg-tertiaryBlack'
+
   return (
     <main className="relative w-screen min-w-[280px] top-[3rem] md:top-[4rem]">
-      <div className="absolute w-full h-full -z-10 bg-tertiaryBlack "></div>
-      <section className="relative flex w-full min-h-screen flex-col items-center justify-start py-6 md:py-8">
+      <div className={`absolute w-full h-full -z-10 ${backgroundColour}`}></div>
+      <section className="relative flex w-full min-h-screen flex-col items-center justify-start">
         {children}
       </section>
     </main>
