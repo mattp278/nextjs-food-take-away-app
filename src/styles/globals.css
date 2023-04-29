@@ -9,11 +9,9 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --primaryPink: #b4260b;
-  --secondaryOrange: #de8c21;
-  --secondaryWhite: #c9b064;
+  --primaryPink: #d70567;
   --secondaryWhite: #f9f6ee;
-  --quaternaryBrown: #c79467;
+  --tertiaryBlack: #1f160f;
 }
 
 * {

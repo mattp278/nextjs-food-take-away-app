@@ -77,7 +77,7 @@ export const FoodMenuItem = ({
       <div className="flex items-center justify-between min-h-[3rem] bg-primaryPink">
         <p className="text-white  m-2">{name}</p>
         <p
-          className="text-white h-[3rem] w-[6rem] flex items-center text-center text-sm bg-quinaryOrange p-2"
+          className="text-white h-[3rem] w-[6rem] flex items-center text-center text-sm bg-tertiaryBlack p-2"
           onClick={handleAddtoCart}
         >
           Add for £{(quantity * price).toFixed(2)}

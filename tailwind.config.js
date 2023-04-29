@@ -14,11 +14,6 @@ module.exports = {
         primaryPink: '#d70567',
         secondaryWhite: '#f9f6ee',
         tertiaryBlack: '#1F160F',
-        //----------------------------
-        secondaryYellow: '#FFFCC8',
-        secondaryWhite: '#ffffff',
-        quaternaryBrown: '#c79467',
-        quinaryOrange: '#222222',
       },
       screens: {
         sm: '0px',
