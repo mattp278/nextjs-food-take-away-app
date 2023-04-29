@@ -16,7 +16,7 @@ export const SignUp = () => {
     return (
       <p
         key={i}
-        className="bg-primaryRed text-whiteFloral text-center p-2 mt-4"
+        className="bg-primaryPink text-secondaryWhite text-center p-2 mt-4"
       >
         {error}
       </p>
@@ -52,7 +52,7 @@ export const SignUp = () => {
 
   return (
     <section className=" relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-tertiaryGold">
-      <SmallShopAlt className="text-primaryRed" height={125} width={125} />
+      <SmallShopAlt className="text-primaryPink" height={125} width={125} />
       <h1 className="text-3xl">SIGN UP</h1>
       {errorMessages ? errorMessages : null}
       <form

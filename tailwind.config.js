@@ -11,12 +11,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryRed: '#EF0673',
+        primaryPink: '#d70567',
         secondaryYellow: '#FFFCC8',
         tertiaryGold: '#ffffff',
         quaternaryBrown: '#c79467',
         quinaryOrange: '#222222',
-        whiteFloral: '#f9f6ee',
+        secondaryWhite: '#f9f6ee',
         bgBlack: '#1F160F',
       },
       screens: {

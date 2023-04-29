@@ -21,14 +21,14 @@ export const OrderFooter = () => {
   }
 
   const orderItems = (
-    <div className="fixed w-full bottom-0 flex flex-row justify-between items-center gap-2 bg-tertiaryGold text-whiteFloral px-3 py-2 z-50">
-      <p className="bg-primaryRed w-[2rem] text-center md:mx-4">
+    <div className="fixed w-full bottom-0 flex flex-row justify-between items-center gap-2 bg-tertiaryGold text-secondaryWhite px-3 py-2 z-50">
+      <p className="bg-primaryPink w-[2rem] text-center md:mx-4">
         {numOfOrderItems}
       </p>
-      <p onClick={onOrderClick} className="bg-primaryRed p-2">
+      <p onClick={onOrderClick} className="bg-primaryPink p-2">
         Checkout
       </p>
-      <p className="bg-primaryRed p-2 md:mx-4">£{totalPriceWithDecimal}</p>
+      <p className="bg-primaryPink p-2 md:mx-4">£{totalPriceWithDecimal}</p>
     </div>
   )
 

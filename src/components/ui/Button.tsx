@@ -11,7 +11,7 @@ export const Button = ({
   optionalClassNames,
   onClick,
 }: buttonProps) => {
-  const buttonClassNames = `bg-primaryRed p-3 text-whiteFloral ${optionalClassNames}`
+  const buttonClassNames = `bg-primaryPink p-3 text-secondaryWhite ${optionalClassNames}`
 
   return (
     <button type={type} className={buttonClassNames} onClick={onClick}>

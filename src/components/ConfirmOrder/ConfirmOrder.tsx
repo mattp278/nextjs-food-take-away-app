@@ -44,11 +44,11 @@ export const ConfirmOrder = () => {
   return (
     <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:p-8 bg-tertiaryGold">
       <div className="flex justify-center items-center flex-col p-4">
-        <Cart className="text-primaryRed" height={125} width={125} />
+        <Cart className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl p-2">CHECKOUT</h1>
       </div>
       <div className="w-full">
-        <div className="flex flex-row justify-between items-center bg-primaryRed my-1">
+        <div className="flex flex-row justify-between items-center bg-primaryPink my-1">
           <div className="relative w-3/12 object-cover"></div>
           <p className="text-white w-5/12 m-1 pl-2 ">Item</p>
           <p className="text-white w-2/12 m-1">Qty</p>

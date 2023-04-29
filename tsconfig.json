@@ -23,7 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/utils/svgTextReplace.js",
-    "src/components/Hero/Hero.jsx"
+    "src/components/Hero/Hero.tsx"
   ],
   "exclude": ["node_modules"]
 }

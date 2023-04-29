@@ -41,13 +41,13 @@ export const Orders = () => {
         key={orderId}
         className="w-full flex justify-center items-center flex-col rounded-3xl bg-tertiaryGold p-4  m-3"
       >
-        <ClipboardCheck className="text-primaryRed" height={125} width={125} />
+        <ClipboardCheck className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl pt-2">ORDER ID</h1>
         <h1 className="text-lg pb-2">{orderId}</h1>
         <h2 className="text-lg pb-2">{date}</h2>
 
         <div className="w-full">
-          <div className="flex flex-row justify-between items-center bg-primaryRed my-1">
+          <div className="flex flex-row justify-between items-center bg-primaryPink my-1">
             <div className="relative w-3/12 object-cover"></div>
             <p className="text-white w-5/12 m-1 pl-2 ">Name</p>
             <p className="text-white w-2/12 m-1">Qty</p>
@@ -62,8 +62,8 @@ export const Orders = () => {
 
   const noOrders = (
     <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl bg-tertiaryGold p-8 ">
-      <ClipboardCheck className="text-primaryRed" height={125} width={125} />
-      <h1 className="bg-primaryRed text-lg rounded-3xl text-tertiaryGold p-3 m-5">
+      <ClipboardCheck className="text-primaryPink" height={125} width={125} />
+      <h1 className="bg-primaryPink text-lg rounded-3xl text-tertiaryGold p-3 m-5">
         No orders to display
       </h1>
     </div>

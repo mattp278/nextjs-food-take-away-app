@@ -38,7 +38,7 @@ export const Input = ({
         onBlur={onBlur}
       />
       {error ? (
-        <p className="text-primaryRed  text-sm text-center">{error}</p>
+        <p className="text-primaryPink  text-sm text-center">{error}</p>
       ) : null}
     </div>
   )
