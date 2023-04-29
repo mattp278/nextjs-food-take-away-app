@@ -13,7 +13,7 @@ export const Hero = () => {
           quality={80}
         />
       </div>
-      <section className="relative min-h-[550px] md:min-h[650px] lg:min-h-[800px] h-screen lg:w-1/2 flex flex-col items-center lg:items-start justify-center lg:ml-16">
+      <article className="relative min-h-[550px] md:min-h[650px] lg:min-h-[800px] h-screen lg:w-1/2 flex flex-col items-center lg:items-start justify-center lg:ml-16">
         <div className="w-5/6 text-center lg:text-left ">
           <h1 className="text-3xl md:text-4xl font-black text-secondaryWhite mb-3 md:mb-5 ">
             London&apos;s Luxurious Curry Club
@@ -33,7 +33,7 @@ export const Hero = () => {
           type="button"
           optionalClassNames="text-xl rounded-lg p-4 mt-10"
         />
-      </section>
+      </article>
     </section>
   )
 }
