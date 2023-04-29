@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import { Hero, Navbar, HomeSlider } from '@/components'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Hero, Navbar, Gallery } from '@/components'
 
 export default function Home() {
   return (
@@ -16,7 +13,7 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-      <HomeSlider />
+      <Gallery />
     </>
   )
 }
