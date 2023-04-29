@@ -1,7 +1,7 @@
 export const galleryItems = [
   {
     id: 1,
-    image: '/foodImages/tikka.jpg',
+    image: '/motorbike_delivery.jpg',
     alt: 'Fast Delivery Service',
     title: 'Fast Delivery Service',
     text: 'Get your curry cravings satisfied in no time with our fast and reliable delivery service straight to your doorstep in London.',
@@ -15,7 +15,7 @@ export const galleryItems = [
   },
   {
     id: 3,
-    image: '/foodImages/tikka.jpg',
+    image: '/click_collect.jpg',
     alt: 'Click and Collect',
     title: 'Click and Collect',
     text: 'Enjoy the convenience of our Click and Collect service and savor our delicious curry takeaways at your own pace.',

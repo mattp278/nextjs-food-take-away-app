@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import { galleryItems } from './galleryItems'
 import { GalleryItem } from './GalleryItem'
+import { LinkButton } from '@/components'
 
 export const Gallery = () => {
   const galleryItemElements = galleryItems.map((item) => {
@@ -11,11 +11,18 @@ export const Gallery = () => {
   })
 
   return (
-    <section className="relative w-screen min-w-[280px] min-h-[400px]">
-      <div className="w-screen flex flex-row items-center justify-center flex-wrap gap-10 bg-tertiaryBlack py-20 px-4">
+    <section className="relative w-screen min-w-[280px] min-h-[400px] bg-tertiaryBlack ">
+      <div className="w-screen flex flex-row items-center justify-center flex-wrap gap-20 pt-20 pb-5 px-4">
         {galleryItemElements}
+      </div>
+      <div className="w-screen flex items-center justify-center pb-20">
+        <LinkButton
+          href="/pages/food-menu/food-menu"
+          text="Order Now"
+          type="button"
+          optionalClassNames="text-xl rounded-lg"
+        />
       </div>
     </section>
   )
 }
-;``
