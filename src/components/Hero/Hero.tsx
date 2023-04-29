@@ -32,7 +32,7 @@ export const Hero = () => {
             href="/pages/food-menu/food-menu"
             text="View Food Menu"
             type="button"
-            optionalClassNames="font-bold rounded-lg p-4"
+            optionalClassNames="text-xl rounded-lg p-4"
           />
         </div>
       </section>
