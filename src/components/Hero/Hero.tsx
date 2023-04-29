@@ -15,10 +15,10 @@ export const Hero = () => {
       </div>
       <section className="relative h-full lg:w-1/2 flex flex-col items-start justify-center md:ml-10">
         <div className="w-5/6 m-10 text-center lg:text-left">
-          <h1 className="text-xl md:text-3xl font-bold text-whiteFloral mb-5 ">
+          <h1 className="text-xl md:text-4xl font-black text-whiteFloral mb-5 ">
             London&apos;s Luxurious Curry Club
           </h1>
-          <p className="font-semibold text-whiteFloral mb-5">
+          <p className="text-xl text-whiteFloral mb-5">
             Indulge in authentic, exquisite flavours at our luxurious Curry Club
             takeaway in London. Our expert chefs use only the freshest
             ingredients and traditional cooking methods to create a menu of
