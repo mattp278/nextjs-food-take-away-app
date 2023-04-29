@@ -22,7 +22,7 @@ export default function SignOut({}) {
     <>
       <Navbar />
       <Main>
-        <section className=" relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-tertiaryGold">
+        <section className=" relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-secondaryWhite">
           <LogOut className="text-primaryPink" height={125} width={125} />
           <h1 className="text-3xl pb-5">SIGN OUT</h1>
           <div className="">

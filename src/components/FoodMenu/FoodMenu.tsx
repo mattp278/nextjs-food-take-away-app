@@ -18,7 +18,7 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
 
   return (
     <section className="flex items-center justify-center flex-col min-w-[320px] mb-10">
-      <h1 className="text-3xl w-[15rem] bg-primaryPink text-tertiaryGold text-center p-3 m-3">
+      <h1 className="text-3xl w-[15rem] bg-primaryPink text-secondaryWhite text-center p-3 m-3">
         Menu
       </h1>
       {foodCatergory}

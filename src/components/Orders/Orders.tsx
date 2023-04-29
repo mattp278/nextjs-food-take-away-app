@@ -39,7 +39,7 @@ export const Orders = () => {
     return (
       <article
         key={orderId}
-        className="w-full flex justify-center items-center flex-col rounded-3xl bg-tertiaryGold p-4  m-3"
+        className="w-full flex justify-center items-center flex-col rounded-3xl bg-secondaryWhite p-4  m-3"
       >
         <ClipboardCheck className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl pt-2">ORDER ID</h1>
@@ -61,9 +61,9 @@ export const Orders = () => {
   })
 
   const noOrders = (
-    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl bg-tertiaryGold p-8 ">
+    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl bg-secondaryWhite p-8 ">
       <ClipboardCheck className="text-primaryPink" height={125} width={125} />
-      <h1 className="bg-primaryPink text-lg rounded-3xl text-tertiaryGold p-3 m-5">
+      <h1 className="bg-primaryPink text-lg rounded-3xl text-secondaryWhite p-3 m-5">
         No orders to display
       </h1>
     </div>
