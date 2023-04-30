@@ -12,7 +12,7 @@ module.exports = {
         primaryPink: '#d70567',
         secondaryWhite: '#ffffff',
         tertiaryBlack: ' #0e1207',
-        quaternaryGrey: '#F2F2F2',
+        quaternaryGrey: '#cfd7d7',
       },
       screens: {
         sm: '0px',
