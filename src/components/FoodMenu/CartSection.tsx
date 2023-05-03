@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
-import { CartItem } from './CartItem'
+import { CartItem } from '../ConfirmOrder/CartItem'
 import { Cart } from 'iconoir-react'
 import { Button } from '@/components'
 import { processOrder } from '@/redux/slices/cartSlice'
@@ -8,7 +8,7 @@ import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
 
-export const ConfirmOrder = () => {
+export const CartSection = () => {
   const dispatch = useAppDispatch()
   const cartItems = useAppSelector((state) => state.cart.order)
   const userId = useAppSelector((state) => state.user.id)
@@ -16,8 +16,8 @@ export const ConfirmOrder = () => {
   const { data: session } = useSession()
 
   const items = cartItems?.map((item: TSCartMenuItem) => {
-    const { id, image, name, category, price, quantity, itemTotal } = item
-
+    const { id, image, name, category, price, quantity } = item
+    const itemTotal = item.itemTotal
     return (
       <CartItem
         key={id}
@@ -27,6 +27,7 @@ export const ConfirmOrder = () => {
         category={category}
         price={price}
         quantity={quantity}
+        itemTotal={itemTotal}
       />
     )
   })
@@ -43,9 +44,9 @@ export const ConfirmOrder = () => {
   }
 
   return (
-    <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:p-8 bg-quaternaryGrey">
+    <section className="relative w-full text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:px-8 bg-quaternaryGrey">
       <div className="flex justify-center items-center flex-col p-4">
-        <Cart className="text-primaryPink" height={125} width={125} />
+        <Cart className="text-primaryPink" height={75} width={75} />
         <h1 className="text-3xl p-2">CHECKOUT</h1>
       </div>
       <div className="w-full">
@@ -56,7 +57,8 @@ export const ConfirmOrder = () => {
           <p className="text-white w-2/12 m-1">Price</p>
         </div>
       </div>
-      {items}
+      <div className="overflow-y-auto w-full max-h-[15rem]"> {items}</div>
+
       <Button
         type="button"
         text="CONFIRM ORDER"

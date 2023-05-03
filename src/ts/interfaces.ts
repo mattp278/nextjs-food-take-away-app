@@ -19,6 +19,7 @@ export interface TSFoodMenuItem {
   name: string
   price: number
   quantity?: number
+  itemTotal?: number
   createdAt?: string
   updatedAt?: string
 }
@@ -30,6 +31,7 @@ export interface TSCartMenuItem {
   name: string
   price: number
   quantity: number
+  itemTotal: number
   createdAt?: string
   updatedAt?: string
 }

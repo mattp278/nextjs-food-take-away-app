@@ -8,7 +8,9 @@ export const CartItem = ({
   category,
   price,
   quantity,
+  itemTotal,
 }: TSFoodMenuItem) => {
+  console.log('itemTotal', itemTotal)
   return (
     <article className="w-full text-sm md:text-base ">
       <div className="flex flex-row justify-between items-center my-1 bg-primaryPink">
@@ -24,7 +26,7 @@ export const CartItem = ({
 
         <p className="text-white w-5/12 break-words m-1 pl-2">{name}</p>
         <p className="text-white w-2/12 m-1 text-center">{quantity}</p>
-        <p className="text-white w-2/12 m-1">{price}</p>
+        <p className="text-white w-2/12 m-1">{itemTotal?.toFixed(2)}</p>
       </div>
     </article>
   )

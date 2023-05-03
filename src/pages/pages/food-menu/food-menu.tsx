@@ -2,11 +2,15 @@ import { Main, Navbar, FoodMenu } from '@/components'
 import { apiCall } from '@/utils/apiUtil'
 import { TSFoodMenuItems } from '@/ts/interfaces'
 import { OrderFooter } from '@/components/OrderFooter/OrderFooter'
+import { CartSection } from '@/components'
 
 export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
   return (
     <>
       <title>Curry Club</title>
+      <div className="fixed top-36 right-10 z-20 md:hidden lg:block">
+        <CartSection />
+      </div>
       <Navbar />
       <Main bgColorProp={'bg-quaternaryGrey'}>
         <FoodMenu menuItems={menuItems} />
