@@ -66,7 +66,7 @@ export const cartSlice = createSlice({
       const item = {
         ...payload,
         quantity: quantity,
-        totalPrice: +price,
+        itemTotal: +price,
       }
       state.order.push(item)
 

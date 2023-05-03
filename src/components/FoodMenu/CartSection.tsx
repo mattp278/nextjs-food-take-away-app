@@ -18,6 +18,7 @@ export const CartSection = () => {
   const items = cartItems?.map((item: TSCartMenuItem) => {
     const { id, image, name, category, price, quantity } = item
     const itemTotal = item.itemTotal
+    console.log('itemTotal', itemTotal)
     return (
       <CartItem
         key={id}
