@@ -48,7 +48,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addCartItem(state, { payload }) {
-      const { quantity } = payload
+      const { quantity, price } = payload
 
       const existingItemIndex = state.order.findIndex(
         (cartItem) => cartItem.id === payload.id
@@ -56,12 +56,18 @@ export const cartSlice = createSlice({
 
       if (existingItemIndex !== -1) {
         state.order[existingItemIndex].quantity += quantity
+        const itemTotal = state.order[existingItemIndex].quantity * price
+        state.order[existingItemIndex].itemTotal = itemTotal
         state.numOfOrderItems += quantity
-        state.totalPrice += payload.price * quantity
+        state.totalPrice += price * quantity
         return
       }
 
-      const item = { ...payload, quantity: quantity }
+      const item = {
+        ...payload,
+        quantity: quantity,
+        totalPrice: +price,
+      }
       state.order.push(item)
 
       state.numOfOrderItems += quantity
