@@ -23,9 +23,8 @@ export const Navbar = () => {
         height={25}
         width={25}
       />
-
-      <div className="relative min-w-[10rem] min-h-[2.5rem] md:min-w-[14rem] md:min-h-[3rem] lg:ml-6 ">
-        <Link href="/">
+      <Link href="/">
+        <div className="relative min-w-[10rem] min-h-[2.5rem] md:min-w-[14rem] md:min-h-[3rem] lg:ml-6 ">
           <Image
             src="/curry_club_white_sm.png"
             fill
@@ -33,8 +32,8 @@ export const Navbar = () => {
             alt="Indian Platter"
             sizes="(max-width: 600px) 200px, 300px"
           />
-        </Link>
-      </div>
+        </div>
+      </Link>
 
       <div className="flex items-end mr-4 md:mx-8 gap-2">
         <div className="relative hidden lg:block ">
