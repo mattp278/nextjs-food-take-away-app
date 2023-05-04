@@ -37,7 +37,7 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   //----------------------------------------------------------------------------------
 
   return (
-    <nav className="flex items-center justify-center flex-col min-w-[320px] w-full mb-10 bg-secondaryWhite">
+    <nav className="flex items-center justify-center flex-col min-w-[320px] w-full mb-20 bg-secondaryWhite">
       <div className="w-full text-center p-1 bg-quaternaryGrey">
         {categoryButtons}
       </div>

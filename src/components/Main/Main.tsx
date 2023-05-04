@@ -10,7 +10,7 @@ export const Main = ({ children, bgColorProp }: HomePageProps) => {
   const backgroundColour = bgColorProp ? bgColorProp : 'bg-tertiaryBlack'
 
   return (
-    <main className="relative w-screen min-w-[280px] top-[3rem] md:top-[4rem]">
+    <main className="relative w-screen min-w-[280px] top-[3rem] md:top-[4rem] bg-secondaryWhite">
       <div className={`absolute w-full h-full -z-10 ${backgroundColour}`}></div>
       <section className="relative flex w-full min-h-screen flex-col items-center justify-start">
         {children}
