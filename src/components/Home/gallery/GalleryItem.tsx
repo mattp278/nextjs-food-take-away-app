@@ -15,8 +15,16 @@ export const GalleryItem = ({
   text,
 }: HomeImageItemIterface) => {
   return (
-    <article className="w-[300px] ">
-      <Image src={image} width={300} height={300} alt={alt} quality={80} />
+    <article className="relative w-[300px] min-w-[300px]">
+      <Image
+        src={image}
+        width={300}
+        height={300}
+        alt={alt}
+        quality={80}
+        style={{ width: '300px', height: 'auto' }}
+        sizes="(max-width: 600px) 150px, 200px"
+      />
       <h1 className="text-center font-bold text-3xl text-secondaryWhite p-2">
         {title}
       </h1>
