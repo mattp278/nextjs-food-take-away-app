@@ -31,6 +31,7 @@ export const Navbar = () => {
             fill
             style={{ objectFit: 'contain' }}
             alt="Indian Platter"
+            sizes="(max-width: 600px) 200px, 300px"
           />
         </Link>
       </div>
