@@ -8,9 +8,7 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
   return (
     <>
       <title>Curry Club</title>
-      <div className="fixed top-36 right-10 z-20 md:hidden lg:block">
-        <CartSection />
-      </div>
+
       <Navbar />
       <Main bgColorProp={'bg-quaternaryGrey'}>
         <FoodMenu menuItems={menuItems} />

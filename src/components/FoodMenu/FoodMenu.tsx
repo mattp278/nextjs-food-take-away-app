@@ -1,7 +1,6 @@
-import { FoodSection } from '@/components'
+import { FoodSection, LinkButton, CartSection } from '@/components'
 import { TSFoodMenuItems, TSFoodByCategory } from '@/ts/interfaces'
 import { splitFoodByCategory } from './splitFoodByCategory'
-import { LinkButton } from '@/components'
 
 export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   const foodSplitByCatergory = splitFoodByCategory(menuItems)
@@ -37,11 +36,16 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   //----------------------------------------------------------------------------------
 
   return (
-    <nav className="flex items-center justify-center flex-col min-w-[320px] w-full mb-20 bg-secondaryWhite">
-      <div className="w-full text-center p-1 bg-quaternaryGrey">
+    <section className="flex items-center justify-center flex-col min-w-[320px] mb-20 bg-secondaryWhite">
+      <nav className="w-full text-center p-1 bg-quaternaryGrey">
         {categoryButtons}
+      </nav>
+      <div className="flex lg:gap-5">
+        <div className="flex flex-col items-center">{foodCatergory}</div>
+        <div className="sm:hidden md:hidden lg:block self-start p-10">
+          <CartSection />
+        </div>
       </div>
-      {foodCatergory}
-    </nav>
+    </section>
   )
 }
