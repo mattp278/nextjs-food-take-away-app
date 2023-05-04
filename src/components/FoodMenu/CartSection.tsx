@@ -62,9 +62,10 @@ export const CartSection = () => {
             </div>
           </div>
           <div className="overflow-y-auto w-full max-h-[15rem]"> {items}</div>
-          <p className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
-            Order Total = <p className="inline text-bold">£{totalPrice}</p>
-          </p>
+          <div className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
+            <p className="inline text-bold">Order Total = </p>
+            <p className="inline text-bold">£{totalPrice}</p>
+          </div>
           <Button
             type="button"
             text="CONFIRM ORDER"
