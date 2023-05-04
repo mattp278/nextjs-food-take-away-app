@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { useSession } from 'next-auth/react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { CartItem } from '../ConfirmOrder/CartItem'
@@ -15,6 +16,14 @@ export const CartSection = () => {
   const userId = useAppSelector((state) => state.user.id)
   const router = useRouter()
   const { data: session } = useSession()
+  const cartItemsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const cartItemsDiv = cartItemsRef.current
+    if (cartItemsDiv) {
+      cartItemsDiv.scrollTop = cartItemsDiv.scrollHeight
+    }
+  }, [cartItems])
 
   const items = cartItems?.map((item: TSCartMenuItem) => {
     const { id, image, name, category, price, quantity } = item
@@ -61,7 +70,12 @@ export const CartSection = () => {
               <p className="text-white w-2/12 m-1">Price</p>
             </div>
           </div>
-          <div className="overflow-y-auto w-full max-h-[15rem]"> {items}</div>
+          <div
+            ref={cartItemsRef}
+            className="overflow-y-auto w-full max-h-[15rem]"
+          >
+            {items}
+          </div>
           <div className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
             <p className="inline text-bold">Order Total = </p>
             <p className="inline text-bold">£{totalPrice}</p>
