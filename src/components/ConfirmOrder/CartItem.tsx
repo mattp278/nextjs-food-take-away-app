@@ -10,7 +10,6 @@ export const CartItem = ({
   quantity,
   itemTotal,
 }: TSFoodMenuItem) => {
-  console.log('itemTotal', itemTotal)
   return (
     <article className="w-full text-sm md:text-base ">
       <div className="flex flex-row justify-between items-center my-1 bg-primaryPink">
