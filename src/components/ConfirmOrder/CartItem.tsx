@@ -20,6 +20,7 @@ export const CartItem = ({
             style={{ objectFit: 'cover' }}
             alt={name}
             quality={30}
+            sizes="(max-width: 600px) 50px, 100px"
           />
         </div>
 

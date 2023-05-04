@@ -8,7 +8,6 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
   return (
     <>
       <title>Curry Club</title>
-
       <Navbar />
       <Main bgColorProp={'bg-quaternaryGrey'}>
         <FoodMenu menuItems={menuItems} />

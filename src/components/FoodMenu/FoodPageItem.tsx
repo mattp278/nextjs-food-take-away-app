@@ -14,11 +14,24 @@ export const FoodPageItem = (foodItem: TSFoodItemResponse) => {
       <div className="relative h-[10rem] ">
         <Image
           src={`/foodImages/${image}`}
+          width={600}
+          height={400}
+          style={{ objectFit: 'cover' }}
+          alt={name}
+          quality={30}
+          sizes="(max-width: 600px) 50px, 100px"
+        />
+
+        {/* <Image
+          src={`/foodImages/${image}`}
           fill
           style={{ objectFit: 'cover' }}
           alt={name}
           quality={30}
-        />
+          sizes="(max-width: 600px) 100px,
+              (max-width: 1100px) 150px,
+              200px"
+        /> */}
       </div>
 
       <div className="flex items-center justify-between min-h-[3rem] bg-primaryPink">
