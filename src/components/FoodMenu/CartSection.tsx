@@ -11,6 +11,7 @@ import { TSCartMenuItem } from '@/ts/interfaces'
 export const CartSection = () => {
   const dispatch = useAppDispatch()
   const cartItems = useAppSelector((state) => state.cart.order)
+  const totalPrice = useAppSelector((state) => state.cart.totalPrice)
   const userId = useAppSelector((state) => state.user.id)
   const router = useRouter()
   const { data: session } = useSession()
@@ -59,11 +60,13 @@ export const CartSection = () => {
         </div>
       </div>
       <div className="overflow-y-auto w-full max-h-[15rem]"> {items}</div>
-
+      <p className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
+        Order Total = <p className="inline text-bold">£{totalPrice}</p>
+      </p>
       <Button
         type="button"
         text="CONFIRM ORDER"
-        optionalClassNames="min-w-[200px] md:min-w-[300px] w-10/12 text-base my-5"
+        optionalClassNames="min-w-[200px] md:min-w-[300px] w-10/12 text-base bg-tertiaryBlack my-5"
         onClick={onConfirmOrder}
       />
     </section>
