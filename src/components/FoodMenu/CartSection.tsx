@@ -80,7 +80,7 @@ export const CartSection = () => {
           </div>
           <div className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
             <p className="inline text-bold">Order Total = </p>
-            <p className="inline text-bold">£{totalPrice}</p>
+            <p className="inline text-bold">£{totalPrice.toFixed(2)}</p>
           </div>
           <Button
             type="button"
