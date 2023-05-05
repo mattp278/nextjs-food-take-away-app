@@ -76,7 +76,7 @@ model Order {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  totalPrice  String   
+  totalPrice  Decimal   
   userId      String
   user        User     @relation(fields: [userId], references: [id])
 
