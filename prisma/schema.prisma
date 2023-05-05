@@ -76,7 +76,7 @@ model Order {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  TotalPrice  String   
+  totalPrice  String   
   userId      String
   user        User     @relation(fields: [userId], references: [id])
 
