@@ -50,7 +50,9 @@ export const CartSection = () => {
       router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
       return
     }
-    await dispatch(processOrder({ userId, foodItems: cartItems }))
+    await dispatch(
+      processOrder({ userId, foodItems: cartItems, totalPrice: totalPrice })
+    )
     router.push('/pages/confirm-order/order-complete')
   }
 
