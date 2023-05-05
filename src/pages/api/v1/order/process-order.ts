@@ -37,13 +37,21 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 //----------------------------------------------------------------------------------
 
 const processOrder = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { userId, foodItems } = req.body
+  const { userId, foodItems, totalPrice } = req.body
 
   if (!userId) {
     return res.status(400).json({
       success: false,
       status: 400,
       errors: [{ msg: 'User ID is required' }],
+    })
+  }
+
+  if (!totalPrice) {
+    return res.status(400).json({
+      success: false,
+      status: 400,
+      errors: [{ msg: 'totalPrice is a required field' }],
     })
   }
 
@@ -58,6 +66,7 @@ const processOrder = async (req: NextApiRequest, res: NextApiResponse) => {
   const newOrder = await prisma.order.create({
     data: {
       userId,
+      totalPrice,
     },
   })
   const newOrderId = newOrder.id
