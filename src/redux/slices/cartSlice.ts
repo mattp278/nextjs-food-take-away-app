@@ -16,6 +16,7 @@ export interface CartState {
 interface orderDetails {
   userId: string | null
   foodItems: TSFoodMenuItem[]
+  totalPrice: string
 }
 
 const initialState: CartState = {
@@ -28,12 +29,12 @@ const initialState: CartState = {
 
 export const processOrder = createAsyncThunk(
   'cartState/processOrder',
-  async ({ userId, foodItems }: orderDetails): Promise<any> => {
+  async ({ userId, foodItems, totalPrice }: orderDetails): Promise<any> => {
     try {
       const res = await apiCall({
         httpMethod: 'POST',
         route: 'http://localhost:3000/api/v1/order/process-order',
-        body: { userId, foodItems },
+        body: { userId, foodItems, totalPrice },
       })
       const { data } = res
       return data
