@@ -17,7 +17,7 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
       <LinkButton
         key={category}
         type="button"
-        href="/"
+        href="/pages/food-menu/food-menu"
         text={category}
         optionalClassNames="text-xl x-2 h-[1.8rem] rounded-3xl text-sm p-0 px-4 m-1 md:mx-2"
       />
