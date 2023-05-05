@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useSession } from 'next-auth/react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
-import { CartItem } from '../ConfirmOrder/CartItem'
+import { CartItem } from './CartItem'
 import { Cart } from 'iconoir-react'
 import { Button } from '@/components'
 import { processOrder } from '@/redux/slices/cartSlice'
