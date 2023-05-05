@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getUserOrders } from '@/redux/slices/ordersSlice'
 import { TSOrderItem, TSOrder } from '@/ts/interfaces'
 import { ClipboardCheck } from 'iconoir-react'
-import { CartItem } from '../ConfirmOrder/CartItem'
+import { OrderItem } from './OrderItem'
 import { convertToReableDate } from '@/utils/convertToReableDate'
 
 export const Orders = () => {
@@ -24,7 +24,7 @@ export const Orders = () => {
       const { food, quantity } = item
       const { id, image, name, category, price } = food
       return (
-        <CartItem
+        <OrderItem
           key={id}
           id={id}
           image={image}
@@ -39,7 +39,7 @@ export const Orders = () => {
     return (
       <article
         key={orderId}
-        className="w-full flex justify-center items-center flex-col rounded-3xl bg-secondaryWhite p-4  m-3"
+        className="w-full flex justify-center items-center flex-col rounded-3xl bg-quaternaryGrey p-6 m-3"
       >
         <ClipboardCheck className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl pt-2">ORDER ID</h1>
@@ -53,7 +53,6 @@ export const Orders = () => {
             <p className="text-white w-2/12 m-1">Qty</p>
             <p className="text-white w-2/12 m-1">Price</p>
           </div>
-
           {orderItem}
         </div>
       </article>
