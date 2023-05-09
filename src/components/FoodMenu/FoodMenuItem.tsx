@@ -52,9 +52,9 @@ export const FoodMenuItem = ({
         <p className="text-white text-lg leading-tight w-5/12 m-1 pl-2">
           {name}
         </p>
-        <p className="text-white text-md  w-2/12 m-1 text-center">{price}</p>
+        <p className="text-white text-md w-2/12 m-1 p-1 text-center">{price}</p>
         <p
-          className="text-white w-2/12 h-[3rem] flex items-center justify-center text-center text-sm leading-tight md:text-lg md:leading-tight bg-tertiaryBlack px-1"
+          className="text-white w-2/12 min-w-[4rem] h-[3rem] flex items-center justify-center text-center text-sm leading-tight md:text-lg md:leading-tight bg-tertiaryBlack px-1"
           onClick={handleAddtoCart}
         >
           Add to Cart
