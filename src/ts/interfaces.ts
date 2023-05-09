@@ -57,6 +57,7 @@ export interface TSOrderItem {
 
 export interface TSOrder {
   id: string
+  totalPrice: string
   createdAt: string
   updatedAt: string
   userId: string

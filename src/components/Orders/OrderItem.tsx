@@ -19,7 +19,7 @@ export const OrderItem = ({
   const itemTotal = quantity * price
 
   return (
-    <article className="w-full text-sm md:text-base ">
+    <article className="w-full text-sm md:text-base">
       <div className="flex flex-row justify-between items-center my-1 bg-primaryPink">
         <div className="relative min-h-[3rem] min-w-[3rem] w-3/12 ">
           <Image
