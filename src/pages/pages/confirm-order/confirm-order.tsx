@@ -6,7 +6,7 @@ function ConfrimOrderPage() {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main>
+      <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
         <ConfirmOrder />
       </Main>
     </>

@@ -11,12 +11,14 @@ import { TSCartMenuItem } from '@/ts/interfaces'
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
   const cartItems = useAppSelector((state) => state.cart.order)
+  const totalPrice = useAppSelector((state) => state.cart.totalPrice)
   const userId = useAppSelector((state) => state.user.id)
   const router = useRouter()
   const { data: session } = useSession()
 
   const items = cartItems?.map((item: TSCartMenuItem) => {
-    const { id, image, name, category, price, quantity, itemTotal } = item
+    const { id, image, name, category, price, quantity } = item
+    const itemTotal = item.itemTotal
 
     return (
       <CartItem
@@ -27,6 +29,7 @@ export const ConfirmOrder = () => {
         category={category}
         price={price}
         quantity={quantity}
+        itemTotal={itemTotal}
       />
     )
   })
@@ -38,12 +41,14 @@ export const ConfirmOrder = () => {
       router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
       return
     }
-    await dispatch(processOrder({ userId, foodItems: cartItems }))
+    await dispatch(
+      processOrder({ userId, foodItems: cartItems, totalPrice: totalPrice })
+    )
     router.push('/pages/confirm-order/order-complete')
   }
 
   return (
-    <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:p-8 bg-quaternaryGrey">
+    <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl md:p-6 m-3 md:m-8 md:bg-quaternaryGrey">
       <div className="flex justify-center items-center flex-col p-4">
         <Cart className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl p-2">CHECKOUT</h1>
@@ -56,7 +61,12 @@ export const ConfirmOrder = () => {
           <p className="text-white w-2/12 m-1">Price</p>
         </div>
       </div>
-      {items}
+      <div className="overflow-y-auto w-full max-h-[15rem]">{items}</div>
+
+      <div className="w-full text-lg text-right bg-primaryPink text-secondaryWhite p-2 ">
+        <p className="inline">Order Total = </p>
+        <p className="inline font-bold">£{totalPrice.toFixed(2)}</p>
+      </div>
       <Button
         type="button"
         text="CONFIRM ORDER"
