@@ -21,16 +21,16 @@ export default function SignOut({}) {
   return (
     <>
       <Navbar />
-      <Main>
-        <section className=" relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-secondaryWhite">
+      <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
+        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey md:m-8 p-8">
           <LogOut className="text-primaryPink" height={125} width={125} />
           <h1 className="text-3xl pb-5">SIGN OUT</h1>
-          <div className="">
+          <div className="w-full md:w-11/12 text-lg flex flex-col items-center">
             <Button
               type="button"
               onClick={onSignOutClick}
               text={'Sign Out'}
-              optionalClassNames="w-[200px] min-w-[150px] rounded-lg m-2"
+              optionalClassNames="w-full rounded-lg m-2"
             />
           </div>
         </section>
