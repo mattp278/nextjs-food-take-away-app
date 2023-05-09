@@ -1,15 +1,23 @@
 import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
 
+interface OrderItemsProps {
+  id: string
+  image: string
+  name: string
+  price: number
+  quantity: number
+}
+
 export const OrderItem = ({
   id,
   image,
   name,
-  category,
   price,
   quantity,
-  itemTotal,
-}: TSFoodMenuItem) => {
+}: OrderItemsProps) => {
+  const itemTotal = quantity * price
+
   return (
     <article className="w-full text-sm md:text-base ">
       <div className="flex flex-row justify-between items-center my-1 bg-primaryPink">

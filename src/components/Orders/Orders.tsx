@@ -22,14 +22,13 @@ export const Orders = () => {
 
     const orderItem = orderItems?.map((item: TSOrderItem) => {
       const { food, quantity } = item
-      const { id, image, name, category, price } = food
+      const { id, image, name, price } = food
       return (
         <OrderItem
           key={id}
           id={id}
           image={image}
           name={name}
-          category={category}
           price={price}
           quantity={quantity}
         />
