@@ -27,7 +27,7 @@ export default function SignIn({
   const emailProvider = Object.values(providers).map((provider) => {
     if (provider.name === 'Email') {
       return (
-        <div key={provider.name}>
+        <div key={provider.name} className="w-full md:w-11/12 pb-4 text-lg">
           <form
             onSubmit={handleEmailSignIn}
             className="flex flex-col items-center"
@@ -55,7 +55,7 @@ export default function SignIn({
     }
 
     return (
-      <div key={provider.name}>
+      <div key={provider.name} className="w-full md:w-11/12 text-lg">
         <Button
           type="button"
           onClick={() => signIn(provider.id)}
@@ -69,8 +69,8 @@ export default function SignIn({
   return (
     <>
       <Navbar />
-      <Main>
-        <section className=" relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl p-6 md:p-8 bg-secondaryWhite">
+      <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
+        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey md:m-8 p-8">
           <SmallShopAlt className="text-primaryPink" height={125} width={125} />
           <h1 className="text-3xl pb-5">SIGN IN</h1>
           {emailProvider}
