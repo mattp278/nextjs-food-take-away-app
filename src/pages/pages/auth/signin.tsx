@@ -2,6 +2,7 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from 'next'
+import { Router } from 'next/router'
 import { useRef } from 'react'
 import { getProviders, signIn } from 'next-auth/react'
 import { getServerSession } from 'next-auth/next'
@@ -84,8 +85,11 @@ export default function SignIn({
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions)
 
+  const callbackUrl = context.query.callbackUrl
+  const redirectUrl = callbackUrl ? callbackUrl : '/pages/food-menu/food-menu'
+
   if (session) {
-    return { redirect: { destination: '/pages/food-menu/food-menu' } }
+    return { redirect: { destination: redirectUrl } }
   }
 
   const providers = await getProviders()
