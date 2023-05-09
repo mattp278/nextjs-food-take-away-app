@@ -5,7 +5,7 @@ export default function OrderCompletePage() {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main>
+      <Main bgColorProp="sm:bg-quaternaryGrey">
         <OrderComplete />
       </Main>
     </>
