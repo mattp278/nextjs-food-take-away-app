@@ -37,8 +37,8 @@ export const FoodMenuItem = ({
 
   return (
     <>
-      <article className="h-[10rem] flex basis-11/12 md:basis-full items-center border-2 border-black/60 rounded-xl bg-secondaryWhite">
-        <div className="w-7/12 h-full flex flex-col justify-between p-4">
+      <article className="h-[10rem] flex basis-11/12 md:basis-full items-center border-2 border-black/25 rounded-xl bg-secondaryWhite">
+        <div className="w-8/12 h-full flex flex-col justify-between p-4">
           <p className="text-lg">{name}</p>
           <p className="text-md">{price}</p>
           <div className="grow flex items-end">
@@ -51,11 +51,11 @@ export const FoodMenuItem = ({
           </div>
         </div>
 
-        <div className="relative w-5/12 h-full">
+        <div className="relative w-4/12 h-5/6 m-4">
           <Image
             src={`/foodImages/${image}`}
             fill
-            style={{ objectFit: 'cover', borderRadius: '0 8px 8px 0' }}
+            style={{ objectFit: 'cover', borderRadius: '8px' }}
             alt={name}
             quality={30}
             sizes="(max-width: 600px) 100px, 200px"
