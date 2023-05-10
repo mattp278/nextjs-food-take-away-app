@@ -37,28 +37,30 @@ export const FoodMenuItem = ({
 
   return (
     <>
-      <article className="w-full h-[3rem] flex flex-row items-center bg-primaryPink">
-        <div className="relative min-h-[3rem] min-w-[3rem] w-3/12">
+      <article className="h-[10rem] flex basis-11/12 md:basis-full items-center border-2 border-black/60 rounded-xl bg-secondaryWhite">
+        <div className="w-7/12 h-full flex flex-col justify-between p-4">
+          <p className="text-lg">{name}</p>
+          <p className="text-md">{price}</p>
+          <div className="grow flex items-end">
+            <p
+              className="bg-primaryPink text-secondaryWhite p-2 bottom-0"
+              onClick={handleAddtoCart}
+            >
+              Add to Cart
+            </p>
+          </div>
+        </div>
+
+        <div className="relative w-5/12 h-full">
           <Image
             src={`/foodImages/${image}`}
             fill
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', borderRadius: '0 8px 8px 0' }}
             alt={name}
             quality={30}
-            sizes="(max-width: 600px) 50px, 100px"
+            sizes="(max-width: 600px) 100px, 200px"
           />
         </div>
-
-        <p className="text-white text-lg leading-tight w-5/12 m-1 pl-2">
-          {name}
-        </p>
-        <p className="text-white text-md w-2/12 m-1 p-1 text-center">{price}</p>
-        <p
-          className="text-white w-2/12 min-w-[4rem] h-[3rem] flex items-center justify-center text-center text-sm leading-tight md:text-lg md:leading-tight bg-tertiaryBlack px-1"
-          onClick={handleAddtoCart}
-        >
-          Add to Cart
-        </p>
       </article>
     </>
   )

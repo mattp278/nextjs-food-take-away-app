@@ -65,7 +65,7 @@ export const foodItemSeeds: FoodItemInterface[] = [
   {
     name: '7up',
     price: '5.25',
-    image: './7up.webp',
+    image: './7up.jpg',
     category: 'drinks',
   },
 ]

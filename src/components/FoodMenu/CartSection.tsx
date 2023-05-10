@@ -57,8 +57,8 @@ export const CartSection = () => {
   }
 
   return (
-    <section className="flex items-center overflow-hidden">
-      <div className="h-3/4 flex item-center overflow-hidden">
+    <section className="w-full flex items-center overflow-hidden">
+      <div className="w-full h-3/4 flex item-center overflow-hidden">
         <div className="w-full h-1/12 text-sm md:text-base flex flex-col items-center justify-center rounded-3xl px-6 md:px-8 bg-quaternaryGrey">
           <div className="flex justify-center items-center flex-col p-4">
             <Cart className="text-primaryPink" height={75} width={75} />

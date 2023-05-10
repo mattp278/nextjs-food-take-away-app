@@ -36,13 +36,15 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   //----------------------------------------------------------------------------------
 
   return (
-    <section className="flex items-center justify-center flex-col min-w-[320px] mb-20 bg-secondaryWhite">
+    <section className="flex items-center justify-center flex-col min-w-[320px] mb-20 bg-quaternaryGrey/25">
       <nav className="w-screen text-center p-1 bg-quaternaryGrey">
         {categoryButtons}
       </nav>
-      <div className="flex lg:gap-5">
-        <div className="flex flex-col items-center">{foodCatergory}</div>
-        <div className="sm:hidden md:hidden lg:block self-start p-10">
+      <div className="w-full flex lg:gap-5">
+        <div className="flex flex-col items-center grow max-w-[1000px]">
+          {foodCatergory}
+        </div>
+        <div className="grow sm:hidden md:hidden lg:block self-start p-10 mr-14">
           <CartSection />
         </div>
       </div>
