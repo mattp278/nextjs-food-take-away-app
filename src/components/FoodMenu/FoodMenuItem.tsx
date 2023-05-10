@@ -52,12 +52,18 @@ export const FoodMenuItem = ({
         </div>
 
         <div className="relative w-4/12 h-5/6 m-4">
+          <p
+            className="absolute w-20 text-center text-white bg-primaryPink right-3 bottom-3 rounded-lg z-10"
+            onClick={handleMoreInfoClick}
+          >
+            More info
+          </p>
           <Image
             src={`/foodImages/${image}`}
             fill
             style={{ objectFit: 'cover', borderRadius: '8px' }}
             alt={name}
-            quality={30}
+            quality={50}
             sizes="(max-width: 600px) 100px, 200px"
           />
         </div>
