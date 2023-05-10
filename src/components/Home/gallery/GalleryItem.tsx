@@ -15,7 +15,7 @@ export const GalleryItem = ({
   text,
 }: HomeImageItemIterface) => {
   return (
-    <article className="relative w-[300px] min-w-[300px]">
+    <article className="relative w-[300px] min-w-[300px] lg:">
       <Image
         src={image}
         width={300}

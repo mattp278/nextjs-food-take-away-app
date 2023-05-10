@@ -12,7 +12,7 @@ export const Gallery = () => {
 
   return (
     <section className="relative w-screen min-w-[280px] min-h-[400px] bg-tertiaryBlack ">
-      <div className="w-screen flex flex-row items-center justify-center flex-wrap gap-20 pt-20 pb-5 px-4">
+      <div className="w-screen flex flex-row items-center justify-around flex-wrap gap-20 pt-20 pb-5 px-8">
         {galleryItemElements}
       </div>
       <div className="w-screen flex items-center justify-center pb-20">
@@ -20,7 +20,7 @@ export const Gallery = () => {
           href="/pages/food-menu/food-menu"
           text="Order Now"
           type="button"
-          optionalClassNames="text-xl rounded-lg p-3"
+          optionalClassNames="text-xl rounded-lg px-8 p-3"
         />
       </div>
     </section>
