@@ -14,7 +14,9 @@ export default function FoodItemPage(foodItem: TSFoodItemResponse) {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main>{foodItem && <FoodPageItem foodItem={foodItemObj} />}</Main>
+      <Main bgColorProp="bg-quaternaryGrey/25">
+        {foodItem && <FoodPageItem foodItem={foodItemObj} />}
+      </Main>
     </>
   )
 }
