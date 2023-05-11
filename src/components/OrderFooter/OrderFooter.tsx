@@ -21,7 +21,7 @@ export const OrderFooter = () => {
   }
 
   const orderItems = (
-    <div className="fixed lg:hidden w-screen min-w-[320px] bottom-0 left-0 flex flex-row justify-between items-center gap-2 bg-secondaryWhite text-secondaryWhite px-3 py-2 z-50">
+    <div className="fixed lg:hidden w-screen min-w-[320px] bottom-0 left-0 flex flex-row justify-between items-center gap-2 bg-secondaryWhite text-secondaryWhite px-3 py-2 z-20">
       <p className="bg-primaryPink w-[2rem] text-center md:mx-4">
         {numOfOrderItems}
       </p>
