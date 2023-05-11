@@ -50,11 +50,13 @@ export const Navbar = () => {
           <div className="relative hidden lg:block ">
             <NavItems />
           </div>
-          <Phone
-            className="block lg:hidden cursor-pointer"
-            height={25}
-            width={25}
-          />
+          <a href={'tel:02088888888'}>
+            <Phone
+              className="block lg:hidden cursor-pointer"
+              height={25}
+              width={25}
+            />
+          </a>
         </div>
       </nav>
     </header>
