@@ -53,10 +53,10 @@ export const FoodMenuItem = ({
 
         <div className="relative w-4/12 h-5/6 m-4">
           <p
-            className="absolute w-20 text-center text-white bg-primaryPink right-3 bottom-3 rounded-lg z-10"
+            className="absolute text-sm text-center text-white bg-primaryPink right-2 bottom-2 rounded-lg cursor-pointer z-10 p-1"
             onClick={handleMoreInfoClick}
           >
-            More info
+            <InfoEmpty strokeWidth={2} />
           </p>
           <Image
             src={`/foodImages/${image}`}
