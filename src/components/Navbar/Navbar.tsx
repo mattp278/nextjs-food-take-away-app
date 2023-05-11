@@ -29,7 +29,7 @@ export const Navbar = () => {
       {toggleMobileMenu ? <MobileNav onClick={onMobileMenuClick} /> : null}
       <nav className="fixed top-0 w-screen min-w-[280px] h-[3rem] md:h-[4rem] flex flex-row justify-between items-center bg-primaryPink text-secondaryWhite z-40">
         <Menu
-          className="fill-floralWhite ml-4 md:mx-8 lg:hidden"
+          className="fill-floralWhite ml-4 md:mx-8 lg:hidden cursor-pointer"
           height={25}
           width={25}
           onClick={onMobileMenuClick}
@@ -50,7 +50,11 @@ export const Navbar = () => {
           <div className="relative hidden lg:block ">
             <NavItems />
           </div>
-          <Phone className="block lg:hidden" height={25} width={25} />
+          <Phone
+            className="block lg:hidden cursor-pointer"
+            height={25}
+            width={25}
+          />
         </div>
       </nav>
     </header>
