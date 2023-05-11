@@ -3,7 +3,7 @@ import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
 import { addCartItem } from '@/redux/slices/cartSlice'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
-import { Plus, Minus, InfoEmpty } from 'iconoir-react'
+import { InfoEmpty } from 'iconoir-react'
 import { useRouter } from 'next/router'
 import { Button } from '@/components'
 
@@ -42,12 +42,12 @@ export const FoodMenuItem = ({
           <p className="text-lg">{name}</p>
           <p className="text-md">{price}</p>
           <div className="grow flex items-end">
-            <p
-              className="bg-primaryPink text-secondaryWhite p-2 bottom-0"
+            <Button
+              text="Add to cart"
+              type="button"
+              optionalClassNames="bg-primaryPink text-secondaryWhite p-2 cursor-pointer bottom-0"
               onClick={handleAddtoCart}
-            >
-              Add to Cart
-            </p>
+            />
           </div>
         </div>
 
