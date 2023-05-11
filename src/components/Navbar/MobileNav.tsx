@@ -7,7 +7,7 @@ interface MobileNavProps {
 
 export const MobileNav = ({ onClick }: MobileNavProps) => {
   return (
-    <nav className="absolute w-screen min-h-screen bg-primaryPink z-50">
+    <nav className="fixed top-0 w-screen min-h-screen bg-primaryPink z-50">
       <div className="absolute top-4 right-6" onClick={onClick}>
         <Cancel className="text-secondaryWhite" width={35} height={35} />
       </div>
