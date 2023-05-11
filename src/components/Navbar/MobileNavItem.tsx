@@ -2,13 +2,13 @@ import { createElement } from 'react'
 import Link from 'next/link'
 import { IconoirProvider } from 'iconoir-react'
 
-interface NavItemProps {
+interface MobileNavItemProps {
   icon: any
   link: string
   name: string
 }
 
-export const NavItem = ({ icon, link, name }: NavItemProps) => {
+export const MobileNavItem = ({ icon, link, name }: MobileNavItemProps) => {
   return (
     <IconoirProvider
       iconProps={{
@@ -20,7 +20,7 @@ export const NavItem = ({ icon, link, name }: NavItemProps) => {
     >
       <Link href={link} className="flex items-center gap-2">
         <div className="">{createElement(icon)}</div>
-        <p className="w-full text-xl whitespace-nowrap text-secondaryWhite">
+        <p className="w-full text-2xl whitespace-nowrap text-secondaryWhite">
           {name}
         </p>
       </Link>
