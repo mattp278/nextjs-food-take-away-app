@@ -22,29 +22,37 @@ export default function FoodItemPage(foodItem: TSFoodItemResponse) {
 }
 
 export async function getStaticPaths() {
-  const foodItemRequest = await apiCall({
-    httpMethod: 'GET',
-    route: 'http://localhost:3000/api/v1/food-item/food-item',
-  })
+  try {
+    const foodItemRequest = await apiCall({
+      httpMethod: 'GET',
+      route: 'http://localhost:3000/api/v1/food-item/food-item',
+    })
 
-  const paths = foodItemRequest.data.map((foodItem: any) => {
-    return { params: { foodId: [foodItem.id.toString()] } }
-  })
+    const paths = foodItemRequest.data.map((foodItem: any) => {
+      return { params: { foodId: [foodItem.id.toString()] } }
+    })
 
-  return { paths, fallback: 'blocking' }
+    return { paths, fallback: 'blocking' }
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const foodId = context.params?.foodId
-  const foodItemRequest = await apiCall({
-    httpMethod: 'GET',
-    route: `http://localhost:3000/api/v1/food-item/${foodId}`,
-  })
+  try {
+    const foodId = context.params?.foodId
+    const foodItemRequest = await apiCall({
+      httpMethod: 'GET',
+      route: `http://localhost:3000/api/v1/food-item/${foodId}`,
+    })
 
-  const foodItem = foodItemRequest.data.foodItem
+    const foodItem = foodItemRequest.data.foodItem
 
-  return {
-    props: { foodItem },
-    revalidate: 60,
+    return {
+      props: { foodItem },
+      revalidate: 60,
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
