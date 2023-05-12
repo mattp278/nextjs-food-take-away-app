@@ -32,11 +32,20 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 //----------------------------------------------------------------------------------
 
 const createOrder = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { userId } = req.body
+  const { userId, totalPrice } = req.body
+
+  if (!userId) {
+    return res.status(400).json({
+      success: false,
+      status: 400,
+      errors: [{ msg: 'No user id provided' }],
+    })
+  }
 
   const newOrder = await prisma.order.create({
     data: {
       userId,
+      totalPrice,
     },
   })
 
