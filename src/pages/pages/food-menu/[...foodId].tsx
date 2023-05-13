@@ -56,3 +56,7 @@
 //     console.log(error)
 //   }
 // }
+
+export default function FoodItemPage() {
+  return <div>Food Item Page</div>
+}
