@@ -25,7 +25,7 @@ export async function getStaticPaths() {
   try {
     const foodItemRequest = await apiCall({
       httpMethod: 'GET',
-      route: 'http://localhost:3000/api/v1/food-item/food-item',
+      route: 'api/v1/food-item/food-item',
     })
 
     const paths = foodItemRequest.data.map((foodItem: any) => {
@@ -43,7 +43,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     const foodId = context.params?.foodId
     const foodItemRequest = await apiCall({
       httpMethod: 'GET',
-      route: `http://localhost:3000/api/v1/food-item/${foodId}`,
+      route: `api/v1/food-item/${foodId}`,
     })
 
     const foodItem = foodItemRequest.data.foodItem

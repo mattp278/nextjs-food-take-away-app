@@ -20,7 +20,7 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
 export async function getStaticProps() {
   const foodItems = await apiCall({
     httpMethod: 'GET',
-    route: 'http://localhost:3000/api/v1/food-item/food-item',
+    route: `api/v1/food-item/food-item`,
   })
 
   const { data } = foodItems
