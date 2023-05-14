@@ -29,6 +29,7 @@ const brandonGrotFont = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   const { session } = pageProps
+  console.log('console log test')
 
   return (
     <SessionProvider session={session}>

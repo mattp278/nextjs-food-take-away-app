@@ -3,7 +3,8 @@ import { ApiOptions } from '../ts/interfaces'
 
 export const apiCall = async (apiOptions: ApiOptions) => {
   const { httpMethod, route, body } = apiOptions
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL
+  console.log('BASE_URL', BASE_URL)
 
   try {
     let response: any
