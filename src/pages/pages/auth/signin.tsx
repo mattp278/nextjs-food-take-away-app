@@ -83,18 +83,30 @@ export default function SignIn({
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await getServerSession(context.req, context.res, authOptions)
+  try {
+    const session = await getServerSession(
+      context.req,
+      context.res,
+      authOptions
+    )
 
-  const callbackUrl = context.query.callbackUrl
-  const redirectUrl = callbackUrl ? callbackUrl : '/pages/food-menu/food-menu'
+    const callbackUrl = context.query.callbackUrl
+    const redirectUrl = callbackUrl ? callbackUrl : '/pages/food-menu/food-menu'
 
-  if (session) {
-    return { redirect: { destination: redirectUrl } }
-  }
+    if (session) {
+      return { redirect: { destination: redirectUrl } }
+    }
 
-  const providers = await getProviders()
+    const providers = await getProviders()
 
-  return {
-    props: { providers: providers ?? [] },
+    return {
+      props: { providers: providers ?? [] },
+    }
+  } catch (error) {
+    console.log(error)
+    console.log('console log in signin component get server side props')
+    return {
+      props: { providers: [] },
+    }
   }
 }
