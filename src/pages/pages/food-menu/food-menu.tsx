@@ -18,15 +18,18 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
 }
 
 export async function getStaticProps() {
-  const foodItems = await apiCall({
-    httpMethod: 'GET',
-    route: `api/v1/food-item/food-item`,
-  })
-
-  const { data } = foodItems
-
-  return {
-    props: { menuItems: data },
-    revalidate: 60,
+  try {
+    const foodItems = await apiCall({
+      httpMethod: 'GET',
+      route: `api/v1/food-item/food-item`,
+    })
+    const { data } = foodItems
+    return {
+      props: { menuItems: data },
+      revalidate: 60,
+    }
+    //----------------------------------
+  } catch (error) {
+    console.log(error)
   }
 }
