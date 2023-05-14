@@ -104,7 +104,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   } catch (error) {
     console.log(error)
-    console.log('console log in signin component get server side props')
+    console.log('signin get server side props ctach block console log')
     return {
       props: { providers: [] },
     }
