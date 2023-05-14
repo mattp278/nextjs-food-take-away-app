@@ -8,7 +8,7 @@ import { getProviders, signIn } from 'next-auth/react'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../api/auth/[...nextauth]'
 import { Main, Navbar, Button } from '@/components'
-import { SmallShopAlt } from 'iconoir-react'
+// import { SmallShopAlt } from 'iconoir-react'
 
 export default function SignIn({
   providers,
@@ -72,7 +72,7 @@ export default function SignIn({
       <Navbar />
       <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
         <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey md:m-8 p-8">
-          <SmallShopAlt className="text-primaryPink" height={125} width={125} />
+          {/* <SmallShopAlt className="text-primaryPink" height={125} width={125} /> */}
           <h1 className="text-3xl pb-5">SIGN IN</h1>
           {emailProvider}
           {oAuthProviders}
