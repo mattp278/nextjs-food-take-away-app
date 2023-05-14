@@ -19,12 +19,10 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
 
 export async function getStaticProps() {
   try {
-    console.log('foodd menu console log try block')
     const foodItems = await apiCall({
       httpMethod: 'GET',
       route: `api/v1/food-item/food-item`,
     })
-    console.log('foodItems', foodItems)
     const { data } = foodItems
     return {
       props: { menuItems: data },
@@ -33,7 +31,7 @@ export async function getStaticProps() {
     //----------------------------------
   } catch (error) {
     console.log(error)
-    console.log('foodd menu console log')
+    console.log('food menu getStaticProps catch block console log')
     return {
       props: { menuItems: [] },
       revalidate: 60,

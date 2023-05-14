@@ -35,6 +35,7 @@ export async function getStaticPaths() {
     return { paths, fallback: 'blocking' }
   } catch (error) {
     console.log(error)
+    console.log('[...foodId] getStaticPaths catch block console log')
     return { paths: [], fallback: 'blocking' }
   }
 }
@@ -51,13 +52,13 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
     return {
       props: { foodItem },
-      //revalidate: 60,
+      revalidate: 60,
     }
   } catch (error) {
     console.log(error)
+    console.log('[...foodId] getStaticProps catch block console log')
     return {
       props: { foodItem: [] },
-      //revalidate: 60,
     }
   }
 }
