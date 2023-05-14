@@ -25,7 +25,7 @@ export async function getStaticPaths() {
   try {
     const foodItemRequest = await apiCall({
       httpMethod: 'GET',
-      route: 'http://localhost:3000/api/v1/food-item/food-item',
+      route: 'api/v1/food-item/food-item',
     })
 
     const paths = foodItemRequest.data.map((foodItem: any) => {
@@ -35,6 +35,8 @@ export async function getStaticPaths() {
     return { paths, fallback: 'blocking' }
   } catch (error) {
     console.log(error)
+    console.log('[...foodId] getStaticPaths catch block console log')
+    return { paths: [], fallback: 'blocking' }
   }
 }
 
@@ -43,7 +45,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     const foodId = context.params?.foodId
     const foodItemRequest = await apiCall({
       httpMethod: 'GET',
-      route: `http://localhost:3000/api/v1/food-item/${foodId}`,
+      route: `api/v1/food-item/${foodId}`,
     })
 
     const foodItem = foodItemRequest.data.foodItem
@@ -54,5 +56,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     }
   } catch (error) {
     console.log(error)
+    console.log('[...foodId] getStaticProps catch block console log')
+    return {
+      props: { foodItem: [] },
+    }
   }
 }

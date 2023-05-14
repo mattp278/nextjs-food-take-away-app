@@ -44,7 +44,7 @@ export const signUp = createAsyncThunk(
     try {
       const res = await apiCall({
         httpMethod: 'POST',
-        route: 'http://localhost:3000/api/v1/user/user',
+        route: 'api/v1/user/user',
         body: { name, email, password, password2 },
       })
 
@@ -60,7 +60,7 @@ export const getAuthUser = createAsyncThunk('userState/auth', async () => {
   try {
     const res = await apiCall({
       httpMethod: 'GET',
-      route: 'http://localhost:3000/api/v1/user/user',
+      route: 'api/v1/user/user',
     })
     const user = res.data
     return user

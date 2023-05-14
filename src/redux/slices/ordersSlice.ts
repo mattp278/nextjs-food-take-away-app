@@ -24,7 +24,7 @@ export const getUserOrders = createAsyncThunk(
     try {
       const res = await apiCall({
         httpMethod: 'GET',
-        route: `http://localhost:3000/api/v1/order/${userId}`,
+        route: `api/v1/order/${userId}`,
       })
       const { data } = res
       return data

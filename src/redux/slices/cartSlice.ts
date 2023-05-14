@@ -33,7 +33,7 @@ export const processOrder = createAsyncThunk(
     try {
       const res = await apiCall({
         httpMethod: 'POST',
-        route: 'http://localhost:3000/api/v1/order/process-order',
+        route: 'api/v1/order/process-order',
         body: { userId, foodItems, totalPrice },
       })
       const { data } = res
