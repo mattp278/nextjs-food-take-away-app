@@ -7,6 +7,7 @@ import {
 } from '@stripe/react-stripe-js'
 import { HandCard } from 'iconoir-react'
 import { Button } from '@/components'
+import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 
 export default function CheckoutForm() {
   const stripe = useStripe()
@@ -63,7 +64,8 @@ export default function CheckoutForm() {
       confirmParams: {
         // Make sure to change this to your payment completion page
         receipt_email: email,
-        return_url: 'http://localhost:3000',
+        redirect: 'if_required',
+        //return_url: 'http://localhost:3000/',
       },
     })
 
@@ -93,10 +95,6 @@ export default function CheckoutForm() {
     >
       <HandCard className="text-primaryPink" height={125} width={125} />
       <h1 className="text-3xl pb-5">PAYMENT</h1>
-      <LinkAuthenticationElement
-        id="link-authentication-element"
-        // onChange={(e) => setEmail(e.target.value)}
-      />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <Button
         disabled={isLoading || !stripe || !elements}
