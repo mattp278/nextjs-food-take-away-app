@@ -39,7 +39,7 @@ export const Orders = () => {
     return (
       <article
         key={orderId}
-        className="w-screen md:w-full flex justify-center items-center flex-col md:rounded-3xl bg-quaternaryGrey p-6 md:m-3"
+        className="w-screen md:w-full flex justify-center items-center flex-col md:rounded-3xl bg-quaternaryGrey p-6 md:m-3 shadow-lg"
       >
         <ClipboardCheck className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl pt-2">ORDER ID</h1>

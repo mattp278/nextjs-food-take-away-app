@@ -48,7 +48,7 @@ export const ConfirmOrder = () => {
   }
 
   return (
-    <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl md:p-6 m-3 md:m-8 md:bg-quaternaryGrey">
+    <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl md:p-6 m-3 md:m-8 shadow-lg md:bg-quaternaryGrey">
       <div className="flex justify-center items-center flex-col p-4">
         <Cart className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl p-2">CHECKOUT</h1>

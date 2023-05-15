@@ -71,7 +71,7 @@ export default function SignIn({
     <>
       <Navbar />
       <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
-        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey md:m-8 p-8">
+        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey shadow-lg md:m-8 p-8">
           <SmallShopAlt className="text-primaryPink" height={125} width={125} />
           <h1 className="text-3xl pb-5">SIGN IN</h1>
           {emailProvider}

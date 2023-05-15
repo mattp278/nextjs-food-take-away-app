@@ -22,7 +22,7 @@ export default function SignOut({}) {
     <>
       <Navbar />
       <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
-        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey md:m-8 p-8">
+        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey shadow-lg md:m-8 p-8">
           <LogOut className="text-primaryPink" height={125} width={125} />
           <h1 className="text-3xl pb-5">SIGN OUT</h1>
           <div className="w-full md:w-11/12 text-lg flex flex-col items-center">
