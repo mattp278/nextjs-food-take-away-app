@@ -6,6 +6,7 @@ import {
   useElements,
 } from '@stripe/react-stripe-js'
 import { HandCard } from 'iconoir-react'
+import { Button } from '@/components'
 
 export default function CheckoutForm() {
   const stripe = useStripe()
@@ -88,7 +89,7 @@ export default function CheckoutForm() {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="flex flex-col items-center md:bg-quaternaryGrey my-8 p-8 rounded-lg shadow-lg "
+      className="flex flex-col items-center md:bg-quaternaryGrey my-8 p-8 md:rounded-lg md:shadow-lg "
     >
       <HandCard className="text-primaryPink" height={125} width={125} />
       <h1 className="text-3xl pb-5">PAYMENT</h1>
@@ -97,15 +98,17 @@ export default function CheckoutForm() {
         // onChange={(e) => setEmail(e.target.value)}
       />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button
+      <Button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="bg"
+        type="submit"
+        optionalClassNames="w-full m-4"
+        text={'Pay now'}
       >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
         </span>
-      </button>
+      </Button>
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>

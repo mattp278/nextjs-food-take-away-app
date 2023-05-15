@@ -41,7 +41,7 @@ export default function App() {
         //@ts-ignore
         <Elements options={options} stripe={stripePromise}>
           <Navbar />
-          <Main>
+          <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
             <CheckoutForm />
           </Main>
         </Elements>
