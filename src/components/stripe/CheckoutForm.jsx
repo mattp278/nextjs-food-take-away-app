@@ -89,7 +89,7 @@ export default function CheckoutForm() {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="flex flex-col items-center md:bg-quaternaryGrey my-8 p-8 md:rounded-lg md:shadow-lg "
+      className="flex flex-col items-center md:my-8 rounded-3xl md:bg-quaternaryGrey md:m-8 p-8 md:shadow-lg"
     >
       <HandCard className="text-primaryPink" height={125} width={125} />
       <h1 className="text-3xl pb-5">PAYMENT</h1>
@@ -102,7 +102,7 @@ export default function CheckoutForm() {
         disabled={isLoading || !stripe || !elements}
         id="submit"
         type="submit"
-        optionalClassNames="w-full m-4"
+        optionalClassNames="w-full m-6"
         text={'Pay now'}
       >
         <span id="button-text">
