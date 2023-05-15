@@ -5,6 +5,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js'
+import { HandCard } from 'iconoir-react'
 
 export default function CheckoutForm() {
   const stripe = useStripe()
@@ -87,8 +88,10 @@ export default function CheckoutForm() {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="flex flex-col items-center my-8"
+      className="flex flex-col items-center md:bg-quaternaryGrey my-8 p-8 rounded-lg shadow-lg "
     >
+      <HandCard className="text-primaryPink" height={125} width={125} />
+      <h1 className="text-3xl pb-5">PAYMENT</h1>
       <LinkAuthenticationElement
         id="link-authentication-element"
         // onChange={(e) => setEmail(e.target.value)}

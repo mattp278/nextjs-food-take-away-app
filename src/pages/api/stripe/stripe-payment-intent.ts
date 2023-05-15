@@ -1,9 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiResponse, NextApiRequest } from 'next'
+import Stripe from 'stripe'
 
 // This is your test secret API key.
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  typescript: true,
+  apiVersion: '2022-11-15',
+})
 
-const calculateOrderAmount = (items) => {
+const calculateOrderAmount = (price: number) => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total on the server to prevent
   // people from directly manipulating the amount on the client
