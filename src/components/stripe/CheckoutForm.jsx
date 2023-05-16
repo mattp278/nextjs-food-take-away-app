@@ -66,7 +66,7 @@ export default function CheckoutForm() {
       confirmParams: {
         // Make sure to change this to your payment completion page
         receipt_email: email,
-        return_url: 'http://localhost:3000/',
+        return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/pages/confirm-order/order-complete`,
       },
     })
 
