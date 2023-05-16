@@ -13,18 +13,17 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 export default function Payment() {
   const [clientSecret, setClientSecret] = useState('')
-  const { order } = useAppSelector((state) => state.cart)
-  console.log('order', order)
+  const { pendingOrderId } = useAppSelector((state) => state.cart)
 
   React.useEffect(() => {
     fetch('/api/stripe/stripe-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: order }),
+      body: JSON.stringify({ orderId: pendingOrderId }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
-  }, [])
+  }, [pendingOrderId])
 
   const appearance = {
     theme: 'stripe',
