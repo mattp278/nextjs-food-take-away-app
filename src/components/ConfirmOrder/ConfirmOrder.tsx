@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { CartItem } from './CartItem'
 import { Cart } from 'iconoir-react'
 import { Button } from '@/components'
-import { processOrder } from '@/redux/slices/cartSlice'
+import { generatePendingOrder } from '@/redux/slices/cartSlice'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
@@ -42,15 +42,13 @@ export const ConfirmOrder = () => {
       router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
       return
     }
-    // await dispatch(
-    //   processOrder({ userId, foodItems: cartItems, totalPrice: totalPrice })
-    // )
-    router.push('/pages/confirm-order/order-complete')
-    await apiCall({
-      httpMethod: 'POST',
-      route: '/api/stripe/stripe-payment-intent',
-      body: { items: cartItems },
-    })
+    await dispatch(
+      generatePendingOrder({
+        userId,
+        foodItems: cartItems,
+        totalPrice: totalPrice,
+      })
+    )
     router.push('/pages/stripe/payment')
   }
 
