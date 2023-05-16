@@ -9,6 +9,7 @@ export interface CartState {
   numOfOrderItems: number
   totalPrice: number
   order: TSCartMenuItem[]
+  pendingOrderId: string | null
   confimedOrderId: string | null
   errors: ApiErrorMsg[] | null
 }
@@ -23,6 +24,7 @@ const initialState: CartState = {
   numOfOrderItems: 0,
   totalPrice: 0,
   order: [],
+  pendingOrderId: null,
   confimedOrderId: null,
   errors: null,
 }
@@ -91,7 +93,7 @@ export const cartSlice = createSlice({
         state.numOfOrderItems = 0
         state.totalPrice = 0
         state.order = []
-        state.confimedOrderId = orderId
+        state.pendingOrderId = orderId
       })
       .addCase(processOrder.rejected, (state, { error }: AnyAction) => {
         state.errors = [error.message]
