@@ -9,7 +9,8 @@ export interface CartState {
   numOfOrderItems: number
   totalPrice: number
   order: TSCartMenuItem[]
-  confimedOrderId: string | null
+  pendingOrderId: string | null
+  confirmedOrderId: string | null
   errors: ApiErrorMsg[] | null
 }
 
@@ -23,12 +24,13 @@ const initialState: CartState = {
   numOfOrderItems: 0,
   totalPrice: 0,
   order: [],
-  confimedOrderId: null,
+  pendingOrderId: null,
+  confirmedOrderId: null,
   errors: null,
 }
 
-export const processOrder = createAsyncThunk(
-  'cartState/processOrder',
+export const generatePendingOrder = createAsyncThunk(
+  'cartState/generatePendingOrder',
   async ({ userId, foodItems, totalPrice }: orderDetails): Promise<any> => {
     try {
       const res = await apiCall({
@@ -74,6 +76,15 @@ export const cartSlice = createSlice({
       state.numOfOrderItems += quantity
       state.totalPrice += payload.price * quantity
     },
+    setConfirmOrderState(state, { payload }) {
+      const { pendingOrderId } = payload
+
+      state.confirmedOrderId = pendingOrderId
+      state.pendingOrderId = null
+      state.order = []
+      state.numOfOrderItems = 0
+      state.totalPrice = 0
+    },
     resetCartState(state) {
       Object.assign(state, initialState)
     },
@@ -81,21 +92,19 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       //---------------------------------------------------------------------
-      .addCase(processOrder.pending, (state) => {
+      .addCase(generatePendingOrder.pending, (state) => {
         state.errors = null
-        state.confimedOrderId = null
+        state.confirmedOrderId = null
+        state.pendingOrderId = null
       })
-      .addCase(processOrder.fulfilled, (state, { payload }) => {
+      .addCase(generatePendingOrder.fulfilled, (state, { payload }) => {
         const orderId = payload.orderId
-
-        state.numOfOrderItems = 0
-        state.totalPrice = 0
-        state.order = []
-        state.confimedOrderId = orderId
+        state.pendingOrderId = orderId
       })
-      .addCase(processOrder.rejected, (state, { error }: AnyAction) => {
+      .addCase(generatePendingOrder.rejected, (state, { error }: AnyAction) => {
         state.errors = [error.message]
-        state.confimedOrderId = null
+        state.confirmedOrderId = null
+        state.pendingOrderId = null
       })
 
     //---------------------------------------------------------------------
@@ -104,6 +113,7 @@ export const cartSlice = createSlice({
 
 export const selectCarttSlice = (state: AppState) => state.cart
 
-export const { addCartItem, resetCartState } = cartSlice.actions
+export const { addCartItem, resetCartState, setConfirmOrderState } =
+  cartSlice.actions
 
 export default cartSlice.reducer

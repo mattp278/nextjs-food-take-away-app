@@ -75,15 +75,13 @@ enum FoodCategory {
 }
 
 model Order {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  totalPrice  Decimal   
-  userId      String
-  user        User     @relation(fields: [userId], references: [id])
-
-  orderItems  OrderItem[]
-
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  totalPrice      Decimal   
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  orderItems      OrderItem[]
 
 }
 

@@ -3,10 +3,11 @@ import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { CartItem } from './CartItem'
 import { Cart } from 'iconoir-react'
 import { Button } from '@/components'
-import { processOrder } from '@/redux/slices/cartSlice'
+import { generatePendingOrder } from '@/redux/slices/cartSlice'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
+import { apiCall } from '@/utils/apiUtil'
 
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
@@ -42,9 +43,13 @@ export const ConfirmOrder = () => {
       return
     }
     await dispatch(
-      processOrder({ userId, foodItems: cartItems, totalPrice: totalPrice })
+      generatePendingOrder({
+        userId,
+        foodItems: cartItems,
+        totalPrice: totalPrice,
+      })
     )
-    router.push('/pages/confirm-order/order-complete')
+    router.push('/pages/stripe/payment')
   }
 
   return (

@@ -23,7 +23,9 @@
     "**/*.ts",
     "**/*.tsx",
     "src/utils/svgTextReplace.js",
-    "src/components/Home/Hero.tsx"
+    "src/components/Home/Hero.tsx",
+    "src/components/stripe/CheckoutForm.jsx",
+    "src/pages/pages/stripe/payment.tsx"
   ],
   "exclude": ["node_modules"]
 }

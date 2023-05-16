@@ -28,8 +28,14 @@ export const apiCall = async (apiOptions: ApiOptions) => {
     const { data } = response
     return data
   } catch (err: any) {
-    console.log('apiUtil error ---', err.response.data.errors[0].msg)
-    const errorMessage = err.response.data.errors[0].msg
-    throw Error(errorMessage)
+    if (err.data) {
+      console.log('err.data', err.data)
+    } else if (err.response) {
+      console.log('apiUtil error ---', err.response.data.errors[0].msg)
+      const errorMessage = err.response.data.errors[0].msg
+      throw Error(errorMessage)
+    } else {
+      console.log('err', err)
+    }
   }
 }
