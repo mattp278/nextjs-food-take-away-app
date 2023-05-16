@@ -26,6 +26,8 @@ export default function CheckoutForm() {
       'payment_intent_client_secret'
     )
 
+    console.log('checkout console log')
+
     if (!clientSecret) {
       return
     }
@@ -64,8 +66,7 @@ export default function CheckoutForm() {
       confirmParams: {
         // Make sure to change this to your payment completion page
         receipt_email: email,
-        redirect: 'if_required',
-        //return_url: 'http://localhost:3000/',
+        return_url: 'http://localhost:3000/',
       },
     })
 

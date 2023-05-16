@@ -14,7 +14,6 @@ export default function Payment() {
   const [clientSecret, setClientSecret] = React.useState('')
 
   React.useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
     fetch('/api/stripe/stripe-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

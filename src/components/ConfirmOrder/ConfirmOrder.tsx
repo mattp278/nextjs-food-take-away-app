@@ -7,6 +7,7 @@ import { processOrder } from '@/redux/slices/cartSlice'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
+import { apiCall } from '@/utils/apiUtil'
 
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
@@ -41,10 +42,16 @@ export const ConfirmOrder = () => {
       router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
       return
     }
-    await dispatch(
-      processOrder({ userId, foodItems: cartItems, totalPrice: totalPrice })
-    )
+    // await dispatch(
+    //   processOrder({ userId, foodItems: cartItems, totalPrice: totalPrice })
+    // )
     router.push('/pages/confirm-order/order-complete')
+    await apiCall({
+      httpMethod: 'POST',
+      route: '/api/stripe/stripe-payment-intent',
+      body: { items: cartItems },
+    })
+    router.push('/pages/stripe/payment')
   }
 
   return (
