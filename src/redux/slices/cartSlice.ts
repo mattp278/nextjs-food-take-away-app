@@ -10,7 +10,7 @@ export interface CartState {
   totalPrice: number
   order: TSCartMenuItem[]
   pendingOrderId: string | null
-  confimedOrderId: string | null
+  confirmedOrderId: string | null
   errors: ApiErrorMsg[] | null
 }
 
@@ -25,7 +25,7 @@ const initialState: CartState = {
   totalPrice: 0,
   order: [],
   pendingOrderId: null,
-  confimedOrderId: null,
+  confirmedOrderId: null,
   errors: null,
 }
 
@@ -76,6 +76,15 @@ export const cartSlice = createSlice({
       state.numOfOrderItems += quantity
       state.totalPrice += payload.price * quantity
     },
+    setConfirmOrderState(state, { payload }) {
+      const { pendingOrderId } = payload
+
+      state.confirmedOrderId = pendingOrderId
+      state.pendingOrderId = null
+      state.order = []
+      state.numOfOrderItems = 0
+      state.totalPrice = 0
+    },
     resetCartState(state) {
       Object.assign(state, initialState)
     },
@@ -85,7 +94,7 @@ export const cartSlice = createSlice({
       //---------------------------------------------------------------------
       .addCase(generatePendingOrder.pending, (state) => {
         state.errors = null
-        state.confimedOrderId = null
+        state.confirmedOrderId = null
         state.pendingOrderId = null
       })
       .addCase(generatePendingOrder.fulfilled, (state, { payload }) => {
@@ -94,7 +103,7 @@ export const cartSlice = createSlice({
       })
       .addCase(generatePendingOrder.rejected, (state, { error }: AnyAction) => {
         state.errors = [error.message]
-        state.confimedOrderId = null
+        state.confirmedOrderId = null
         state.pendingOrderId = null
       })
 
@@ -104,6 +113,7 @@ export const cartSlice = createSlice({
 
 export const selectCarttSlice = (state: AppState) => state.cart
 
-export const { addCartItem, resetCartState } = cartSlice.actions
+export const { addCartItem, resetCartState, setConfirmOrderState } =
+  cartSlice.actions
 
 export default cartSlice.reducer
