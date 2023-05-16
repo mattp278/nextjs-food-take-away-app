@@ -29,8 +29,8 @@ const initialState: CartState = {
   errors: null,
 }
 
-export const processOrder = createAsyncThunk(
-  'cartState/processOrder',
+export const generatePendingOrder = createAsyncThunk(
+  'cartState/generatePendingOrder',
   async ({ userId, foodItems, totalPrice }: orderDetails): Promise<any> => {
     try {
       const res = await apiCall({
@@ -83,21 +83,19 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       //---------------------------------------------------------------------
-      .addCase(processOrder.pending, (state) => {
+      .addCase(generatePendingOrder.pending, (state) => {
         state.errors = null
         state.confimedOrderId = null
+        state.pendingOrderId = null
       })
-      .addCase(processOrder.fulfilled, (state, { payload }) => {
+      .addCase(generatePendingOrder.fulfilled, (state, { payload }) => {
         const orderId = payload.orderId
-
-        state.numOfOrderItems = 0
-        state.totalPrice = 0
-        state.order = []
         state.pendingOrderId = orderId
       })
-      .addCase(processOrder.rejected, (state, { error }: AnyAction) => {
+      .addCase(generatePendingOrder.rejected, (state, { error }: AnyAction) => {
         state.errors = [error.message]
         state.confimedOrderId = null
+        state.pendingOrderId = null
       })
 
     //---------------------------------------------------------------------
