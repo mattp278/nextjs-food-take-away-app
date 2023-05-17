@@ -82,7 +82,7 @@ model Order {
   userId          String
   user            User     @relation(fields: [userId], references: [id])
   orderItems      OrderItem[]
-
+  orderConfirmed  Boolean  @default(false)
 }
 
 model OrderItem {
