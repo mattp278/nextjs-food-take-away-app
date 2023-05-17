@@ -3,12 +3,10 @@ import { Navbar, Button } from '@/components'
 import { LogOut } from 'iconoir-react'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
 import { resetAllState } from '@/redux/store/store'
-import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 
 export default function SignOut({}) {
   const dispatch = useAppDispatch()
-  const router = useRouter()
   const { data: session } = useSession()
   console.log('session', session)
 
