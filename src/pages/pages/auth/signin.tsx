@@ -2,12 +2,11 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from 'next'
-import { Router } from 'next/router'
 import { useRef } from 'react'
 import { getProviders, signIn } from 'next-auth/react'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../api/auth/[...nextauth]'
-import { Main, Navbar, Button } from '@/components'
+import { Navbar, Button } from '@/components'
 import { SmallShopAlt } from 'iconoir-react'
 
 export default function SignIn({
@@ -70,14 +69,14 @@ export default function SignIn({
   return (
     <>
       <Navbar />
-      <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
-        <section className="sm:w-screen md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey shadow-lg md:m-8 p-8">
+      <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
+        <div className="sm:w-screen md:w-[400px] max-w-[400px] h-[32rem] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey shadow-lg md:m-8 p-8">
           <SmallShopAlt className="text-primaryPink" height={125} width={125} />
           <h1 className="text-3xl pb-5">SIGN IN</h1>
           {emailProvider}
           {oAuthProviders}
-        </section>
-      </Main>
+        </div>
+      </section>
     </>
   )
 }

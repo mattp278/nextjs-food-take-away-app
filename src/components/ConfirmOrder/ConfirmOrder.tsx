@@ -7,7 +7,6 @@ import { generatePendingOrder } from '@/redux/slices/cartSlice'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
-import { apiCall } from '@/utils/apiUtil'
 
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
@@ -53,7 +52,7 @@ export const ConfirmOrder = () => {
   }
 
   return (
-    <section className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl md:p-6 m-3 md:m-8 shadow-lg md:bg-quaternaryGrey">
+    <article className="relative w-11/12 md:w-[580px] max-w-[800px] md:h-[40rem] text-sm md:text-base flex flex-col items-center justify-center md:rounded-3xl md:p-6 m-3 md:m-8 md:shadow-lg md:bg-quaternaryGrey">
       <div className="flex justify-center items-center flex-col p-4">
         <Cart className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl p-2">CHECKOUT</h1>
@@ -78,6 +77,6 @@ export const ConfirmOrder = () => {
         optionalClassNames="min-w-[200px] md:min-w-[300px] w-10/12 text-base my-5"
         onClick={onConfirmOrder}
       />
-    </section>
+    </article>
   )
 }

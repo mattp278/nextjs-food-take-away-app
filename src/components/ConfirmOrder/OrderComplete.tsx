@@ -18,7 +18,7 @@ export const OrderComplete = () => {
   }, [pendingOrderId, dispatch])
 
   return (
-    <section className="flex flex-col justify-center items-center w-11/12 lg:w-1/2 rounded-3xl md:p-5 ">
+    <section className="flex flex-col justify-center items-center w-11/12 lg:w-1/2 rounded-3xl shadow-lg md:p-5 bg-quaternaryGrey m-8 ">
       <DeliveryTruck className="text-primaryPink" height={125} width={125} />
       <h1 className="text-3xl text-center p-2">ORDER CONFIRMED</h1>
       <p className="text-xl mt-5">Your order number is:</p>

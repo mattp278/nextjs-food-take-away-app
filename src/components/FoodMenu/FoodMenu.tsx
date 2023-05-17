@@ -1,6 +1,7 @@
 import { FoodSection, LinkButton, CartSection } from '@/components'
 import { TSFoodMenuItems, TSFoodByCategory } from '@/ts/interfaces'
 import { splitFoodByCategory } from './splitFoodByCategory'
+import { OrderFooter } from '@/components'
 
 export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   const foodSplitByCatergory = splitFoodByCategory(menuItems)
@@ -19,7 +20,7 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
         type="button"
         href="/pages/food-menu/food-menu"
         text={category}
-        optionalClassNames="text-xl x-2 h-[1.8rem] rounded-3xl text-sm p-0 px-4 m-1 md:mx-2"
+        optionalClassNames="text-xl x-2 h-[1.8rem] rounded-3xl text-sm p-0 px-2 md:px-4 m-1 md:mx-2"
       />
     )
   })
@@ -36,8 +37,8 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   //----------------------------------------------------------------------------------
 
   return (
-    <section className="flex items-center justify-center flex-col min-w-[320px] mb-20 bg-quaternaryGrey/25">
-      <nav className="w-screen text-center p-1 bg-quaternaryGrey">
+    <section className="w-screen flex items-center justify-center flex-col min-w-[320px] bg-quaternaryGrey/25">
+      <nav className="w-full text-center p-1 bg-quaternaryGrey">
         {categoryButtons}
       </nav>
       <div className="w-full flex lg:gap-5">
@@ -48,6 +49,8 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
           <CartSection />
         </div>
       </div>
+      <div className="min-h-[5rem] bg-quaternaryGrey"></div>
+      <OrderFooter />
     </section>
   )
 }

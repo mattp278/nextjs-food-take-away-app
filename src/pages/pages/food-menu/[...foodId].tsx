@@ -1,5 +1,5 @@
 import { apiCall } from '@/utils/apiUtil'
-import { Main, FoodPageItem, Navbar } from '@/components'
+import { FoodPageItem, Navbar } from '@/components'
 import { GetStaticPropsContext } from 'next'
 import { TSFoodMenuItem } from '@/ts/interfaces'
 
@@ -14,9 +14,9 @@ export default function FoodItemPage(foodItem: TSFoodItemResponse) {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main bgColorProp="bg-quaternaryGrey/25">
+      <section className="bg-quaternaryGrey/25 min-h-screen flex justify-center items-start">
         {foodItem && <FoodPageItem foodItem={foodItemObj} />}
-      </Main>
+      </section>
     </>
   )
 }

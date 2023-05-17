@@ -2,12 +2,9 @@ import React, { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import CheckoutForm from '../../../components/stripe/CheckoutForm'
-import { Main, Navbar } from '@/components'
+import { Navbar } from '@/components'
 import { useAppSelector } from '@/redux/store/reduxHooks'
 
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is your test publishable API key.
 //@ts-ignore
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
@@ -42,9 +39,9 @@ export default function Payment() {
         //@ts-ignore
         <Elements options={options} stripe={stripePromise}>
           <Navbar />
-          <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
+          <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
             <CheckoutForm />
-          </Main>
+          </section>
         </Elements>
       )}
     </section>

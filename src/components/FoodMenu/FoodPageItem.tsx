@@ -10,7 +10,7 @@ export const FoodPageItem = (foodItem: TSFoodItemResponse) => {
   const { name, image, price } = foodItem.foodItem
 
   return (
-    <article className="flex flex-col items-center w-11/12 lg:w-1/2 m-4 md:m-8 rounded-xl shadow-lg">
+    <article className="flex flex-col items-center w-11/12 lg:w-1/2 rounded-xl shadow-2xl m-4 md:m-8">
       <div className="relative w-full h-[10rem] md:h-[20rem]">
         <Image
           src={`/foodImages/${image}`}
