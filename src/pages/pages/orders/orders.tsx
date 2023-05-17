@@ -1,13 +1,13 @@
-import { Orders, Main, Navbar } from '@/components'
+import { Orders, Navbar } from '@/components'
 import withAuth from '@/pages/withAuth'
 
 function OrdersPage() {
   return (
     <>
       <Navbar />
-      <Main>
+      <div className="flex min-h-[screen] justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <Orders />
-      </Main>
+      </div>
     </>
   )
 }

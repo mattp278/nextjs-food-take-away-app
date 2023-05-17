@@ -1,4 +1,4 @@
-import { Main, Navbar, ConfirmOrder } from '@/components'
+import { Navbar, ConfirmOrder } from '@/components'
 import withAuth from '../../withAuth'
 
 function ConfrimOrderPage() {
@@ -6,9 +6,9 @@ function ConfrimOrderPage() {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main bgColorProp="sm:bg-quaternaryGrey md:bg-secondaryWhite">
+      <div className="flex justify-center min-h-screen bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <ConfirmOrder />
-      </Main>
+      </div>
     </>
   )
 }

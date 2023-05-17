@@ -1,13 +1,13 @@
-import { Main, Navbar, OrderComplete } from '@/components'
+import { Navbar, OrderComplete } from '@/components'
 
 export default function OrderCompletePage() {
   return (
     <>
       <title>Curry Club</title>
       <Navbar />
-      <Main bgColorProp="sm:bg-quaternaryGrey">
+      <section className="flex min-h-screen justify-center items-start bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <OrderComplete />
-      </Main>
+      </section>
     </>
   )
 }

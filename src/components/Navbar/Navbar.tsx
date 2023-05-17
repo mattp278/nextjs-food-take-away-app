@@ -25,7 +25,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header>
+    <header className="relative w-screen h-[3rem] md:h-[4rem]">
       {toggleMobileMenu ? <MobileNav onClick={onMobileMenuClick} /> : null}
       <nav className="fixed top-0 w-screen min-w-[280px] h-[3rem] md:h-[4rem] flex flex-row justify-between items-center bg-primaryPink text-secondaryWhite z-40">
         <Menu
