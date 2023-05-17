@@ -15,7 +15,6 @@ export default function SignOut({}) {
   const onSignOutClick = async () => {
     await signOut({ callbackUrl: '/' })
     dispatch(resetAllState())
-    router.replace('/')
   }
 
   return (
