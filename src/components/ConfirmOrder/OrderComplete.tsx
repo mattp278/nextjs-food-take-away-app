@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { setConfirmOrderState } from '@/redux/slices/cartSlice'
+import { confirmOrder } from '@/redux/slices/ordersSlice'
 import { DeliveryTruck } from 'iconoir-react'
 import Image from 'next/image'
 
@@ -16,6 +17,12 @@ export const OrderComplete = () => {
       dispatch(setConfirmOrderState({ pendingOrderId: pendingOrderId }))
     }
   }, [pendingOrderId, dispatch])
+
+  useEffect(() => {
+    if (confirmedOrderId) {
+      dispatch(confirmOrder(confirmedOrderId))
+    }
+  }, [confirmedOrderId, dispatch])
 
   return (
     <section className="m-8 flex w-11/12 flex-col items-center justify-center rounded-3xl bg-quaternaryGrey md:p-5 md:shadow-lg lg:w-1/2 ">
