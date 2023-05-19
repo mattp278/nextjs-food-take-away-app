@@ -20,8 +20,6 @@ export default function CheckoutForm() {
       'payment_intent_client_secret'
     )
 
-    console.log('checkout console log')
-
     if (!clientSecret) {
       return
     }
@@ -78,10 +76,10 @@ export default function CheckoutForm() {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="flex flex-col items-center h-[42rem] md:h-[40rem] md:my-8 rounded-3xl md:bg-quaternaryGrey md:m-8 p-8 md:shadow-lg"
+      className="flex h-[42rem] flex-col items-center rounded-3xl p-8 md:m-8 md:my-8 md:h-[40rem] md:bg-quaternaryGrey md:shadow-lg"
     >
       <HandCard className="text-primaryPink" height={125} width={125} />
-      <h1 className="text-3xl pb-5">PAYMENT</h1>
+      <h1 className="pb-5 text-3xl">PAYMENT</h1>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <Button
         disabled={isLoading || !stripe || !elements}
