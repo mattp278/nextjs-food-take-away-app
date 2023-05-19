@@ -76,6 +76,33 @@ export const cartSlice = createSlice({
       state.numOfOrderItems += quantity
       state.totalPrice += payload.price * quantity
     },
+    removeCartItem(state, { payload }) {
+      const { price } = payload
+
+      const existingItemIndex = state.order.findIndex(
+        (cartItem) => cartItem.id === payload.id
+      )
+
+      if (existingItemIndex === -1) {
+        return
+      }
+
+      state.numOfOrderItems = state.numOfOrderItems - 1
+      state.totalPrice = state.totalPrice - price
+
+      if (state.order[existingItemIndex].quantity === 1) {
+        state.order.splice(existingItemIndex)
+        return
+      }
+
+      state.order[existingItemIndex].quantity =
+        state.order[existingItemIndex].quantity - 1
+
+      const itemTotal =
+        state.order[existingItemIndex].quantity *
+        state.order[existingItemIndex].price
+      state.order[existingItemIndex].itemTotal = itemTotal
+    },
     setConfirmOrderState(state, { payload }) {
       const { pendingOrderId } = payload
 
@@ -113,7 +140,11 @@ export const cartSlice = createSlice({
 
 export const selectCarttSlice = (state: AppState) => state.cart
 
-export const { addCartItem, resetCartState, setConfirmOrderState } =
-  cartSlice.actions
+export const {
+  addCartItem,
+  removeCartItem,
+  resetCartState,
+  setConfirmOrderState,
+} = cartSlice.actions
 
 export default cartSlice.reducer
