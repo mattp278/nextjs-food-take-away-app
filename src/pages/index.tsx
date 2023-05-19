@@ -1,7 +1,13 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import { Hero, Navbar, Gallery, Footer } from '@/components'
+import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { resetUserState } from '@/redux/slices/userSlice'
 
 export default function Home() {
+  const dispatch = useAppDispatch()
+  dispatch(resetUserState())
+
   return (
     <>
       <Head>

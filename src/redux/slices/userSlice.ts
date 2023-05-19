@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
 import { apiCall } from '@/utils/apiUtil'
 import { ApiErrorMsg } from '@/ts/interfaces'
+import { boolean } from 'yup'
 
 export interface UserState {
   id: string | null
@@ -9,6 +10,7 @@ export interface UserState {
   email: string | null
   image: string | null
   errors: ApiErrorMsg[] | string[] | null
+  mobileMenuIsOpen: boolean
 }
 
 interface signUpEmailPassword {
@@ -31,6 +33,7 @@ const initialState: UserState = {
   email: null,
   image: null,
   errors: null,
+  mobileMenuIsOpen: false,
 }
 
 export const signUp = createAsyncThunk(
@@ -78,6 +81,9 @@ export const userSlice = createSlice({
     },
     resetUserState(state) {
       Object.assign(state, initialState)
+    },
+    toggleMobileMenu(state) {
+      state.mobileMenuIsOpen = !state.mobileMenuIsOpen
     },
   },
   extraReducers: (builder) => {
@@ -134,6 +140,7 @@ export const userSlice = createSlice({
 })
 
 export const selectUsertSlice = (state: AppState) => state.user
-export const { resetUserState, setLoginToOrderError } = userSlice.actions
+export const { resetUserState, setLoginToOrderError, toggleMobileMenu } =
+  userSlice.actions
 
 export default userSlice.reducer
