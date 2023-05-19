@@ -26,6 +26,6 @@
     "src/components/Home/Hero.tsx",
     "src/components/stripe/CheckoutForm.jsx",
     "src/pages/pages/stripe/payment.tsx"
-  ],
+, "src/pages/api/v1/order/confirm-order/[...confirm-order.ts]"  ],
   "exclude": ["node_modules"]
 }
