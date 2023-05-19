@@ -13,6 +13,10 @@ export interface UserId {
   userId: string
 }
 
+export interface OrderId {
+  orderId: string
+}
+
 const initialState: OrdersState = {
   orders: [],
   errors: null,
@@ -25,6 +29,22 @@ export const getUserOrders = createAsyncThunk(
       const res = await apiCall({
         httpMethod: 'GET',
         route: `api/v1/order/${userId}`,
+      })
+      const { data } = res
+      return data
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
+export const confirmOrder = createAsyncThunk(
+  'orderState/confirmOrder',
+  async (orderId: OrderId): Promise<any> => {
+    try {
+      const res = await apiCall({
+        httpMethod: 'POST',
+        route: `api/v1/order/confirm-order/${orderId}`,
       })
       const { data } = res
       return data
