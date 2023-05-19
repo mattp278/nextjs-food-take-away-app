@@ -74,7 +74,7 @@ export const Orders = () => {
   )
 
   return (
-    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center m-4">
+    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center shandow-lg justify-center m-8">
       {orders.length === 0 ? noOrders : null}
       {orders.length > 0 ? orderItems : null}
     </div>
