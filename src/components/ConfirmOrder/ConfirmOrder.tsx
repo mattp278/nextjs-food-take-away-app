@@ -35,12 +35,14 @@ export const ConfirmOrder = () => {
   })
 
   const onConfirmOrder = async () => {
+    if (!cartItems.length) return
     if (!session) {
       dispatch(setLoginToOrderError())
       const callbackUrl = encodeURIComponent(router.asPath)
       router.replace(`/api/auth/signin?callbackUrl=${callbackUrl}`)
       return
     }
+
     await dispatch(
       generatePendingOrder({
         userId,
@@ -48,6 +50,7 @@ export const ConfirmOrder = () => {
         totalPrice: totalPrice,
       })
     )
+
     router.push('/pages/stripe/payment')
   }
 
