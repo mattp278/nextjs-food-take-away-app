@@ -4,24 +4,30 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+  url      = env("DATABASE_URL")
 }
 
+//vercel cloud db settings
+// datasource db {
+//   provider          = "postgresql"
+//   url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
+//   directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+//   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+// }
+
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -56,15 +62,14 @@ model VerificationToken {
 }
 
 model FoodItem {
-  id        String   @id @default(cuid())
-  name      String   @unique
+  id        String       @id @default(cuid())
+  name      String       @unique
   price     String
   image     String
   category  FoodCategory
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  orderItems     OrderItem[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  orderItems OrderItem[]
 }
 
 enum FoodCategory {
@@ -75,14 +80,14 @@ enum FoodCategory {
 }
 
 model Order {
-  id              String   @id @default(cuid())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  totalPrice      Decimal   
-  userId          String
-  user            User     @relation(fields: [userId], references: [id])
-  orderItems      OrderItem[]
-  orderConfirmed  Boolean  @default(false)
+  id             String      @id @default(cuid())
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  totalPrice     Decimal
+  userId         String
+  user           User        @relation(fields: [userId], references: [id])
+  orderItems     OrderItem[]
+  orderConfirmed Boolean     @default(false)
 }
 
 model OrderItem {
@@ -91,11 +96,11 @@ model OrderItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  orderId   String
-  order     Order    @relation(fields: [orderId], references: [id])
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id])
 
-  foodId    String
-  food      FoodItem @relation(fields: [foodId], references: [id])
+  foodId String
+  food   FoodItem @relation(fields: [foodId], references: [id])
 
   @@unique([orderId, foodId], name: "food_item_unique")
 }
