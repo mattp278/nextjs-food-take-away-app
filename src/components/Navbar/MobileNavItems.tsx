@@ -6,20 +6,36 @@ export const MobileNavItems = () => {
   const { data: session, status } = useSession()
 
   const NavItems = navItemsList.map((item) => {
-    const { id, icon, link, name, sessionReq } = item
+    const { id, icon, link, name, telephoneHref, sessionReq } = item
     if (session && name === 'Login') {
       return null
     }
     if (session && sessionReq) {
-      return <MobileNavItem key={id} icon={icon} link={link} name={name} />
+      return (
+        <MobileNavItem
+          key={id}
+          icon={icon}
+          link={link}
+          name={name}
+          telephoneHref={telephoneHref}
+        />
+      )
     }
     if (!sessionReq) {
-      return <MobileNavItem key={id} icon={icon} link={link} name={name} />
+      return (
+        <MobileNavItem
+          key={id}
+          icon={icon}
+          link={link}
+          name={name}
+          telephoneHref={telephoneHref}
+        />
+      )
     }
   })
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center gap-8">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-8">
       {NavItems}
     </div>
   )

@@ -6,9 +6,35 @@ interface MobileNavItemProps {
   icon: any
   link: string
   name: string
+  telephoneHref?: string
 }
 
-export const MobileNavItem = ({ icon, link, name }: MobileNavItemProps) => {
+export const MobileNavItem = ({
+  icon,
+  link,
+  name,
+  telephoneHref,
+}: MobileNavItemProps) => {
+  if (telephoneHref) {
+    return (
+      <IconoirProvider
+        iconProps={{
+          color: '#ffffff',
+          strokeWidth: 2,
+          width: '1.2em',
+          height: '1.2em',
+        }}
+      >
+        <a href={telephoneHref} className="flex items-center gap-2">
+          <div className="">{createElement(icon)}</div>
+          <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
+            {name}
+          </p>
+        </a>
+      </IconoirProvider>
+    )
+  }
+
   return (
     <IconoirProvider
       iconProps={{
@@ -20,7 +46,7 @@ export const MobileNavItem = ({ icon, link, name }: MobileNavItemProps) => {
     >
       <Link href={link} className="flex items-center gap-2">
         <div className="">{createElement(icon)}</div>
-        <p className="w-full text-2xl whitespace-nowrap text-secondaryWhite">
+        <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
           {name}
         </p>
       </Link>

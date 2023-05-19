@@ -22,7 +22,7 @@ export const NavItem = ({ icon, link, name, telephoneHref }: NavItemProps) => {
       >
         <a href={telephoneHref} className="flex items-center gap-2">
           <div className="">{createElement(icon)}</div>
-          <p className="w-full text-xl whitespace-nowrap text-secondaryWhite">
+          <p className="w-full whitespace-nowrap text-xl text-secondaryWhite">
             {name}
           </p>
         </a>
@@ -41,7 +41,7 @@ export const NavItem = ({ icon, link, name, telephoneHref }: NavItemProps) => {
     >
       <Link href={link} className="flex items-center gap-2">
         <div className="">{createElement(icon)}</div>
-        <p className="w-full text-xl whitespace-nowrap text-secondaryWhite">
+        <p className="w-full whitespace-nowrap text-xl text-secondaryWhite">
           {name}
         </p>
       </Link>
