@@ -1,5 +1,6 @@
 import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
+import { RemoveSquare } from 'iconoir-react'
 
 export const CartItem = ({
   id,
@@ -12,8 +13,8 @@ export const CartItem = ({
 }: TSFoodMenuItem) => {
   return (
     <article className="w-full text-sm md:text-base ">
-      <div className="flex flex-row justify-between items-center my-1 bg-primaryPink">
-        <div className="relative min-h-[3rem] min-w-[3rem] w-3/12 ">
+      <div className="my-1 flex flex-row items-center justify-between bg-primaryPink">
+        <div className="relative min-h-[3rem] w-3/12 min-w-[3rem] ">
           <Image
             src={`/foodImages/${image}`}
             fill
@@ -23,10 +24,12 @@ export const CartItem = ({
             sizes="(max-width: 600px) 50px, 100px"
           />
         </div>
-
-        <p className="text-white w-5/12 break-words m-1 pl-2">{name}</p>
-        <p className="text-white w-2/12 m-1 text-center">{quantity}</p>
-        <p className="text-white w-2/12 m-1">{itemTotal?.toFixed(2)}</p>
+        <p className="m-1 w-4/12 break-words pl-2 text-white">{name}</p>
+        <p className="m-1 w-2/12 text-center text-white">{quantity}</p>
+        <p className="m-1 w-2/12 text-white">{itemTotal?.toFixed(2)}</p>
+        <p className="m-1 w-1/12 text-white">
+          <RemoveSquare />
+        </p>
       </div>
     </article>
   )

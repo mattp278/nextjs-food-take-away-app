@@ -71,9 +71,10 @@ export const CartSection = () => {
           <div className="w-full">
             <div className="my-1 flex flex-row items-center justify-between bg-primaryPink">
               <div className="relative w-3/12 object-cover"></div>
-              <p className="m-1 w-5/12 pl-2 text-white ">Item</p>
+              <p className="m-1 w-4/12 pl-2 text-white ">Item</p>
               <p className="m-1 w-2/12 text-white">Qty</p>
               <p className="m-1 w-2/12 text-white">Price</p>
+              <p className="m-1 w-1/12 text-primaryPink">x</p>
             </div>
           </div>
           <div
