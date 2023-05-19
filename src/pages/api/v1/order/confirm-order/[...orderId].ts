@@ -7,7 +7,9 @@ export default authMiddleware(handler)
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { method } = req
-    if (method === 'POST') await confirmOrder(req, res)
+    if (method === 'POST') {
+      await confirmOrder(req, res)
+    }
   } catch (err: any) {
     console.error(err.message)
     res
