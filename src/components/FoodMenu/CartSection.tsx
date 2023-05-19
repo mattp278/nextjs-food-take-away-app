@@ -61,30 +61,30 @@ export const CartSection = () => {
   }
 
   return (
-    <section className="w-full flex items-center">
-      <div className="w-full h-3/4 flex item-center">
-        <div className="w-full h-1/12 text-sm md:text-base flex flex-col items-center justify-center shadow-lg rounded-3xl px-6 md:px-8 bg-quaternaryGrey">
-          <div className="flex justify-center items-center flex-col p-4">
+    <section className="flex w-full items-center">
+      <div className="item-center flex h-3/4 w-full">
+        <div className="h-1/12 flex w-full flex-col items-center justify-center rounded-3xl bg-quaternaryGrey px-6 text-sm shadow-lg md:px-8 md:text-base">
+          <div className="flex flex-col items-center justify-center p-4">
             <Cart className="text-primaryPink" height={75} width={75} />
-            <h1 className="text-3xl p-2">CHECKOUT</h1>
+            <h1 className="p-2 text-3xl">CHECKOUT</h1>
           </div>
           <div className="w-full">
-            <div className="flex flex-row justify-between items-center bg-primaryPink my-1">
+            <div className="my-1 flex flex-row items-center justify-between bg-primaryPink">
               <div className="relative w-3/12 object-cover"></div>
-              <p className="text-white w-5/12 m-1 pl-2 ">Item</p>
-              <p className="text-white w-2/12 m-1">Qty</p>
-              <p className="text-white w-2/12 m-1">Price</p>
+              <p className="m-1 w-5/12 pl-2 text-white ">Item</p>
+              <p className="m-1 w-2/12 text-white">Qty</p>
+              <p className="m-1 w-2/12 text-white">Price</p>
             </div>
           </div>
           <div
             ref={cartItemsRef}
-            className="overflow-y-auto w-full max-h-[15rem]"
+            className="max-h-[15rem] w-full overflow-y-auto"
           >
             {items}
           </div>
-          <div className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
-            <p className="inline text-bold">Order Total = </p>
-            <p className="inline text-bold">£{totalPrice.toFixed(2)}</p>
+          <div className="w-full bg-primaryPink p-2 text-right text-secondaryWhite ">
+            <p className="text-bold inline">Order Total = </p>
+            <p className="text-bold inline">£{totalPrice.toFixed(2)}</p>
           </div>
           <Button
             type="button"
