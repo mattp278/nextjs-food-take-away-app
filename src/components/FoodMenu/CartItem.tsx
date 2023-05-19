@@ -1,6 +1,8 @@
 import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
 import { RemoveSquare } from 'iconoir-react'
+import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { removeCartItem } from '@/redux/slices/cartSlice'
 
 export const CartItem = ({
   id,
@@ -11,6 +13,11 @@ export const CartItem = ({
   quantity,
   itemTotal,
 }: TSFoodMenuItem) => {
+  const dispatch = useAppDispatch()
+  const onRemoveItem = () => {
+    dispatch(removeCartItem({ id, price }))
+  }
+
   return (
     <article className="w-full text-sm md:text-base ">
       <div className="my-1 flex flex-row items-center justify-between bg-primaryPink">
@@ -28,7 +35,7 @@ export const CartItem = ({
         <p className="m-1 w-2/12 text-center text-white">{quantity}</p>
         <p className="m-1 w-2/12 text-white">{itemTotal?.toFixed(2)}</p>
         <p className="m-1 w-1/12 text-white">
-          <RemoveSquare />
+          <RemoveSquare onClick={onRemoveItem} />
         </p>
       </div>
     </article>
