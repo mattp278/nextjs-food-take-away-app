@@ -52,22 +52,23 @@ export const ConfirmOrder = () => {
   }
 
   return (
-    <article className="relative w-11/12 md:w-[580px] max-w-[800px] md:h-[40rem] text-sm md:text-base flex flex-col items-center justify-center md:rounded-3xl md:p-6 m-3 md:m-8 md:shadow-lg md:bg-quaternaryGrey">
-      <div className="flex justify-center items-center flex-col p-4">
+    <article className="relative m-3 flex w-11/12 max-w-[800px] flex-col items-center justify-center text-sm md:m-8 md:h-[40rem] md:w-[580px] md:rounded-3xl md:bg-quaternaryGrey md:p-6 md:text-base md:shadow-lg">
+      <div className="flex flex-col items-center justify-center p-4">
         <Cart className="text-primaryPink" height={125} width={125} />
-        <h1 className="text-3xl p-2">CHECKOUT</h1>
+        <h1 className="p-2 text-3xl">CHECKOUT</h1>
       </div>
       <div className="w-full">
-        <div className="flex flex-row justify-between items-center bg-primaryPink my-1">
+        <div className="my-1 flex flex-row items-center justify-between bg-primaryPink">
           <div className="relative w-3/12 object-cover"></div>
-          <p className="text-white w-5/12 m-1 pl-2 ">Item</p>
-          <p className="text-white w-2/12 m-1">Qty</p>
-          <p className="text-white w-2/12 m-1">Price</p>
+          <p className="m-1 w-4/12 pl-2 text-white ">Item</p>
+          <p className="m-1 w-2/12 text-white">Qty</p>
+          <p className="m-1 w-2/12 text-white">Price</p>
+          <p className="m-1 w-1/12 text-primaryPink">x</p>
         </div>
       </div>
-      <div className="overflow-y-auto w-full max-h-[15rem]">{items}</div>
+      <div className="max-h-[15rem] w-full overflow-y-auto">{items}</div>
 
-      <div className="w-full text-lg text-right bg-primaryPink text-secondaryWhite p-2 ">
+      <div className="w-full bg-primaryPink p-2 text-right text-lg text-secondaryWhite ">
         <p className="inline">Order Total = </p>
         <p className="inline font-bold">£{totalPrice.toFixed(2)}</p>
       </div>
