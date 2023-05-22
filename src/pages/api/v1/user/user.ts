@@ -25,9 +25,11 @@ export default async function handler(
     }
   } catch (err: any) {
     console.error(err.message)
-    res
-      .status(500)
-      .send({ success: false, status: 500, errors: [{ msg: 'Server Error' }] })
+    res.status(500).send({
+      success: false,
+      status: 500,
+      errors: [{ msg: 'Server Error unable to get authUser' }],
+    })
   }
 }
 

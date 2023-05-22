@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, AnyAction } from '@reduxjs/toolkit'
 import { AppState } from '../store/store'
 import { apiCall } from '@/utils/apiUtil'
 import { ApiErrorMsg } from '@/ts/interfaces'
-import { boolean } from 'yup'
 
 export interface UserState {
   id: string | null

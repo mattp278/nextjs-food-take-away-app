@@ -1,3 +1,5 @@
+import { string } from 'yup'
+
 export interface ApiOptions {
   httpMethod: string
   route: string
@@ -62,4 +64,12 @@ export interface TSOrder {
   updatedAt: string
   userId: string
   orderItems: TSOrderItem[]
+}
+
+export interface UserFromDB {
+  id: string
+  name: string
+  email: string
+  emailVerified: boolean | null
+  image: string
 }

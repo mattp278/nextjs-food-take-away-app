@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { setConfirmOrderState } from '@/redux/slices/cartSlice'
-import { confirmOrder } from '@/redux/slices/ordersSlice'
+import { confirmOrder, sendEmailConfirmation } from '@/redux/slices/ordersSlice'
 import { DeliveryTruck } from 'iconoir-react'
 import Image from 'next/image'
 
 export const OrderComplete = () => {
   const dispatch = useAppDispatch()
+  const userId = useAppSelector((state) => state.user.id)
   const pendingOrderId = useAppSelector((state) => state.cart.pendingOrderId)
   const confirmedOrderId = useAppSelector(
     (state) => state.cart.confirmedOrderId
@@ -20,9 +21,10 @@ export const OrderComplete = () => {
 
   useEffect(() => {
     if (confirmedOrderId) {
-      dispatch(confirmOrder(confirmedOrderId))
+      dispatch(confirmOrder({ orderId: confirmedOrderId }))
+      dispatch(sendEmailConfirmation({ orderId: confirmedOrderId }))
     }
-  }, [confirmedOrderId, dispatch])
+  }, [userId, confirmedOrderId, dispatch])
 
   return (
     <section className="m-8 flex w-11/12 flex-col items-center justify-center rounded-3xl bg-quaternaryGrey md:p-5 md:shadow-lg lg:w-1/2 ">

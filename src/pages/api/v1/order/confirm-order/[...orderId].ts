@@ -8,7 +8,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { method } = req
     if (method === 'POST') {
-      await confirmOrder(req, res)
+      await confirmOrderInDB(req, res)
     }
   } catch (err: any) {
     console.error(err.message)
@@ -19,14 +19,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 
 //----------------------------------------------------------------------------------
-const confirmOrder = async (req: NextApiRequest, res: NextApiResponse) => {
+const confirmOrderInDB = async (req: NextApiRequest, res: NextApiResponse) => {
   const orderId = req.query.orderId?.[0]
 
   if (!orderId) {
     return res.status(400).json({
       success: false,
       status: 400,
-      errors: [{ msg: 'No user id provided' }],
+      errors: [{ msg: 'No order id provided' }],
     })
   }
 

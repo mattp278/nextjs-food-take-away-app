@@ -40,11 +40,27 @@ export const getUserOrders = createAsyncThunk(
 
 export const confirmOrder = createAsyncThunk(
   'orderState/confirmOrder',
-  async (orderId: OrderId): Promise<any> => {
+  async ({ orderId }: OrderId): Promise<any> => {
     try {
       const res = await apiCall({
         httpMethod: 'POST',
         route: `api/v1/order/confirm-order/${orderId}`,
+      })
+      const { data } = res
+      return data
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
+export const sendEmailConfirmation = createAsyncThunk(
+  'orderState/sendEmailConfirmation',
+  async ({ orderId }: OrderId): Promise<any> => {
+    try {
+      const res = await apiCall({
+        httpMethod: 'POST',
+        route: `api/v1/order/send-email-confirmation/${orderId}`,
       })
       const { data } = res
       return data
