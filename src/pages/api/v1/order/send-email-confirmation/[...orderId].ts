@@ -55,8 +55,6 @@ const sendConfirmEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  console.log('orderItems', orderItems)
-
   let orderItemsHtml = ''
   for (const orderItem of orderItems) {
     orderItemsHtml += `<li>${orderItem.food.name} x ${orderItem.quantity} </li>`
