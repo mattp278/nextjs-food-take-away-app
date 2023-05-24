@@ -1,16 +1,16 @@
 import { Navbar, ConfirmOrder } from '@/components'
 import withAuth from '../../withAuth'
 
-function ConfrimOrderPage() {
+function ConfirmOrderPage() {
   return (
     <>
       <title>Curry Club</title>
       <Navbar />
-      <div className="flex justify-center min-h-screen bg-quaternaryGrey md:bg-quaternaryGrey/25">
+      <div className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <ConfirmOrder />
       </div>
     </>
   )
 }
 
-export default withAuth(ConfrimOrderPage)
+export default withAuth(ConfirmOrderPage)
