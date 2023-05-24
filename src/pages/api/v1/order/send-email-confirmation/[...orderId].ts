@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import authMiddleware from '@/pages/api/auth/auth-middleware'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../../auth/[...nextauth]'
+import { htmlString } from './htmlString'
 
 export default authMiddleware(handler)
 
@@ -54,23 +55,16 @@ const sendConfirmEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     },
   })
 
-  let orderItemsHtml = ''
-  for (const orderItem of orderItems) {
-    orderItemsHtml += `<li>${orderItem.food.name} x ${orderItem.quantity} </li>`
-  }
-
   const msg = {
-    to: `${email}`, // Change to your recipient
-    from: 'curryclublondon1234@gmail.com', // varified sendgrid email
+    to: `${email}`,
+    from: 'curryclublondon1234@gmail.com', // verified sendgrid email
     subject: `Curry Club London Order Confirmation`,
     text: `Order Number ${orderId} is confirmed`,
-    html: `<p>${orderId} is confirmed<p/>
-           <p>Here is your order:</p>
-           <ul>${orderItemsHtml}</ul>`,
+    html: htmlString({ orderId, orderItems }),
   }
 
   await sgMail.setApiKey(process.env.SEND_GRID_API_KEY)
-  const sendMail = await sgMail.send(msg)
+  await sgMail.send(msg)
 
   return res.status(200).json({
     success: true,
