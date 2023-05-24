@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 export const OrderComplete = () => {
   const dispatch = useAppDispatch()
-  const userId = useAppSelector((state) => state.user.id)
+  const { userId, email } = useAppSelector((state) => state.user)
   const pendingOrderId = useAppSelector((state) => state.cart.pendingOrderId)
   const confirmedOrderId = useAppSelector(
     (state) => state.cart.confirmedOrderId
@@ -36,7 +36,9 @@ export const OrderComplete = () => {
           {confirmedOrderId}
         </p>
       ) : null}
-
+      <p className="m-5 text-xl">
+        An email confirmation has been sent to {email}
+      </p>
       <div className="relative min-h-[3.5rem] min-w-[15rem] md:min-h-[5rem] md:min-w-[20rem] lg:ml-6 ">
         <Image
           src="/curry_club_pink.png"
