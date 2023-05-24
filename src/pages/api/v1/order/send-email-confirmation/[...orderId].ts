@@ -11,7 +11,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { method } = req
     if (method === 'POST') {
-      console.log('sendconfrim')
       await sendConfirmEmail(req, res)
     }
   } catch (err: any) {
