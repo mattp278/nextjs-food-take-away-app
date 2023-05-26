@@ -36,7 +36,7 @@ export const OrderComplete = () => {
           {confirmedOrderId}
         </p>
       ) : null}
-      <p className="m-5 text-xl">
+      <p className="m-5 text-center text-xl">
         An email confirmation has been sent to {email}
       </p>
       <div className="relative min-h-[3.5rem] min-w-[15rem] md:min-h-[5rem] md:min-w-[20rem] lg:ml-6 ">
