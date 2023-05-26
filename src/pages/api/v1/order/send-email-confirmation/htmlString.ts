@@ -34,7 +34,6 @@ export const htmlString = ({ orderId, orderItems }: htmlString) => {
       width: 100%;
       overflow-y: hidden;
       scroll-behavior: smooth;
-      background: #cfd7d7;
       font-family: 'Lato', sans-serif;
     "
   >
@@ -74,6 +73,8 @@ export const htmlString = ({ orderId, orderItems }: htmlString) => {
           margin-left: auto;
           margin-right: auto;
           margin-bottom: 0.5rem;
+          padding-left:1rem;
+          padding-right:1rem;
         "
       >
         Your order is confirmed
