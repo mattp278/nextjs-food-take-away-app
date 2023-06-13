@@ -1,33 +1,33 @@
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
-} from 'next'
-import { useRef } from 'react'
-import { getProviders, signIn } from 'next-auth/react'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../api/auth/[...nextauth]'
-import { Navbar, Button } from '@/components'
-import { SmallShopAlt } from 'iconoir-react'
+} from "next";
+import { useRef } from "react";
+import { getProviders, signIn } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../../api/auth/[...nextauth]";
+import { Navbar, Button } from "@/components";
+import { SmallShopAlt } from "iconoir-react";
 
 export default function SignIn({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const emailRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null);
 
   const handleEmailSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     if (emailRef.current) {
-      await signIn('email', {
+      await signIn("email", {
         email: emailRef.current.value,
-        callbackUrl: '/pages/food-menu/food-menu',
-      })
+        callbackUrl: "/pages/food-menu/food-menu",
+      });
     }
-  }
+  };
 
   const emailProvider = Object.values(providers).map((provider) => {
-    if (provider.name === 'Email') {
+    if (provider.name === "Email") {
       return (
-        <div key={provider.name} className="w-full md:w-11/12 pb-4 text-lg">
+        <div key={provider.name} className="w-full pb-4 text-lg md:w-11/12">
           <form
             onSubmit={handleEmailSignIn}
             className="flex flex-col items-center"
@@ -36,7 +36,7 @@ export default function SignIn({
               type="email"
               ref={emailRef}
               placeholder="Email address"
-              className="w-full p-2 rounded border"
+              className="w-full rounded border p-2"
             />
             <Button
               type="submit"
@@ -45,17 +45,17 @@ export default function SignIn({
             ></Button>
           </form>
         </div>
-      )
+      );
     }
-  })
+  });
 
   const oAuthProviders = Object.values(providers).map((provider) => {
-    if (provider.name === 'Email') {
-      return
+    if (provider.name === "Email") {
+      return;
     }
 
     return (
-      <div key={provider.name} className="w-full md:w-11/12 text-lg">
+      <div key={provider.name} className="w-full text-lg md:w-11/12">
         <Button
           type="button"
           onClick={() => signIn(provider.id)}
@@ -63,22 +63,22 @@ export default function SignIn({
           optionalClassNames="w-full rounded-lg p-2 my-2"
         />
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <>
       <Navbar />
       <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <div className="sm:w-screen md:w-[400px] max-w-[400px] h-[32rem] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey shadow-lg md:m-8 p-8">
+        <div className="flex h-[32rem] max-w-[400px] flex-col items-center justify-center rounded-3xl p-8 shadow-lg sm:w-screen md:m-8 md:w-[400px] md:bg-quaternaryGrey">
           <SmallShopAlt className="text-primaryPink" height={125} width={125} />
-          <h1 className="text-3xl pb-5">SIGN IN</h1>
+          <h1 className="pb-5 text-3xl">SIGN IN</h1>
           {emailProvider}
           {oAuthProviders}
         </div>
       </section>
     </>
-  )
+  );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -87,25 +87,26 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       context.req,
       context.res,
       authOptions
-    )
+    );
 
-    const callbackUrl = context.query.callbackUrl
-    const redirectUrl = callbackUrl ? callbackUrl : '/pages/food-menu/food-menu'
+    const callbackUrl = context.query.callbackUrl;
+    const redirectUrl = callbackUrl
+      ? callbackUrl
+      : "/pages/food-menu/food-menu";
 
     if (session) {
-      return { redirect: { destination: redirectUrl } }
+      return { redirect: { destination: redirectUrl } };
     }
 
-    const providers = await getProviders()
+    const providers = await getProviders();
 
     return {
       props: { providers: providers ?? [] },
-    }
+    };
   } catch (error) {
-    console.log(error)
-    console.log('signin get server side props ctach block console log')
+    console.log("signin get server side props ctach block console log", error);
     return {
       props: { providers: [] },
-    }
+    };
   }
 }

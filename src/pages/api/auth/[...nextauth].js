@@ -18,21 +18,21 @@ export const authOptions = {
       from: process.env.EMAIL_FROM,
       maxAge: 1 * 60 * 60, // 1 hour
     }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
-      },
-    }),
+    // GithubProvider({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    // }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    //   authorization: {
+    //     params: {
+    //       prompt: 'consent',
+    //       access_type: 'offline',
+    //       response_type: 'code',
+    //     },
+    //   },
+    // }),
   ],
 }
 
