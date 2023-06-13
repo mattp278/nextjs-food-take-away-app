@@ -19,7 +19,12 @@ const nextConfig = {
         ]
       }
     ]
-  }
+  },
+  modularizeImports: {
+    "@phosphor-icons/react": {
+      transform: "@phosphor-icons/react/dist/icons/{{member}}",
+    },
+  },
 
   // async headers() {
   //   return [
