@@ -90,10 +90,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     // );
     const session = null;
 
-    const callbackUrl = context.query.callbackUrl;
-    const redirectUrl = callbackUrl
-      ? callbackUrl
-      : "/pages/food-menu/food-menu";
+    // const callbackUrl = context.query.callbackUrl;
+    // const redirectUrl = callbackUrl
+    //   ? callbackUrl
+    //   : "/pages/food-menu/food-menu";
+
+    const redirectUrl = "/pages/food-menu/food-menu";
 
     if (session) {
       return { redirect: { destination: redirectUrl } };
