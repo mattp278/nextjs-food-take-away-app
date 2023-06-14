@@ -1,10 +1,12 @@
 {
-  "build": {
-    "optimize": {
-      "exclude": ["node_modules/iconoir-react/**"]
+    "build": {
+        "optimize": {
+            "exclude": [
+                "node_modules/iconoir-react/**"
+            ]
+        }
+    },
+    "env": {
+        "VERCEL_MAX_ASSETS": "100000"
     }
-  },
-  "env": {
-    "VERCEL_MAX_ASSETS": "100000"
-  }
 }
