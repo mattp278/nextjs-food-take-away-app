@@ -1,19 +1,17 @@
-import { createElement } from 'react'
-import Link from 'next/link'
-import { IconoirProvider } from 'iconoir-react'
-import { useRouter } from 'next/router'
 import { toggleMobileMenu } from '@/redux/slices/userSlice'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { useRouter } from 'next/router'
+import { IconType } from 'react-icons'
 
 interface MobileNavItemProps {
-  icon: any
+  Icon: IconType
   link: string
   name: string
   telephoneHref?: string
 }
 
 export const MobileNavItem = ({
-  icon,
+  Icon,
   link,
   name,
   telephoneHref,
@@ -32,39 +30,29 @@ export const MobileNavItem = ({
 
   if (telephoneHref) {
     return (
-      <IconoirProvider
-        iconProps={{
-          color: '#ffffff',
-          strokeWidth: 2,
-          width: '1.2em',
-          height: '1.2em',
-        }}
+      <div
+      
       >
         <a href={telephoneHref} className="flex items-center gap-2">
-          <div className="">{createElement(icon)}</div>
+          <Icon />
           <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
             {name}
           </p>
         </a>
-      </IconoirProvider>
+      </div>
     )
   }
 
   return (
-    <IconoirProvider
-      iconProps={{
-        color: '#ffffff',
-        strokeWidth: 2,
-        width: '1.2em',
-        height: '1.2em',
-      }}
+    <div
+    
     >
       <a onClick={onLinkClick} className="flex items-center gap-2">
-        <div className="">{createElement(icon)}</div>
+      <Icon />
         <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
           {name}
         </p>
       </a>
-    </IconoirProvider>
+    </div>
   )
 }

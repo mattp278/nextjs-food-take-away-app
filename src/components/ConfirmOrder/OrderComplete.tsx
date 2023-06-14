@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { setConfirmOrderState } from '@/redux/slices/cartSlice'
 import { confirmOrder, sendEmailConfirmation } from '@/redux/slices/ordersSlice'
-import { DeliveryTruck } from 'iconoir-react'
+import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
+import { useEffect } from 'react'
+import { CiDeliveryTruck } from "react-icons/ci"
+
 import Image from 'next/image'
 
 export const OrderComplete = () => {
@@ -28,7 +29,7 @@ export const OrderComplete = () => {
 
   return (
     <section className="m-8 flex w-11/12 flex-col items-center justify-center rounded-3xl bg-quaternaryGrey md:p-5 md:shadow-lg lg:w-1/2 ">
-      <DeliveryTruck className="text-primaryPink" height={125} width={125} />
+      <CiDeliveryTruck className="text-primaryPink" height={125} width={125} />
       <h1 className="p-2 text-center text-3xl">ORDER CONFIRMED</h1>
       <p className="mt-5 text-xl">Your order number is:</p>
       {confirmedOrderId ? (

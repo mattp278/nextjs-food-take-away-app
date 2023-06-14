@@ -1,11 +1,12 @@
-import { useEffect, useCallback } from 'react'
+import { MobileNav } from '@/components'
+import { getAuthUser, toggleMobileMenu } from '@/redux/slices/userSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { BsTelephone } from "react-icons/bs"
+import { RxHamburgerMenu } from "react-icons/rx"
 import { NavItems } from './NavItems'
-import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
-import { getAuthUser, toggleMobileMenu } from '@/redux/slices/userSlice'
-import { Phone, Menu } from 'iconoir-react'
-import { MobileNav } from '@/components'
 
 export const Navbar = () => {
   const dispatch = useAppDispatch()
@@ -26,7 +27,7 @@ export const Navbar = () => {
     <header className="relative h-[3rem] w-screen md:h-[4rem]">
       {mobileMenuIsOpen ? <MobileNav onClick={handleToggleMobileMenu} /> : null}
       <nav className="fixed top-0 z-40 flex h-[3rem] w-screen min-w-[280px] flex-row items-center justify-between bg-primaryPink text-secondaryWhite md:h-[4rem]">
-        <Menu
+        <RxHamburgerMenu
           className="fill-floralWhite ml-4 cursor-pointer md:mx-8 lg:hidden"
           height={25}
           width={25}
@@ -49,7 +50,7 @@ export const Navbar = () => {
             <NavItems />
           </div>
           <a href={'tel:02088888888'}>
-            <Phone
+            <BsTelephone
               className="block cursor-pointer lg:hidden"
               height={25}
               width={25}

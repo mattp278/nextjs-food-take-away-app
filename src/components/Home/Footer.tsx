@@ -1,6 +1,4 @@
-import Image from 'next/image'
-import { LinkButton } from '@/components'
-import { Facebook, Twitter, Instagram } from 'iconoir-react'
+import { RiFacebookFill, RiInstagramFill, RiTwitterFill } from "react-icons/ri"
 
 export const Footer = () => {
   return (
@@ -9,9 +7,9 @@ export const Footer = () => {
         <div className="grow min-w-[320px] text-center md:text-left md:pl-8 pt-4">
           <p className="font-bold text-2xl md:pb-4 pb-2">Links</p>
           <div className="flex flex-row items-center justify-center md:justify-start gap-4">
-            <Facebook />
-            <Twitter />
-            <Instagram />
+            <RiFacebookFill />
+            <RiTwitterFill />
+            <RiInstagramFill />
           </div>
         </div>
 
