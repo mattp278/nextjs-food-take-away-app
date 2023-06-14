@@ -83,19 +83,16 @@ export default function SignIn({
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
-    // const session = await getServerSession(
-    //   context.req,
-    //   context.res,
-    //   authOptions
-    // );
-    const session = null;
+    const session = await getServerSession(
+      context.req,
+      context.res,
+      authOptions
+    );
 
-    // const callbackUrl = context.query.callbackUrl;
-    // const redirectUrl = callbackUrl
-    //   ? callbackUrl
-    //   : "/pages/food-menu/food-menu";
-
-    const redirectUrl = "/pages/food-menu/food-menu";
+    const callbackUrl = context.query.callbackUrl;
+    const redirectUrl = callbackUrl
+      ? callbackUrl
+      : "/pages/food-menu/food-menu";
 
     if (session) {
       return { redirect: { destination: redirectUrl } };
