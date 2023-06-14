@@ -17,7 +17,12 @@ const nextConfig = {
         ]
       }
     ]
-  }
+  },
+  modularizeImports: {
+    "iconoir-react": {
+      transform: "iconoir-react/dist/{{member}}",
+    },
+  },
 }
 
 module.exports = nextConfig
