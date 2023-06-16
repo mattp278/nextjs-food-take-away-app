@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { TSFoodMenuItem } from '@/ts/interfaces'
-import Image from 'next/image'
+import { Button } from '@/components'
 import { addCartItem } from '@/redux/slices/cartSlice'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
-import { InfoEmpty } from 'iconoir-react'
+import { TSFoodMenuItem } from '@/ts/interfaces'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Button } from '@/components'
+import { useState } from 'react'
+import { AiOutlineInfoCircle } from "react-icons/ai"
 
 export const FoodMenuItem = ({
   id,
@@ -56,7 +56,7 @@ export const FoodMenuItem = ({
             className="absolute text-sm text-center text-white bg-primaryPink right-2 bottom-2 rounded-lg cursor-pointer z-10 p-1"
             onClick={handleMoreInfoClick}
           >
-            <InfoEmpty strokeWidth={2} />
+            <AiOutlineInfoCircle strokeWidth={2} />
           </p>
           <Image
             src={`/foodImages/${image}`}

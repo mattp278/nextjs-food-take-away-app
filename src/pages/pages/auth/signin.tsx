@@ -1,13 +1,13 @@
+import { Button, Navbar } from "@/components";
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { useRef } from "react";
-import { getProviders, signIn } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
+import { getProviders, signIn } from "next-auth/react";
+import { useRef } from "react";
+import { BsShop } from "react-icons/bs";
 import { authOptions } from "../../api/auth/[...nextauth]";
-import { Navbar, Button } from "@/components";
-import { SmallShopAlt } from "iconoir-react";
 
 export default function SignIn({
   providers,
@@ -71,7 +71,7 @@ export default function SignIn({
       <Navbar />
       <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <div className="flex h-[32rem] max-w-[400px] flex-col items-center justify-center rounded-3xl p-8 shadow-lg sm:w-screen md:m-8 md:w-[400px] md:bg-quaternaryGrey">
-          <SmallShopAlt className="text-primaryPink" height={125} width={125} />
+          <BsShop className="text-primaryPink" height={125} width={125} />
           <h1 className="pb-5 text-3xl">SIGN IN</h1>
           {emailProvider}
           {oAuthProviders}

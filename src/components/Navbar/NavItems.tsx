@@ -1,12 +1,12 @@
 import { useSession } from 'next-auth/react'
-import { navItemsList } from './NavItemsList'
 import { NavItem } from './NavItem'
+import { navItemsList } from './NavItemsList'
 
 export const NavItems = () => {
   const { data: session, status } = useSession()
 
   const NavItems = navItemsList.map((item) => {
-    const { id, icon, link, name, telephoneHref, sessionReq } = item
+    const { id, Icon, link, name, telephoneHref, sessionReq } = item
     if (session && name === 'Login') {
       return null
     }
@@ -14,7 +14,7 @@ export const NavItems = () => {
       return (
         <NavItem
           key={id}
-          icon={icon}
+          Icon={Icon}
           link={link}
           name={name}
           telephoneHref={telephoneHref}
@@ -25,7 +25,7 @@ export const NavItems = () => {
       return (
         <NavItem
           key={id}
-          icon={icon}
+          Icon={Icon}
           link={link}
           name={name}
           telephoneHref={telephoneHref}

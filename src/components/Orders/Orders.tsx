@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getUserOrders } from '@/redux/slices/ordersSlice'
-import { TSOrderItem, TSOrder } from '@/ts/interfaces'
-import { ClipboardCheck } from 'iconoir-react'
-import { OrderItem } from './OrderItem'
+import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
+import { TSOrder, TSOrderItem } from '@/ts/interfaces'
 import { convertToReableDate } from '@/utils/convertToReableDate'
+import { useEffect } from 'react'
+import { TbClipboardCheck } from 'react-icons/tb'
+import { OrderItem } from './OrderItem'
 
 export const Orders = () => {
   const dispatch = useAppDispatch()
@@ -41,7 +41,7 @@ export const Orders = () => {
         key={orderId}
         className="w-screen md:w-full flex justify-center items-center flex-col md:rounded-3xl bg-quaternaryGrey p-6 md:m-3 shadow-lg"
       >
-        <ClipboardCheck className="text-primaryPink" height={125} width={125} />
+        <TbClipboardCheck className="text-primaryPink" height={125} width={125} />
         <h1 className="text-3xl pt-2">ORDER ID</h1>
         <h1 className="text-lg pb-2">{orderId}</h1>
         <h2 className="text-lg pb-2">{date}</h2>
@@ -66,7 +66,7 @@ export const Orders = () => {
 
   const noOrders = (
     <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl bg-secondaryWhite p-8 ">
-      <ClipboardCheck className="text-primaryPink" height={125} width={125} />
+      <TbClipboardCheck className="text-primaryPink" height={125} width={125} />
       <h1 className="bg-primaryPink text-lg rounded-3xl text-secondaryWhite p-3 m-5">
         No orders to display
       </h1>
