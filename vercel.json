@@ -1,5 +1,0 @@
-{
-    "env": {
-        "VERCEL_MAX_ASSETS": "100000"
-    }
-}
